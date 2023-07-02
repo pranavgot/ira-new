@@ -1,0 +1,40 @@
+@import 'src/app/modules/user/admin2/add-user/add-user.component.scss';
+.search1 {
+    width: 25%;
+    float: right;
+    border-radius: 0;
+    box-shadow: inset 0px 2px 2px #00000029;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: "open_sans-regular";
+    color: #000000;
+    padding: 5.5px 10px;
+    background: #FFFFFF;
+    margin: 14px 0 20px 0;
+}
+.search1> input{
+    font-size: 12px;
+    border-radius: 0;
+    border: 0px none;
+    padding: 0;
+    margin: 0 3px 0 0;
+    width: calc(100% - 30px);
+    float: left;
+    
+}
+.search1.dds-icon{
+    float: left;
+    padding: 3px 0 0 0;
+    font-size: 17px;
+    height: auto;
+}
+.dds-icon {
+    vertical-align: inherit;
+    height: 12px;
+    font-size: 20px;
+    padding-top: 7px;
+}
+.search1> input:focus {
+    box-shadow: none !important;
+}

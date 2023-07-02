@@ -1,0 +1,110 @@
+.top {
+    padding: 0px;
+    float: left;
+    width: 100%;
+}
+
+table {
+    margin: 20px 0;
+}
+
+.search {
+    width: 25%;
+    float: right;
+    border-radius: 0;
+    box-shadow: inset 0px 2px 2px #00000029;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: 'open_sans-regular';
+    color: #000000;
+    padding: 5.5px 10px;
+    background: #FFFFFF;
+    // margin: 10px;
+
+    input {
+        font-size: 12px;
+        border-radius: 0;
+        border: 0px none;
+        padding: 0;
+        margin: 0 3px 0 0;
+        width: calc(100% - 30px);
+        float: left;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .dds-icon {
+        float: left;
+        padding: 3px 0 0 0;
+        font-size: 17px;
+        height: auto;
+    }
+}
+
+.btn {
+    border-radius: 0;
+    border: 0;
+    margin: 0px 0px 20px 15px !important;
+    background-color: #0076A8;
+    color: white;
+    width: 155px;
+    font-family: 'open_sans-regular';
+    font-size: 13px;
+    line-height: 18px;
+    padding: 12px 0;
+    float: left;
+    min-height: 36px;
+    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+
+    &:hover {
+        box-shadow: inset 155px 0 0 0 #041E42;
+        color: #fff !important;
+    }
+}
+
+.heading {
+    background-color: #FFFFFF;
+    padding: 8px 20px 8px 20px;
+    display: inline-block;
+    width: 100%;
+
+    h1 {
+        font-size: 18px;
+        line-height: 20px;
+        font-family: 'open_sans-bold';
+        margin: 0 0 3px 0;
+        color: #1C1C1C;
+        float: left;
+        width: 100%;
+    }
+
+    ul {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            margin: 0 8px 0 0;
+            color: #000000;
+            font-family: 'open_sans-regular';
+            font-size: 10px;
+            line-height: 14px;
+            list-style: none;
+
+            a {
+                color: #005587;
+                font-family: 'open_sans-regular';
+                font-size: 10px;
+                line-height: 14px;
+                float: left;
+                text-decoration: none;
+                padding: 0 7px 0 0;
+            }
+        }
+    }
+}

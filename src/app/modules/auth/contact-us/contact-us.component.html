@@ -1,0 +1,128 @@
+<div class="client-header">
+    <div class="left_header ">
+        <a [routerLink]="['auth/landing']" class="logo"><img _ngcontent-jld-c34=""
+                src="../../../assets/images/Group 7819.svg" alt="" routerLink="/auth/landing" /></a>
+        <p>Risk Insights through Analytics (RIA)</p>
+    </div>
+    <div class="right_header">
+        <ul>
+            <li><a>About Us</a></li>
+            <li><a routerLink="/auth/explore">Platform & Solutions</a></li>
+            <li><a>FAQ's</a></li>
+            <li><a routerLink="/auth/contact-us">Contact Us</a> </li>
+        </ul>
+        <div class="right_buttons">
+            <ul style="padding-left: 0px;">
+                <li>
+                    <a href="">Existing User Sign-In</a>
+                </li>
+                <li><a routerLink="/auth/sign-up">New User Sign-Up</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="contact-main">
+        <div class="contact-inner">
+            <div class="contact-left">
+                <div class="header">
+                    <h1>Contact us</h1>
+                </div>
+
+            </div>
+            <div class="contact-right">
+                <mat-card class="contact-form-block">
+                    <form class="" [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+
+                        <div class="row nfom">
+                            <p style="color:#005587; font-weight: 600;">Fields marked with an asterisk (*) are required.
+                            </p>
+                            <div class="col-sm-12 column">
+                                <div class="input-group">
+                                    <label>Name<sup>*</sup></label>
+                                    <input type="text" class="form-control reflect-model" formControlName="name"
+                                        [ngClass]="{ 'is-invalid': submited && contactForm.controls['name'].errors }"
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                                        maxlength="50" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 column">
+                                <div class="input-group">
+                                    <label>Organization Name<sup>*</sup></label>
+                                    <input type="text" class="form-control reflect-model" formControlName="orgName"
+                                        [ngClass]="{ 'is-invalid': submited && contactForm.controls['orgName'].errors }"
+                                        maxlength="50" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 column">
+                                <div class="input-group">
+                                    <label>Email Id<sup>*</sup></label>
+                                    <input type="text" class="form-control reflect-model" formControlName="emailId"
+                                        maxlength="35"
+                                        [ngClass]="{ 'is-invalid': submited && contactForm.controls['emailId'].errors }" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 column">
+                                <label>Contact Number<sup>*</sup></label>
+                                <div class="input-group prefix">
+                                    <span class="input-group-addon">+91</span>
+                                    <input type="text" class="form-control reflect-model"
+                                        formControlName="contactnumber" maxlength="10" minlength="10"
+                                        [ngClass]="{ 'is-invalid': submited && contactForm.controls['contactnumber'].errors }"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 column">
+                                <div class="input-group">
+                                    <label>Message<sup>*</sup></label>
+                                    <textarea rows="5" cols="50" placeholder="Enter message here.."
+                                        formControlName="message"
+                                        [ngClass]="{ 'is-invalid': submited && contactForm.controls['message'].errors }"></textarea>
+
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
+                                <p style="font-size:14px;">I agree to receive emailed reports, articles, event
+                                    invitations and other information related to Deloitte products and services. I
+                                    understand I may unsubscribe at any time by clicking the link included in emails.*
+                                </p>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <ul class="flex-list">
+                                        <li><input type="radio" class="form-control reflect-model"
+                                                formControlName="yes" /><label for="yes">Yes</label></li>
+                                        <li><input type="radio" class="form-control reflect-model"                                
+                                            formControlName="no" /><label for="no">No</label></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <ul class="flex-list">
+                                        <li><input type="checkbox" class="form-control reflect-model"
+                                                formControlName="privacy" /><label for="privacy">I have read and accept
+                                                the Privacy Notice and Terms of Use.</label></li>
+                                    </ul>
+
+                                </div>
+                            </div> -->
+                            <div class="row button-group">
+                                <button mat-button color="primary" type="cancel" (click)="cancel()">Cancel</button>
+                                <button mat-button color="primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+
+</div>

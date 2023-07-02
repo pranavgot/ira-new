@@ -1,0 +1,79 @@
+<div class="heading">
+    <h1>Explore Solutions</h1>
+</div>
+<div class="consen">
+    <mat-card class="table-group">
+        <form [formGroup]="exploreForm">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label>Select Industry</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select class="form-control" placeholder="Select Industry" formControlName="industryId" panelClass="selectIndusrySearch">
+                                <!-- [ngClass]="{ 'is-invalid': submited && exploreForm.controls['industryId'].errors }" -->
+                            <input type="text" placeholder="Search.." id="myInput" (keyup)="applyFilter($event)">
+                                <mat-option *ngFor="let item of searchindusData" [value]="item"
+                                    (onSelectionChange)="selectionChange($event, item)">{{item.industryName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label>Select Sector</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select class="form-control" placeholder="Select Sector" formControlName="sectorId" panelClass="selectSectorSearch">
+                                <!-- [ngClass]="{ 'is-invalid': submited && exploreForm.controls['sectorId'].errors }" -->
+                            <input type="text" placeholder="Search.." id="myInput" (keyup)="applyFilter1($event)">
+                                <mat-option *ngFor="let item of searchsectData" [value]="item"
+                                (onSelectionChange)="selectionChange1($event, item)">{{item.sectorName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="error" *ngIf="sectData?.length == 0">No Sector mapped</div>     
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label>Select Process</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select class="form-control" placeholder="Select Process" formControlName="processId"  panelClass="selectProccessSearch">
+                                <!-- [ngClass]="{ 'is-invalid': submited && exploreForm.controls['processId'].errors }" -->
+                            <input type="text" placeholder="Search.." id="myInput" (keyup)="applyFilter2($event)">
+                                <mat-option *ngFor="let item of searchprocData" [value]="item" (onSelectionChange)="showlist($event, item)">{{item.previousProcessName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="error" *ngIf="procData?.length == 0">No Process mapped</div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button mat-button type="reset" (click)="clearAll()">Clear <span class="dds-icon dds-icon_close__l__stroke"></span></button>
+                <button mat-button type="submit" (click)="submitList()" *ngIf="hidebtn">View Listing <span class="dds-icon dds-icon_show__s__stroke"></span></button>
+                <button mat-button type="submit" *ngIf="!hidebtn">View Listing <span class="dds-icon dds-icon_show__s__stroke"></span></button>
+            </div>
+        </form>
+        <br/>
+        <div class="main" *ngIf="showtable">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">Analytics Name</th>
+                        <th scope="col">Process Name</th>
+                        <th scope="col">Analytics Objective</th>
+                    </tr>
+                </thead>
+                <tbody class="scroll">
+                    <tr *ngFor="let item of process" >
+                        <td>{{item.processAnalyticsDTOList[0].analyticsName}}</td>
+                        <td>{{item.previousProcessName}}</td>
+                        <td style="min-width:500px;">{{item.processAnalyticsDTOList[0].analyticsObjective}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-card>
+</div>

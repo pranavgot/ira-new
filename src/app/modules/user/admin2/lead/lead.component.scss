@@ -1,0 +1,182 @@
+/*.mat-card {
+    // height: 680px;
+    border-radius: 0;
+    // margin-top: 20px;
+    // margin-bottom: 10px;
+    box-shadow: 0px -1px 6px 1px rgb(204, 202, 202);
+}
+
+.container {
+    margin-top: 5%;
+}
+
+.heading {
+    background-color: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+    width: 100%;
+
+    h1 {
+        font-size: 22px;
+        line-height: 24px;
+        font-family: 'open_sans-bold';
+        margin: 0 0 3px 0;
+        color: #1C1C1C;
+        float: left;
+        width: 100%;
+    }
+
+    ul {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            margin: 0 8px 0 0;
+            color: #000000;
+            font-family: 'open_sans-regular';
+            font-size: 10px;
+            line-height: 14px;
+            list-style: none;
+
+            a {
+                color: #005587;
+                font-family: 'open_sans-regular';
+                font-size: 10px;
+                line-height: 14px;
+                float: left;
+                text-decoration: none;
+                padding: 0 7px 0 0;
+            }
+        }
+    }
+}
+
+select {
+    float: right;
+    width: 30%;
+    height: 40px;
+    margin: 20px !important;
+}
+
+.row input {
+    border-radius: 0;
+}
+
+.row {
+    padding: 20px;
+}
+
+.taxt-audit-popup {
+    width: 30%;
+    // margin-left: 110px;
+}
+
+.input-group-addon {
+    // padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 12%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    padding-top: 12px;
+}
+
+.form-check-input {
+    font-size: 25px;
+    margin-top: -1px;
+    border-radius: 0;
+}
+
+.form-check-input:checked {
+    background-color: #0076A8;
+    border-color: #0076A8;
+}
+
+.row textarea {
+    border-radius: 0;
+}
+
+.date {
+    border: 1px solid #ced4da;
+}
+
+.mat-card select {
+    border: 1px solid #ccc   
+}
+
+
+.icons {
+    float: right;
+    padding: 0px 0 0 20px;
+
+    .dds-icon {
+        font-size: 16px;
+    }
+}
+
+.search {
+    width: 25%;
+    float: right;
+    border-radius: 0;
+    box-shadow: inset 0px 2px 2px #00000029;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: 'open_sans-regular';
+    color: #000000;
+    padding: 5.5px 10px;
+    background: #FFFFFF;
+    margin: 0 0 20px 0;
+
+    input {
+        font-size: 12px;
+        border-radius: 0;
+        border: 0px none;
+        padding: 0;
+        margin: 0 3px 0 0;
+        width: calc(100% - 30px);
+        float: left;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .dds-icon {
+        float: left;
+        padding: 3px 0 0 0;
+        font-size: 17px; height: auto;
+    }
+}
+
+.dds-icon {
+    vertical-align: inherit;
+    height: 12px;
+    font-size: 20px;
+    padding-top: 7px;
+}
+
+table td,
+table th {
+    padding: 0 20px;
+}
+
+th {
+    color: #fff;
+    &:nth-child(1){width:150px}
+    &:nth-child(2){width:150px}
+    &:nth-child(3){width:150px}
+    &:nth-child(4){width:150px}
+    &:nth-child(5){width:100px}
+    &:last-child{width:100px}
+}
+*/

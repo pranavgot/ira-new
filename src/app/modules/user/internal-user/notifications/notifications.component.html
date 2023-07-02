@@ -1,0 +1,13 @@
+<!-- <p>notifications works!</p> -->
+<div class="heading">
+    <h1>Notifications</h1>
+    <h5><span style="color: #0076A8;">Dashboard / </span> Notifications</h5>
+</div>
+<div class="consen">
+    <div *ngFor="let item of notify">
+        <mat-card *ngIf="item.status">
+            <div class="dds-icon" [ngClass]="item.icon" [class.some-class]="item.icon === true" style="float: right;" (click)="close(item.id)"></div>
+            <p>{{item.data}}</p>
+        </mat-card>
+    </div>
+</div>

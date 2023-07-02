@@ -1,0 +1,594 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Client</li>
+            <li>{{orgdetail?.organizationName}}</li>
+            <!-- <li *ngIf="tab2">Subscriptions</li>
+            <li *ngIf="tab3">Projects</li> -->
+        </ul>
+    </div> 
+    <!-- <h1>{{orgdetail?.organizationName}}</h1> -->
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <div class="toolbar-block tabs-button-row">
+            <div class="tab-buttons">
+                <button mat-button [class.active]="tab1" (click)="changetab(1)">Users</button> &nbsp;
+                <button mat-button [class.active]="tab2" (click)="changetab(2)">Subscriptions</button>&nbsp;
+                <button mat-button [class.active]="tab3" (click)="changetab(3)">Projects</button>
+        
+            </div>
+        </div>
+        <div *ngIf="tab1">
+            <div class="row">
+                <div class="col fin">
+                    <!-- <div class="consen"> -->
+                        <div class="heads">
+                            <h4>Organization Details</h4>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Organization Name</label>
+                                        <input type="text" class="form-control reflect-model" [value]="orgdetail?.organizationName" disabled/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Contact Person Email id</label>
+                                        <input type="text" class="form-control reflect-model" [value]="orgdetail?.spocEmailId" disabled/>
+    
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Contact Person Number</label>
+                                    <div class="input-group prefix">
+                                        <span class="input-group-addon">+91</span>
+                                        <input type="text" class="form-control reflect-model" [value]="orgdetail?.spocphoneNo" disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Organization Address</label>
+                                        <textarea rows="5" cols="50" type="text" class="form-control reflect-model"
+                                        [value]="orgdetail?.address" disabled></textarea>
+    
+                                    </div>
+                                </div>
+                                <!-- <div class="col-sm-4">
+                                    <label>Client logo</label>
+                                    <div class="button">
+                                        <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                        <br>
+                                        <h5>Upload Image</h5>
+                                        <p style="font-size: 9px;color: #707070;">Upload image (JPG or PNG Max size 100 kb)</p>
+                                    </div>       
+                             </div>                       -->
+                            </div>
+                        </form>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+ 
+
+<!-- <div class="consen" *ngIf="tab1">
+    <div class="row">
+        <div class="col fin">
+            <div class="head">
+                <h4>Subscriptions</h4>
+            </div> -->
+            <!-- <div class="scroll"> -->
+                <!-- <table class="table table-striped">
+                    <thead>
+                        <tr style="background-color: #041E42; color:white">
+                            <th scope="col">Subscription Name</th>
+                            <th scope="col">End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="subdetail.length == 0">
+                            <td style="text-align: center;">No Data found</td>
+                        </tr>
+
+                        <tr *ngFor="let item of subdetail">
+                            <td></td>
+                            <td>{{item.endDate}}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+            <!-- </div> -->
+        <!-- </div>
+        <div class="col fin">
+            <div class="head">
+                <h4>Projects</h4>
+            </div>
+            <div class="scroll">
+                <table class="table table-striped">
+                    <thead>
+                        <tr style="background-color: #041E42; color:white">
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Process</th>
+                            <th scope="col">Date & Time</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="projectdetail.length == 0">
+                            <td></td>
+                            <td>No Data found</td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let item of projectdetail">
+                            <td>{{item.projectName}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div *ngIf="tab1">
+    <div class="row">
+        <div class="col fin">
+            <div class="heads">
+                <h4>Users</h4>
+            </div>
+            <div class="toolbar-block margin-top-65">
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter1($event)" />      
+                    <button mat-button ><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+                </div>        
+            </div>
+            <div class="table-layer">
+                <div class="table-container">
+                    <!-- <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No</th>
+                                <th scope="col"> USER Name</th>
+                                <th scope="col">User Role</th>
+                                <th scope="col">Designation</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Email Id</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="userdetail == null || userdetail.length == 0">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>No Data found</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr *ngFor="let item of userdetail;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{item.userName}}</td>
+                                <td>{{item.roleName}}</td>
+                                <td>{{item.designation}}</td>
+                                <td>{{item.contactNo}}</td>
+                                <td>{{item.emailId}}</td>
+                                <td>{{item.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <!-- </div> -->
+    
+    
+                    <table mat-table [dataSource]="userSearch" class="table table-striped" matSort>
+                      
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="sno">
+                            <th mat-header-cell *matHeaderCellDef> S.No </th>
+                            <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="userName">
+                        <th mat-header-cell *matHeaderCellDef> User Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="roleName">
+                            <th mat-header-cell *matHeaderCellDef> User Role </th>
+                            <td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="designation">
+                            <th mat-header-cell *matHeaderCellDef> Designation </th>
+                            <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="contactNo">
+                            <th mat-header-cell *matHeaderCellDef  style="width:25%"> Contact Number </th>
+                            <td mat-cell *matCellDef="let element"  style="width:25%"> {{element.contactNo}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="emailId">
+                            <th mat-header-cell *matHeaderCellDef> Email Id </th>
+                            <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+                        </ng-container>
+    
+    
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                        </ng-container>
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns1.length">
+                            No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <ng-container *ngIf="userSearch?.data.length > 10">
+               <mat-paginator #userPaginator [length]="userSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+            </mat-paginator> 
+        </ng-container>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="tab2" style="margin-bottom:40px;">
+    <div class="row">
+        <div class="col fin">
+            <div class="heads">
+                <h4>Subscriptions</h4>
+            </div>
+            <div class="toolbar-block margin-top-65">
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter2($event)" />      
+                    <button mat-button ><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+                </div>        
+            </div>
+            <div class="table-layer">
+                <div class="table-container">
+                    <!-- <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subscription Name</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col" style="text-align: center;">Number of Runs</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="subdetail == null || subdetail.length == 0">
+                                <td></td>
+                                <td></td>
+                                <td>No Data found</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr *ngFor="let item of subdetail">
+                                <td>{{item.processName}}</td>
+                                <td>{{item.startDate}}</td>
+                                <td>{{item.endDate}}</td>
+                                <td style="text-align: center;">{{item.runCount}}</td>
+                                <td>{{item.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <!-- </div> -->
+    
+    
+    
+    
+                <table mat-table [dataSource]="subSearch" class="table table-striped" matSort>
+                      
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="processName">
+                        <th mat-header-cell *matHeaderCellDef> Subscription Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                      </ng-container>
+    
+                    <ng-container matColumnDef="startDate">
+                      <th mat-header-cell *matHeaderCellDef> Start Date </th>
+                      <td mat-cell *matCellDef="let element"> {{element.startDate|date:"dd/MM/yyyy hh:mm a"}} </td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="endDate">
+                        <th mat-header-cell *matHeaderCellDef> End Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.endDate|date:"dd/MM/yyyy hh:mm a"}} </td>
+                      </ng-container>
+        
+                    <ng-container matColumnDef="runCount">
+                        <th mat-header-cell *matHeaderCellDef> Number of Runs </th>
+                        <td mat-cell *matCellDef="let element"> {{element.runCount}} </td>
+                      </ng-container>
+    
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                    </ng-container>
+        
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" [attr.colspan]="displayedColumns2.length">
+                          No data found
+                        </td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            
+            <ng-container *ngIf="subSearch?.data.length > 10">
+               <mat-paginator #subPaginator [length]="subSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+            </mat-paginator> 
+        </ng-container>
+
+
+        </div>
+    </div>
+</div>
+<div *ngIf="tab2">
+    <div class="row">
+        <div class="col fin">
+            <div class="heads">
+                <h4>Workspace</h4>
+            </div>
+            <div class="toolbar-block margin-top-65">
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter3($event)" />      
+                    <button mat-button ><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+                </div>        
+            </div>
+            <div class="table-layer">
+                <div class="table-container" >
+                    <!-- <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subscription Name</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="workdetail == null || workdetail.length == 0">
+                                <td colspan="4">No Data found</td>
+                                </tr>
+                            <tr *ngFor="let item of workdetail">
+                                <td>{{item.subscriptionType}}</td>
+                                <td>{{item.startDate}}</td>
+                                <td>{{item.endDate}}</td>
+                               <td>{{item.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+        
+        
+        
+                    <table mat-table [dataSource]="workSearch" class="table table-striped" matSort>
+                          
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Subscription Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                          </ng-container>
+        
+                        <ng-container matColumnDef="startDate">
+                          <th mat-header-cell *matHeaderCellDef> Start Date </th>
+                          <td mat-cell *matCellDef="let element"> {{element.startDate|date:"dd/MM/yyyy hh:mm a"}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="endDate">
+                            <th mat-header-cell *matHeaderCellDef> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.endDate|date:"dd/MM/yyyy hh:mm a"}} </td>
+                          </ng-container>
+            
+                        <!-- <ng-container matColumnDef="runCount">
+                            <th mat-header-cell *matHeaderCellDef> Number of Runs </th>
+                            <td mat-cell *matCellDef="let element"> {{element.runCount}} </td>
+                          </ng-container> -->
+        
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                        </ng-container>
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns3.length">
+                              No data found
+                            </td>
+                          </tr>
+                      </table>
+                    </div>
+            </div>
+            
+            <ng-container *ngIf="workSearch?.data.length > 10">
+               <mat-paginator #workPaginator [length]="workSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+            </mat-paginator> 
+        </ng-container>
+
+
+
+        <!-- </div> -->
+    </div>
+    </div>
+</div>
+<div *ngIf="tab3">
+    <div class="row">
+        <div class="col fin">
+            <div class="heads">
+                <h4>Projects</h4>
+            </div>
+            <div class="toolbar-block margin-top-65">
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />      
+                    <button mat-button ><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+                </div>
+        
+            </div>
+            <div class="table-layer">
+                <div class="table-container">
+                    <table mat-table [dataSource]="projectSearch" class="table table-striped" matSort>
+                      
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="sno">
+                            <th mat-header-cell *matHeaderCellDef> S.No </th>
+                            <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+                          </ng-container>
+    
+                        <ng-container matColumnDef="projectName">
+                          <th mat-header-cell *matHeaderCellDef> Project Name </th>
+                          <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Process </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                          </ng-container>
+            
+                        <ng-container matColumnDef="creationDate">
+                            <th mat-header-cell *matHeaderCellDef> Created Date & Time </th>
+                            <td mat-cell *matCellDef="let element"> {{element.creationDate |date:"dd/MM/yyyy hh:mm a"}} </td>
+                          </ng-container>
+            
+                          <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef> Created By </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                          </ng-container>
+            
+                        <ng-container matColumnDef="statusName">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+                          </ng-container>
+    
+    
+                          <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element;let i = index">
+                                <span *ngIf="element.statusName == 'Success'" class="ico dds-icon dds-icon_eyeopen" (click)="projectCompleted(element)"></span>
+                                <span *ngIf="element.statusName == 'Failed'" class="ico dds-icon dds-icon_alert__l__stroke" style="color: red !important;" (click)="failedproject(element)"></span>
+                                <span *ngIf="element.statusName == 'PBI-Failed'" class="ico dds-icon dds-icon_alert__l__stroke" style="color: red !important;" (click)="failedproject(element)"></span>
+                                <span *ngIf="element.statusName == 'Executing'">--</span>
+                                <span *ngIf="element.statusName == 'Draft'">--</span>
+                            </td>
+                          </ng-container>
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                              No data found
+                            </td>
+                          </tr>
+                      </table>
+                    </div>
+            </div>
+            
+                <ng-container *ngIf="projectSearch?.data.length > 10">
+                   <mat-paginator #projectPaginator [length]="projectSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+                </mat-paginator> 
+            </ng-container>
+           <!-- <div class="table-container scroll-div">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Process</th>
+                            <th scope="col">Created Date & Time</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">ACtion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="projectdetail == null || projectdetail.length == 0">
+                            <td colspan="7">No Data found</td>
+                        </tr>
+                        <tr *ngFor="let item of projectdetail;let i=index;">
+                            <td>{{i+1}}</td>
+                            <td>{{item.projectName}}</td>
+                            <td>{{item.processName}}</td>
+                            <td>{{item.creationDate | date:"d-M-yy, h:mm a"}}</td>
+                            <td>{{item.userName}}</td>
+                            <td class="status">{{item.statusName}}
+                               </td>
+                            <td *ngIf="item.statusName == 'Success'">
+                                <span class="ico dds-icon dds-icon_eyeopen" (click)="projectCompleted(item)"></span>
+                              </td>
+                              <td *ngIf="item.statusName == 'Completed'">
+                                <span class="ico dds-icon dds-icon_lightbulb__l__stroke"></span>
+                              </td>
+                              <td *ngIf="item.statusName == 'PBI-Failed'">
+                                <span class="ico dds-icon dds-icon_alert__l__stroke" style="color: red;" (click)="failedproject()"></span>
+                               </td>
+                              <td *ngIf="item.statusName == 'Failed'">
+                                <span class="ico dds-icon dds-icon_alert__l__stroke" style="color: red;" (click)="failedproject()"></span>
+                              </td>
+                              <td *ngIf="item.statusName == 'Executing'">N/A
+                                </td> 
+                              <td *ngIf="item.statusName == 'Draft'">N/A
+                              </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>         -->
+        </div>
+    </div>
+</div>
+</div>
+ 
+</div>
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup" style="width: 1100px !important;">
+            <div class="taxt-header popup-header">
+                <h3>PowerBI Report </h3>
+                <button mat-button class="close"><i (click)="hideViewReport()"class="report-modal-close dds-icon dds-icon_close__l__stroke"></i></button>
+                    
+            </div>
+            <!-- <div style="text-align: center;margin-top:20px">
+                <h6 style="padding: 70px 20px 20px 20px;">Execution started you will be notified once the dashboard is
+                        generated</h6>            </div> -->
+            <div class="report-container popup-body">
+
+                <powerbi-report id="embedView" [embedConfig]="reportViewConfig" style="height: 70vh;">
+                </powerbi-report>
+                <!-- <button mat-button
+                        style="width: 40%; height:35px; background-color: #0076A8; color: white;border-radius: 0; "
+                        routerLink="/user/admin1/dashboard">Ok</button> -->
+                <!-- &nbsp;
+                    &nbsp;
+                    <button mat-button style="width: 40%; height:35px;color: #0076A8; border-color: #0076A8;"
+                        (click)="CloseModal()">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="AddEventProceeding2">
+    <div class="taxt_audit-report error">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header popup-header">
+                <h3>Failure</h3>
+                <button mat-button class="close"><i (click)="CloseModal()" style="margin-left: 85%;padding: 10px;" class="report-modal-close dds-icon dds-icon_close__l__stroke"></i></button>  
+            </div>
+            <div class="popup-body">
+              <!-- <h5>Reason for Project Failed:-</h5> -->
+              <!-- <ng-container *ngFor="let item of projectdetail"> -->
+                  <p style="margin-top: 10%;text-align: center">{{failed.errorMessage}}</p>
+              <!-- </ng-container> -->
+            </div>
+        </div>
+    </div>
+</div>

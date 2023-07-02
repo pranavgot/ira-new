@@ -1,0 +1,205 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+        "analytics": "c6760372-b514-4ccb-a3df-bdbc51b52981"
+    },
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "RIA": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                },
+                "@schematics/angular:application": {
+                    "strict": true
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/RIA",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "src/favicon.ico", "src/assets"
+                        ],
+                        "styles": [
+                            "./node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.scss"
+                        ],
+                        "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", "./node_modules/powerbi-client/dist/powerbi.min.js"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "50kb",
+                                    "maximumError": "100kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "dev": {
+                          "budgets": [
+                              {
+                                  "type": "initial",
+                                  "maximumWarning": "2mb",
+                                  "maximumError": "5mb"
+                              },
+                              {
+                                  "type": "anyComponentStyle",
+                                  "maximumWarning": "50kb",
+                                  "maximumError": "100kb"
+                              }
+                          ],
+                          "fileReplacements": [
+                              {
+                                  "replace": "src/environments/environment.ts",
+                                  "with": "src/environments/environment.dev.ts"
+                              }
+                          ],
+                          "outputHashing": "all"
+                      },
+                        "qa": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "50kb",
+                                    "maximumError": "100kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.qa.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "uat": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "50kb",
+                                    "maximumError": "100kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.uat.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "demo": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "50kb",
+                                    "maximumError": "100kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.demo.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "RIA:build:production"
+                        },
+                        "dev": {
+                            "browserTarget": "RIA:build:dev"
+                        },
+                        "devqa": {
+                            "browserTarget": "RIA:build:devqa"
+                        },
+                        "uat": {
+                            "browserTarget": "RIA:build:uat"
+                        },
+                        "development": {
+                            "browserTarget": "RIA:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "RIA:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "src/favicon.ico", "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.scss", "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+                        ],
+                        "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", "./node_modules/apexcharts/dist/apexcharts.min.js"]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "RIA"
+}

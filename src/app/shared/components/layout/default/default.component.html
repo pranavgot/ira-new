@@ -1,0 +1,10 @@
+<app-header ></app-header>
+<div class="default" [ngClass]="[navOpen?'navOp':'navColap',leftHover?'leftOpen':'leftClose']">
+    <div class="left">
+        <app-leftmenu></app-leftmenu>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </div>
+</div>

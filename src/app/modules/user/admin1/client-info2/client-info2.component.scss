@@ -1,0 +1,232 @@
+// .mat-card {
+//     height: 90%;
+//     border-radius: 0;
+//     margin-bottom: 10px;
+//     padding: 0;
+//     padding-bottom: 0;
+//     box-shadow: 0px -1px 6px 1px rgb(204, 202, 202);
+// }
+
+// .container {
+//     margin-top: 1%;
+// }
+// .btn {
+//     border-radius: 0;
+//     margin-bottom: 10px;
+//     background-color: #0076A8;
+//     color: white;
+//     width: 10%;
+// }
+// .cards {
+//     display: flex;
+// }
+// .fin {
+//     padding: 20px;
+//     border-radius: 0;
+//     // margin: 0px 10px;
+//     background-color: #FFFFFF;
+//     box-shadow: 0px 0px 1px 0px #9b9b9b,
+//         0 1px 1px 0 #9b9b9b,
+//         0 1px 1px 0 #9b9b9b;
+// }
+// // .scroll {
+// //     max-height: 300px;
+// //     overflow-y: scroll;
+// // }
+// // .scroll thead{
+// //     position: sticky;
+// //     top: 0;
+// // }
+// // .scroll td{
+// //     vertical-align: middle;
+// // }
+
+// .scroll::-webkit-scrollbar {
+//     width: 3px;
+// }
+
+// /* Track */
+// .scroll::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 0px grey;
+//     border-radius: 0px;
+// }
+
+// /* Handle */
+// .scroll::-webkit-scrollbar-thumb {
+//     background: #041E42;
+//     border-radius: 0px;
+// }
+
+// /* Handle on hover */
+// .scroll::-webkit-scrollbar-thumb:hover {
+//     background: #041E42;
+// }
+
+// .head {
+//     // padding: 10px 0;
+//     color: #0076A8;
+// }
+
+// .head h4 {
+//     font-size: 24px;
+// }
+// .heads {
+//     // padding: 10px 0;
+//     background-color: #fff;
+//     color: black;
+// }
+// .heading {
+//     background-color: #FFFFFF;
+//     color: black;
+//     font-weight: bold;
+//     height: 80px;
+//     padding: 20px;
+// }
+
+// .heading h1 {
+//     font-size: 24px;
+//     font-weight: 600;
+// }
+
+// .heading h5 {
+//     margin: -10px 0 50px 0;
+//     font-size: 15px;
+
+// }
+// .row h2 {
+//     color: #0076A8;
+// }
+// h3 {
+//     height: 50px;
+//     font-size: 20px;
+//     padding: 12px;
+// }
+
+// .part2 span {
+//     font-size: 50px;
+//     color: white !important;
+// }
+
+// .form-check-input {
+//     font-size: 25px;
+//     // margin: 10px;
+//     border-radius: 0;
+// }
+
+// .form-check-input:checked {
+//     background-color: #0076A8;
+//     border-color: #0076A8;
+// }
+
+// // ul.striped-list > li {
+// //     border-bottom: 1px solid rgb(221,221,221);
+// //     padding: 6px;
+// // }
+
+// form {
+//     padding: 10px;
+// }
+
+// form input,textarea {
+//     border-radius: 0;
+// }
+
+// .row {
+//     padding-bottom: 20px;
+// }
+
+// .row input{
+//     border-radius: 0;
+// }
+
+// select {
+//     width: 100%;
+//     height: 36px;
+// }
+
+// .icon_style {
+//     color: #005587;
+//     font-size: 26px;
+//     font-weight: bold;
+// }
+// .btnn button{
+//     border: 1px solid #0076A8;
+//     display: inline;
+//     height: 35px;
+//     width: 15%;
+//     border-radius: 0;
+//     background-color: #fff;
+//     color: black;
+//     // margin-left: 10px;
+//     // margin-right: 10px;
+// }
+// .btnn button.active{
+//     background-color: #0076A8;
+//     color: #fff;
+// }
+// .status{
+//     display: flex;
+// }
+// .success{
+//     display: flex;
+//     color: #86BC25;;
+//     // padding: 10px;
+// }
+// .succ{
+//     color: #86BC25;
+//     // opacity: 0.7;
+//     font-size: 20px;
+//     margin: auto;
+// }
+// .pending{
+//     color: #E3C900;
+//     // padding: 10px;
+// }
+// .scheduled{
+//     color: #007CB0;
+// //     padding: 10px;
+// }
+// .failure{
+//     color: #DA291C;
+//     // padding: 10px;
+// }
+// .number{
+//     width: 155px;
+//     border: 2px solid #00000029;
+// }
+// .date{
+//     color: #97999B;
+//     width: 155px;
+//     border: 2px solid #00000029;
+// }
+// .input-group-addon {
+//     // padding: 6px 12px;
+//     font-size: 14px;
+//     font-weight: 400;
+//     line-height: 1;
+//     color: #707070;
+//     text-align: center;
+//     background-color: #eee;
+//     border: 1px solid #ccc;
+//     width: 12%;
+//     white-space: nowrap;
+//     vertical-align: middle;
+//     display: table-cell;
+//     padding-top: 12px;
+// }
+// .button{
+//     background-color: #eee;
+//     text-align-last: center;
+//     height:120px;
+//     width:295px;
+//     border-style: dotted  ;
+//     border-width:  1px solid;
+//     color: #707070;
+//     margin: 5px 80px 30px 0px;;
+//     padding: 15px;
+// }
+// .button span{
+//     font-size: 20px;
+//     padding: 0 0 0 10px;
+//     vertical-align: middle;
+// }

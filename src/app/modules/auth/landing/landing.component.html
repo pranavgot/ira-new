@@ -1,0 +1,201 @@
+<div class="clinent-login_main">
+    <div class="client-header">
+
+        <div class="left_header">
+            <a [routerLink]= "['auth/landing']" class="logo"><img _ngcontent-jld-c34="" src="../../../assets/images/Group 7819.svg" alt=""></a>
+            <p>Risk Insights through Analytics (RIA)</p>
+        </div>
+        <div class="right_header">
+            <ul>
+                <li><a>About Us</a></li>
+                <li><a routerLink="/auth/explore">Platform & Solutions</a></li>
+                <li><a>FAQ's</a></li>
+                <li><a routerLink="/auth/contact-us">Contact Us</a> </li>
+            </ul>
+            <div class="right_buttons">
+                <ul>
+                    <li>
+                        <a (click)="loginRedirect()">Existing User Sign-In</a>
+                    </li>
+                    <li><a routerLink="/auth/sign-up">New User Sign-Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="landing-wrapper">
+        <div class="client_login-body">
+            <div class="client_login-right">
+                <div class="inner-text-block">
+                    <h4>Take an intelligent <br />approach to risk with RIA. </h4>
+                    <div class="client_login-text">
+                        <p>
+                            RIA is a self-service, fully secure, analytics platform that helps you identify future
+                            risks long before they become a reality.
+                        </p>
+
+                        <ul>
+                            <li class="p-inline">
+                                <span class="dds-icon dds-icon_checkmark__l__stroke dss-color"></span>
+                                <p>No investment required for infrastructure & licensing</p>
+                            </li>
+                            <li class="p-inline">
+                                <span class="dds-icon dds-icon_checkmark__l__stroke dss-color"></span>
+                                <p>Hosted on secured cloud infrastructure</p>
+                            </li>
+                            <li class="p-inline">
+                                <span class="dds-icon dds-icon_checkmark__l__stroke dss-color"></span>
+                                <p>Leverages the power of AI / ML</p>
+                            </li>
+                            <li class="p-inline">
+                                <span class="dds-icon dds-icon_checkmark__l__stroke dss-color"></span>
+                                <p>Collates structured & unstructured data inputs</p>
+                            </li>
+                        </ul>
+
+                        <p class="exStyles">
+                            Now, you can seamlessly navigate from a bird's eye view of a particular risk exposure
+                            please click to explore more...
+                        </p>
+                        <button mat-raised-button class="client_btn" type="submit" routerLink="/auth/explore">Explore <i
+                                class="w3-medium fa fa-check"></i> </button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="client_login-left">
+                <div class="client_login-text_main ">
+                    <img src="../../../assets/images/ILLUSTRATION-01@2x.png">
+                    <div class="small">
+                        <img src="../../../../assets/images/Group 7042.svg">
+                        <p>See a quick preview</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="sol_bg">
+            <div class="sol-hed">
+                <h4>Solutions Powered on RIA</h4>
+            </div>
+            <div class="sol_icons" *ngIf="!loading && process?.length">
+                <div class="sol-cont" *ngFor="let item of process; let i = index"
+                    (click)="getSolutionDescription(item)">
+                    <div class="sol-border" *ngIf="i < 8">
+                        <img [src]="item.image">
+                    </div>
+                    <div class="sol-def" *ngIf="i < 8">
+                        <p>{{item.processName}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="sol-carousel bg-white">
+            <div class="container" [ngClass]="{'sol-main' : !loading && solutionDescriptionList?.length}">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-wrap="true" data-bs-ride="carousel">
+                    <div class="carousel-inner" *ngIf="!loading && solutionDescriptionList?.length">
+                        <div class="carousel-item" *ngFor="let item of solutionDescriptionList; let i = index"
+                            [ngClass]="{'active': i==0} ">
+                            <div class="in-sol">
+                                <div class="left-sol">
+                                    <h3>{{item.processName}}</h3>
+                                    <p>
+                                        {{item.processDescription}}
+                                    </p>
+                                </div>
+                                <div class="right-sol">
+                                    <img [src]="item.image" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="loading || descriptionLoading">
+                        <div class="loaderOverlay">
+                            <div class="buttonload">
+                                <div class="loadingbar">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="sol_bg">
+            <div class="sol-hed">
+                <h4>Our Clients</h4>
+            </div>
+
+        </div>
+        <div class="sol-carousel">
+            <div class="container">
+                <div id="carouselIndicators" class="carousel slide" data-bs-wrap="true" data-bs-ride="carousel">
+                    <div class="carousel-inner" *ngIf="!loading">
+                        <div class="carousel-item" *ngFor="let userList of usersData; let i = index"
+                            [ngClass]="{'active': i==0}">
+                            <div class="container row">
+                                <div class="client-main col-md-3" *ngFor="let user of userList">
+                                    <img [src]="user.image" class="d-block " style="width: 260px; height: 110px; background-color: grey;"
+                                        alt="...">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="loading">
+                        <div class="loaderOverlay">
+                            <div class="buttonload">
+                                <div class="loadingbar">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="fotter_terms">
+                <div>
+                    <p>© 2022 Deloitte Touche Tohmatsu India LLP. See Terms of Use for more information.</p>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="">Terms of use</a>
+                        </li>
+                        <li>
+                            <a href="">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fotter_text">
+                <p>©Copyright 2022 Deloitte Touche Tohmatsu India LLP</p>
+                <p>
+                    Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited, a UK private company limited by
+                    guarantee (“DTTL”), its network of member firms, and their related entities. DTTL and each of its
+                    member
+                    firms are legally separate and independent entities. DTTL (also referred to as “Deloitte Global”)
+                    does
+                    not provide services to clients. Please see www.deloitte.com/about for a more detailed description
+                    of
+                    DTTL and its member firms. ©2021 Deloitte Touche Tohmatsu India LLP. Member of Deloitte Touche
+                    Tohmatsu
+                    Limited
+                </p>
+                <p>Cookie Settings</p>
+            </div>
+        </div>
+    </div>
+</div>

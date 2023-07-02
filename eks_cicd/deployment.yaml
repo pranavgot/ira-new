@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ria-web
+  name: ria-web
+  namespace: NAME_SPACE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ria-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ria-web
+    spec:
+      containers:
+      - image: CONTAINER_IMAGE
+        name: riaweb
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 80 
+status: {}

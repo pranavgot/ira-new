@@ -1,0 +1,109 @@
+.heading {
+    background-color: #FFFFFF;
+    color: #0076A8;
+    font-weight: bold;
+    height: 80px;
+    padding: 20px;
+}
+
+.heading h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.heading h5 {
+    margin: -10px 0 50px 0;
+    font-size: 15px;
+
+}
+.pro{
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px 10px;
+}
+.bton{
+    display: flex;
+    /* margin-right: 0px !important; */
+    margin: auto;
+    /* float: right; */
+    // position: relative;
+    // left: 20%;
+    // padding-left: 40%;
+}
+.bton .cbtn{
+    display: flex;
+    margin-left: auto;
+}
+.bton .ubtn{
+    display: flex;
+    margin-left: auto;
+}
+.bton a{
+    background-color: #0076A8;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: auto 5px;
+    cursor: pointer;
+}
+.dis{
+    padding: 0px;
+    margin: auto;
+}
+.mini{
+    box-shadow: 0 2px 1px 0px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    margin: 20px;
+    padding: 0;
+}
+.mini h4{
+    font-size: 18px;
+    margin: 0;
+    background-color: #041E42;
+    color: #fff;
+    padding: 5px 10px;
+}
+.mini p{
+    padding: 5px 10px;
+}
+.minfile {
+    height: 300px;
+    overflow: auto;
+}
+.minfile thead{
+    position: sticky;
+    top: 0;
+}
+.minfile::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+.minfile::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px grey;
+    border-radius: 0px;
+}
+
+/* Handle */
+.minfile::-webkit-scrollbar-thumb {
+    background: #041E42;
+    border-radius: 0px;
+}
+
+/* Handle on hover */
+.minfile::-webkit-scrollbar-thumb:hover {
+    background: #041E42;
+}
+
+.taxt-audit-popup{ 
+    width: 550px; 
+}
+.middle{
+    height: 100%;
+}
+.cD_btn {
+    background-color: #0076A8;
+    color: white;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+}

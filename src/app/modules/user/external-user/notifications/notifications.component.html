@@ -1,0 +1,19 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Dashboard</li>
+            <li>Notifications</li>
+        </ul>        
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <div *ngFor="let item of notify">
+            <mat-card *ngIf="item.status" class="notification-item">
+                <p>{{item.data}}</p>
+                <button mat-button class="dds-icon" [ngClass]="item.icon" [class.some-class]="item.icon === true" (click)="close(item.id)"></button>
+            </mat-card>
+        </div>
+    
+    </div>
+</div>

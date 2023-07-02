@@ -1,0 +1,437 @@
+<div class="heading">
+    <h1>My Projects</h1>
+</div>
+<div class="consen custom-height">
+    <div class="row cards-group my-projects-cards">
+        <div class="col">
+            <mat-card class="color1">
+                <div class="cards">
+                    <div class="part1">
+                        <ng-container *ngFor="let item of projectStatus">
+                            <ng-container *ngIf="item?.statusName == 'Total Projects'">
+                                <h3>Total Projects</h3>
+                                <h2>{{item?.statusCount}}</h2>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="part2">
+                        <span class="dds-icon dds-icon_folder__l__stroke"></span>
+                    </div>
+                </div>
+
+            </mat-card>
+        </div>
+
+        <div class="col">
+            <mat-card class="color2">
+                <div class="cards">
+                    <div class="part1">
+                        <ng-container *ngFor="let item of standalone">
+                            <ng-container *ngIf="item?.projectType == 'Standlone'">
+                                <h3>Standalone</h3>
+                                <h2>{{item?.totalProjects}}</h2>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="part2 labels">
+                        <h6>Success
+                            <ng-container *ngFor="let data of standalone">
+                                <ng-container *ngIf="data?.projectType == 'Standlone'">
+                                    <ng-container *ngFor="let item of data.projectTypeStatus">
+                                        <ng-container *ngIf="item?.statusName == 'Completed'">
+                                            <h5>{{item?.statusCount}}</h5>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </h6>
+                        <h6>Failed
+                            <ng-container *ngFor="let data of standalone">
+                                <ng-container *ngIf="data?.projectType == 'Standlone'">
+                                    <ng-container *ngFor="let item of data.projectTypeStatus">
+                                        <ng-container *ngIf="item?.statusName == 'failed'">
+                                            <h5>{{item?.statusCount}}</h5>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </h6>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="col">
+            <mat-card class="color3">
+                <div class="cards">
+                    <div class="part1">
+                        <ng-container *ngFor="let item of standalone">
+                            <ng-container *ngIf="item?.projectType == 'Incremental'">
+                                <h3 style="border-color:#0076A8;">Incremental</h3>
+                                <h2>{{item?.totalProjects}}</h2>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="part2 labels">
+                        <h6>Success
+                            <ng-container *ngFor="let data of standalone">
+                                <ng-container *ngIf="data?.projectType == 'Incremental'">
+                                    <ng-container *ngFor="let item of data.projectTypeStatus">
+                                        <ng-container *ngIf="item?.statusName == 'Completed'">
+                                            <h5>{{item?.statusCount}}</h5>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </h6>
+                        <h6>Failed
+                            <ng-container *ngFor="let data of standalone">
+                                <ng-container *ngIf="data?.projectType == 'Incremental'">
+                                    <ng-container *ngFor="let item of data.projectTypeStatus">
+                                        <ng-container *ngIf="item?.statusName == 'failed'">
+                                            <h5>{{item?.statusCount}}</h5>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </h6>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="col">
+            <mat-card class="color4">
+                <div class="cards">
+                    <div class="part1">
+                        <ng-container *ngFor="let item of standalone">
+                            <ng-container *ngIf="item?.projectType == 'ScheduledProjects'">
+                                <h3>Scheduled Projects</h3>
+                                <h2>{{item?.totalProjects}}</h2>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="part2">
+                        <span class="dds-icon dds-icon_hourglass__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="col">
+            <mat-card class="color5">
+                <div class="cards">
+                    <div class="part1">
+                        <ng-container *ngFor="let item of projectStatus">
+                            <ng-container *ngIf="item?.statusName == 'Draft'">
+                                <h3>Draft Projects</h3>
+                                <h2>{{item?.statusCount}}</h2>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="part2">
+                        <span class="dds-icon dds-icon_calendar__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+
+    <mat-card class="table-group middle">
+        <div class="toolbar-block">
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+            <!-- <button mat-button color="primary">Export <span
+                    class="dds-icon dds-icon_file_xls__l__filled"></span></button>
+            <button mat-button color="primary">Filters <span
+                    class="dds-icon dds-icon_sort_down__l__stroke"></span></button> -->
+           <a mat-button href="javascript:void(0);" (click)="createProject()">Create New Project <span
+                    class="dds-icon dds-icon_plus__l__stroke"></span></a>
+        </div>
+        <div class="main">
+            <div class="minfile">
+                <div class="table-layer">
+                    <div class="table-container min-height-scroll">
+                        <table mat-table [dataSource]="projectSearch" class="table table-striped solutions-table" matSort>
+                            <ng-container matColumnDef="projectName">
+                                <th mat-header-cell *matHeaderCellDef> Project Name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="processName">
+                                <th mat-header-cell *matHeaderCellDef> Process Name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="projectType">
+                                <th mat-header-cell *matHeaderCellDef> Process Type </th>
+                                <td mat-cell *matCellDef="let element"> {{element.projectType}} </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="creationDate">
+                                <th mat-header-cell *matHeaderCellDef> Creation Date & Time </th>
+                                <td mat-cell *matCellDef="let element" style="min-width:150px;"> {{element.creationDate | date:"dd/MM/yyyy, hh:mm a"}}
+                                </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="lastExcuteDate">
+                                <th mat-header-cell *matHeaderCellDef> Execution Date & Time </th>
+                                <td mat-cell *matCellDef="let element"  style="text-align: center !important;"><span style="text-align: center !important;">{{element.lastExcuteDate | date:"dd/MM/yyyy,
+                                        hh:mm a"}}</span>
+                                    <span *ngIf="element.lastExcuteDate == null"  style="text-align: center !important;">--</span>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="runs">
+                                <th mat-header-cell *matHeaderCellDef> Executed Runs </th>
+                                <td mat-cell *matCellDef="let element" style="text-align: center !important;"> {{element.executionCount}}
+                                </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="lastScheduleDate">
+                                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Scheduled Date & Time </th>
+                                <td mat-cell *matCellDef="let element"><span>{{element.lastScheduleDate | date:"dd/MM/yyyy,
+                                        hh:mm a"}}</span>
+                                    <span *ngIf="element.lastScheduleDate == null" style="display:flex; justify-content:center;">--</span>
+                                </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="statusName">
+                                <th mat-header-cell *matHeaderCellDef> Project Status </th>
+                                <td mat-cell *matCellDef="let element"> <span
+                                        [class]="element.statusName">{{element.statusName}}</span> </td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                                <td mat-cell *matCellDef="let element;let i = index">
+                                    <span *ngIf="element.statusName == 'Success'" class="ico dds-icon dds-icon_eyeopen dds-icon_arrow_rotate_right__l__strok"
+                                        (click)="projectCompleted(element)"></span>
+    
+                                    <span *ngIf="element.statusName == 'Success'" class="ico dds-icon dds-icon_arrow-round-right"
+                                        (click)="projectDraft(element)"></span>
+                                    
+                                    <span *ngIf="element.statusName == 'Failed'"
+                                        class="ico dds-icon dds-icon_alert__l__stroke"  style="color: red !important;"                                    
+                                        (click)="failedproject(element)"></span>
+    
+                                        <span *ngIf="element.statusName == 'Failed'" class="ico dds-icon dds-icon_arrow-round-right"
+                                        (click)="projectDraft(element)"></span>
+    
+                                    <span *ngIf="element.statusName == 'PBI-Failed'"
+                                        class="ico dds-icon dds-icon_alert__l__stroke" style="color: red !important;"
+                                        (click)="failedproject(element)"></span>
+                                    
+                                        <span *ngIf="element.statusName == 'PBI-Failed'" class="ico dds-icon dds-icon_arrow-round-right"
+                                        (click)="projectDraft(element)"></span> 
+                                        
+                                    <!-- <span *ngIf="element.statusName == 'Scheduled'" class="ico dds-icon dds-icon_hourglass"
+                                        (click)="projectScheduled()"></span> -->
+
+                                    <span *ngIf="element.statusName == 'Scheduled'" class="ico dds-icon dds-icon dds-icon_edit__l__stroke"
+                                        (click)="projectDraft(element)"></span>
+                                        <!-- this.projectData.schedulerDTO.startDate -->
+                                    <!-- </td>
+                        <td mat-cell *matCellDef="let element"> -->
+                                    <span *ngIf="element.statusName == 'Draft'"
+                                        class="ico dds-icon dds-icon_arrow_right__l__stroke"
+                                        (click)="projectDraft(element)"></span>
+                                </td>
+                            </ng-container>
+    
+                            <!-- <ng-container matColumnDef="reexecution">
+                                <th mat-header-cell *matHeaderCellDef> Reexecution</th>
+                                <td mat-cell *matCellDef="let element;let i = index">
+                                    <span *ngIf="element.statusName == 'Success' || 'Failed'" class="ico dds-icon dds-icon_arrow-round-right"
+                                        (click)="projectCompleted(element)"></span>
+                                </td>
+                            </ng-container> -->
+    
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                    No data found
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                
+           <ng-container *ngIf = "projectSearch?.data.length > 10">
+                <mat-paginator [length]="projectSearch?.data.length" [pageSizeOptions]="[10,20,50]"
+                    aria-label="Select page">
+                </mat-paginator>
+            </ng-container>
+            </div>
+        </div>
+
+    </mat-card>
+
+
+
+
+
+    <div [ngClass]="AddEventProceeding?'':'displ'" >
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup pbi-min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3>PowerBI Report </h3>
+                    <div class="button-group">
+                        <a mat-button class="primary" target="_blank" [routerLink]="['/powerbireport']"
+                            (click)="openWindow()">
+                            Open Report in new Window
+                        </a>
+                        <a mat-button class="primary" (click)="PrintReport()">Print</a>
+                    </div>
+                    <button mat-button class="close report-modal-close" (click)="hideViewReport()"><span
+                            class="dds-icon dds-icon_close__l__stroke"></span></button>
+
+                </div>
+                <div class="report-container popup-body" style="margin-bottom: 0px !important;">
+                    <powerbi-report id="embedView" [embedConfig]="reportViewConfig">
+                    </powerbi-report>
+                </div>
+                <div class="popup-footer button-group">
+                    <!-- <a mat-button class="primary" target="_blank" [routerLink]="['/powerbireport']"
+                        (click)="openWindow()">
+                        Open Report in new Window
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="AddEventProceeding1">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <div class="taxt-header popup-header">
+                    <h3>Scheduled Project</h3>
+                    <button type="button" class="close" aria-label="Close" (click)="CloseModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="popup-body" style="margin-bottom: 0px !important;">
+                    <form>
+                        <ng-container *ngFor="let item of projectdetails">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Frequency</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.schedulefrequency" />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Startday</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.startDate" />
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Endday</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.endDate" />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Execution Time</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.executionTime" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Execution Day</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.executionDay" />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>Execution Date</label>
+                                    <input type="text" disabled class="form-control reflect-model"
+                                        [value]="item.schedulerDTO.dateOfMonth" />
+                                </div>
+                            </div>
+                        </ng-container>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div *ngIf="AddEventProceeding2">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <div class="taxt-header popup-header">
+                    <h3>Failed</h3>
+                    <button type="button" mat-button class="close" (click)="CloseModal()">
+                        <span class="dds-icon dds-icon_close__l__stroke"></span>
+                    </button>
+                </div>
+                <div class="popup-body">
+                    <ng-container>
+                        <p style="text-align: center; color:#f00;">{{failed.errorMessage}}</p>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="AddEventProjecttype">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <form [formGroup]="projectType">
+                <div class="taxt-header popup-header">
+                    <h3>Project Type</h3>
+                    <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="popup-body">
+                    <ul class="select-items-group">
+                        <li *ngFor="let type of projectSelectionType;let i= index">
+                            <div class="select-item">
+                                <input type="checkbox" id="stand-item" formControlName="projectType" [checked]="type.isSelected" name="standitem" (click)="GCSradio(type,i)"
+                                [ngClass]="{ 'is-invalid': submited && projectType.controls['projectType'].errors }"/>
+                                <label for="standitem"><span class="generic-sol-icon"></span><span>{{type.value}}
+                                        </span></label>
+                            </div>
+                        </li> 
+
+                        <!-- <li>
+                            <div class="select-item">
+                                <input type="checkbox" id="stand-item" formControlName="projectType"  name="standitem" (click)="GCSradio(type,i)"
+                                [ngClass]="{ 'is-invalid': submited && projectType.controls['projectType'].errors }" />
+                                <label for="standitem"><span class="generic-sol-icon"></span><span>Standalone
+                                        </span></label>
+                            </div>
+                        </li> -->
+                     </ul>
+                    <label>Select Process View Type<sup>*</sup></label>
+                        <mat-form-field appearance="fill">
+                            <mat-select class="form-control reflect-model" placeholder="Select" formControlName="viewType" (selectionChange)="changeViewType($event)" panelClass="process-view"
+                            [ngClass]="{ 'is-invalid': submited && projectType.controls['viewType'].errors }">
+                                <mat-option value="{{item.value}}" *ngFor="let item of viewType">{{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br/><br/>
+                </div>
+                <div class="popup-footer button-group">
+                    <button mat-button (click)="closePopup()">Cancel <span class="dds-icon dds-icon_close"></span></button>
+                    <button mat-button (click)="addproject()">Continue <span
+                            class="dds-icon dds-icon_arrow_v2"></span></button>    
+                </div> 
+            </form>
+            </div>
+        </div>
+    </div> 

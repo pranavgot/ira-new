@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <g id="MDI_credit-card-settings-outline" data-name="MDI / credit-card-settings-outline" opacity="0.4">
+    <g id="Boundary" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" opacity="0">
+      <rect width="26" height="26" stroke="none"/>
+      <rect x="0.5" y="0.5" width="25" height="25" fill="none"/>
+    </g>
+    <path id="Path_credit-card-settings-outline" data-name="Path / credit-card-settings-outline" d="M23.171,8.7H4.352V6.352H23.171m0,14.114H4.352V13.41H23.171m0-9.41H4.352A2.344,2.344,0,0,0,2,6.352V20.467a2.352,2.352,0,0,0,2.352,2.352H23.171a2.352,2.352,0,0,0,2.352-2.352V6.352A2.352,2.352,0,0,0,23.171,4M7.881,25.171h2.352v2.352H7.881V25.171m4.7,0h2.352v2.352H12.586V25.171m4.7,0h2.352v2.352H17.29Z" transform="translate(-0.762 -2.762)" fill="#fff"/>
+  </g>
+</svg>

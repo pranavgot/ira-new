@@ -1,0 +1,76 @@
+<!-- <p>explore-solution works!</p> -->
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Dashboard </li>
+            <li>Explore Solutions</li>
+        </ul>
+    </div>
+</div>
+<div class="consen">
+    <div>
+        <mat-card>
+            <form>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Select Industry</label>
+                        <select id="industry">
+                            <option hidden>Select</option>
+                            <option value="1">Consumer & Industrial Products</option>
+                            <option value="2">Energy & Resources</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Select Sector</label>
+                        <select id="sector">
+                            <option hidden>Select</option>
+                            <option value="1">Automotive</option>
+                            <option value="2">Retail Wholesale & Distribution</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Select Process</label>
+                        <select id="process">
+                            <option hidden>Select</option>
+                            <option value="1">Record To Report</option>
+                            <option value="2">Duplicate Invoices (Template)</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="float: right;">
+                    <button mat-button style="background-color: #fff; border:1px solid #0076A8; color: #0076A8;"
+                        (click)="showtable = false">Clear</button>
+                    <button mat-button (click)="showtable = true">View Listing</button>
+                </div>
+            </form>
+            <div class="main" *ngIf="showtable">
+                <div class="table-layer">
+                    <div class="table-container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Analytics Name</th>
+                                    <th scope="col">Process Name</th>
+                                    <th scope="col">Analytics Objective</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Record to report</td>
+                                    <td>Financial Book Closing Analysis</td>
+                                    <td>The solution facilitates comprehensive analysis of accounting entries passed in the book
+                                        keeping system.
+                                        Drill down available to identify transactions of exceptional nature for testing. Key
+                                        analysis includes :
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                    </div>
+                </div>
+                
+            </div>
+        </mat-card>
+    </div>
+</div>

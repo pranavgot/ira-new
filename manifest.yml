@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ria-web
+  name: ria-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ria-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ria-web
+    spec:
+      containers:
+      - image: 797179711938.dkr.ecr.ap-south-1.amazonaws.com/riaweb:latest1
+        name: riaweb
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 80 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ria-web
+  labels:
+    run: ria-web
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: ria-web
+  type: NodePort

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ria-web
+  namespace: NAME_SPACE
+  labels:
+    run: ria-web
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  #  targetPort: 4200
+  selector:
+    app: ria-web
+  type: NodePort

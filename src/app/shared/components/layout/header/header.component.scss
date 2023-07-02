@@ -1,0 +1,54 @@
+.client-header {
+    background: #000;
+    display: inline-flex;
+    height: 60px;
+    cursor: pointer;
+    padding-right: 28px;
+    text-align: left;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    padding: 0px 15px;
+    z-index: 9;
+}
+
+.client-header img {
+    // padding-top: 20px;
+    width: 120px;
+}
+
+.left_header {
+    display: inline-flex;
+    color: #fff;
+}
+.left_header .dds-icon{
+    padding: 15px 8px 0px 0;
+    font-size: 30px;
+}
+
+.right_header {
+    display: inline-flex;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+}
+.right_header .dds-icon{
+    padding: 0 15px 0 0px;
+    font-size: 26px;
+    margin-top: 6px;
+    height: 26px;
+}
+.right_header .user{
+    padding: 8.2px 15px 0 20px;
+    font-family: 'open_sans-regular';
+    font-size: 15px;
+    line-height: 20px;color: #FFFFFF;
+
+}
+.right_header .border_right{
+    border-right: 1px #fff solid;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

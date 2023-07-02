@@ -1,0 +1,202 @@
+<div class="heading">
+	<div class="page-title-wrapper">
+		<ul>
+			<li>Subscription Management</li>
+			<li *ngIf="tab2">Internal</li>
+		</ul>
+	</div>
+</div>
+<div class="consen" *ngIf="tab1">
+	<mat-card class="table-group">
+		<div class="main">
+			 <div class="toolbar-block margin-top-65">
+				<div class=" tabs-button-row">
+					<div class="tab-buttons">
+						<button mat-button [class.active]="tab1" (click)="changetab(1)">External</button>&nbsp;
+						<button mat-button [class.active]="tab2" (click)="changetab(2)">Internal</button>
+					</div>
+				</div>
+				<div class="search">
+					<input id="form1" class="form-control" placeholder="Search" (keyup)="applyFilter($event)" />
+					<button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+				</div>
+			</div>
+			<div>
+				<div class="table-layer">
+					<div class="table-container max-height-scroll">
+						<table mat-table [dataSource]="SubSearch" class="table table-striped solutions-table" #sort>
+							<ng-container matColumnDef="organizationName">
+								<th mat-header-cell *matHeaderCellDef> Organization Name </th>
+								<td mat-cell *matCellDef="let element"> {{element.organizationName}} </td>
+							</ng-container>
+							<ng-container matColumnDef="spocName">
+								<th mat-header-cell *matHeaderCellDef> Contact Person Name </th>
+								<td mat-cell *matCellDef="let element"> {{element.spocName}} </td>
+							</ng-container>
+							<ng-container matColumnDef="spocEmailId">
+								<th mat-header-cell *matHeaderCellDef> Email ID </th>
+								<td mat-cell *matCellDef="let element"> {{element.spocEmailId}} </td>
+							</ng-container>
+							<ng-container matColumnDef="spocphoneNo">
+								<th mat-header-cell *matHeaderCellDef> Contact Person Number </th>
+								<td mat-cell *matCellDef="let element"> {{element.spocphoneNo}} </td>
+							</ng-container>
+							<ng-container matColumnDef="action">
+								<th mat-header-cell *matHeaderCellDef> Actions </th>
+								<td mat-cell *matCellDef="let element">
+									<span class="dds-icon dds-icon_edit__l__stroke" (click)="edit(element)"></span>
+									<!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+								</td>
+							</ng-container>
+							<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+							<tr class="mat-row" *matNoDataRow>
+								<td class="mat-cell" [attr.colspan]="displayedColumns.length">
+									No data found
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<ng-container *ngIf="SubSearch?.data.length > 10">
+					<mat-paginator #exPaginator [length]="SubSearch?.data.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+					</mat-paginator>
+			    </ng-container>
+			</div>
+		</div>
+	</mat-card>
+</div>
+<div class="consen" *ngIf="tab2">
+	<div class="main">
+		<div class="toolbar-block" style="align-items:flex-start;">
+			<div class="tabs-button-row" style="padding-top:0px; margin-right:auto;">
+				<div class="tab-buttons">
+					<button mat-button [class.active]="tab1" (click)="changetab(1)">External</button>&nbsp;
+					<button mat-button [class.active]="tab2" (click)="changetab(2)">Internal</button>
+				</div>
+			</div>
+		</div>
+		<mat-card class="middle table-group" style="margin-bottom: 40px;">
+			<form [formGroup]="orgdetailsForm">
+				<div class="header">
+					<h3>Organization Details</h3>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<label>Organization Name</label>
+									<input type="text" class="form-control reflect-model"
+										formControlName="organizationName" />
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<label>Contact Person Name</label>
+									<input type="text" class="form-control reflect-model" formControlName="spocName" />
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<label>Contact Person Number</label>
+								<div class="input-group prefix">
+									<span class="input-group-addon">+91</span>
+									<input type="text" class="form-control reflect-model"
+										formControlName="spocphoneNo" />
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<label>Email Id</label>
+									<input type="text" class="form-control reflect-model"
+										formControlName="spocEmailId" />
+
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div *ngIf="organizationLogo">
+									<label for="imgfile">
+										<img style="height:200px;min-width:100px; width:auto;" [src]="organizationLogo"
+											alt="">
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="input-group">
+									<label>Contact Person Designation</label>
+									<input type="text" class="form-control reflect-model"
+										formControlName="spocDesignation" />
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="input-group">
+									<label>Organization Address</label>
+									<textarea rows="4" cols="50" type="text" class="form-control reflect-model"
+										formControlName="address" maxlength="150" style="height:100px;"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="main">
+				<div class="toolbar-block" style="margin-bottom: 10px;">
+					<div class="search mt-4 mb-2">
+						<input id="form2" class="form-control" placeholder="Search" (keyup)="applyFilter1($event)" />
+						<button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+					</div>
+				</div>
+				<div class="table-layer">
+					<div class="table-container">
+						<table mat-table [dataSource]="dataSource" class="table table-striped" #sort1>
+							<ng-container matColumnDef="userName">
+								<th mat-header-cell *matHeaderCellDef> User Name </th>
+								<td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+							</ng-container>
+							<ng-container matColumnDef="roleName">
+								<th mat-header-cell *matHeaderCellDef> Role </th>
+								<td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
+							</ng-container>
+							<ng-container matColumnDef="emailId">
+								<th mat-header-cell *matHeaderCellDef> User Email Id </th>
+								<td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+							</ng-container>
+							<ng-container matColumnDef="contactNo">
+								<th mat-header-cell *matHeaderCellDef> User Contact Number </th>
+								<td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+							</ng-container>
+							<ng-container matColumnDef="status">
+								<th mat-header-cell *matHeaderCellDef> Status </th>
+								<td mat-cell *matCellDef="let element"> {{element.status}}
+								</td>
+							</ng-container>
+							<ng-container matColumnDef="action">
+								<th mat-header-cell *matHeaderCellDef> Actions </th>
+								<td mat-cell *matCellDef="let element">
+									<span class="dds-icon dds-icon_edit__l__stroke"
+										(click)="viewuserSubscriptions(element)"></span>
+									<!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+								</td>
+							</ng-container>
+							<tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+							<tr class="mat-row" *matNoDataRow>
+								<td class="mat-cell" [attr.colspan]="displayedColumns1.length">
+									No data found
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<ng-container *ngIf="dataSource!.data!.length > 10">
+				<mat-paginator #inPaginator [length]="dataSource!.data!.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+                </mat-paginator>
+			</ng-container>
+			</div>
+		</mat-card>
+	</div>
+</div>

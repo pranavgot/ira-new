@@ -1,0 +1,107 @@
+.mat-card{
+    height: 125px;
+    border-radius: 0;
+    margin-bottom: 10px; padding: 0; padding-bottom: 0;
+    box-shadow: 0px -1px 6px 2px rgb(204, 202, 202);
+    }
+    .container{
+        margin-top: 50px;
+    }
+    .cards{
+        display: flex;
+    }
+    .cards p{
+        font-size: 40px;
+        margin-top: 35px;
+    }
+    .heading {
+        background-color: #FFFFFF;
+        // color: black;
+        font-weight: bold;
+        height: 80px;
+        padding: 20px;
+    }
+    .heading h1{
+        font-size: 25px;
+        font-weight: 600;
+    }
+    .middle{
+        margin-top: 20px;
+    } 
+    .part1{
+        padding: 10px;
+        height: 50px;
+        color: #707070;
+    }
+    .part11{
+        padding: 10px;
+        height: 37px;
+        color: #707070;
+    }
+    .part1 h5{
+        font-family: 'open_sans-bold';
+        border-left-style: solid; 
+        border-color:#4791FF; 
+        border-width: 7px;
+        // margin: 0 -13px 16px;
+        // padding-left: 10px;
+        font-size: 20px;
+     }
+     .part11 h5{
+        font-family: 'open_sans-bold';
+        border-left-style: solid; 
+        border-color:#4791FF; 
+        border-width: 7px;
+        // margin: 0 -13px 16px;
+        // padding-left: 10px;
+        font-size: 20px;
+     }
+     .bottom{
+        font-size: 60px;
+     }
+     .middle{
+        height:300px;
+        display: flex;
+     }
+     .middle h3{
+        padding: 20px 0 0 22px;
+        font-family: 'open_sans-bold';
+        font-size: 14px;
+        width: 100% !important;
+     }
+     .middle h6{
+        padding-top: 20px;
+        font-family: 'open_sans-bold';
+        // font-size: 15px;
+     }
+     .down{
+        height: 200px;
+        margin-top: 20px;
+     }
+     .down h3{
+        padding: 20px 0 0 22px;
+        font-family: 'open_sans-bold';
+        font-size: 14px;
+     }
+    .colors{
+        height: 15px;
+        width: 23%;
+        margin: 23px 11px 0 10px;
+    }
+    .number{
+        font-size: 35px;
+        padding-left: 27px;
+        color:#4791FF
+    }
+    .logo{
+        margin-top: -21px;
+        font-size: 75px;
+        color:#4791FF
+    }
+    @media (min-width: 1200px) and (max-width: 1279px){
+        .logo {bottom: 100px;};
+    }
+    .header{
+        margin-top: 20px;
+    }
+    

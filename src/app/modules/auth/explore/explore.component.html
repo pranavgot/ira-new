@@ -1,0 +1,125 @@
+<div class="client-header">
+    <div class="left_header ">
+        <a [routerLink]= "['auth/landing']" class="logo"><img _ngcontent-jld-c34="" src="../../../assets/images/Group 7819.svg" alt="" routerLink="/auth/landing"></a>
+        <p>Risk Insights through Analytics (RIA)</p>
+    </div>
+    <div class="right_header">
+        <ul>
+            <li><a>About Us</a></li>
+            <li><a routerLink="/auth/explore">Platform & Solutions</a></li>
+            <li><a>FAQ's</a></li>
+            <li><a routerLink="/auth/contact-us">Contact Us</a> </li>
+        </ul>
+        <div class="right_buttons">
+            <ul style="padding-left: 0px;">
+                <li>
+                    <a href="">Existing User Sign-In</a>
+                </li>
+                <li><a routerLink="/auth/sign-up">New User Sign-Up</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="explore-container">
+    <div class="bg-img">
+        <div class="bot_pos" routerLink="/auth/contact-us"><a>Contact Us</a></div>
+    </div>
+    <div class="content_pos">
+        <h1>Platform & Solutions</h1>
+        <!-- <button mat-button color="primary">Filters by<span
+                class="dds-icon dds-icon_sort_down__l__stroke"></span></button> -->
+        <div class="search">
+            <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+            <span class="dds-icon dds-icon_search__l__stroke icons"></span>
+        </div>
+    </div>
+    <div class="container cards">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let item of processSearch">
+                <div class="container solution">
+                    <div class="image-container">
+                        <img [src]="item.image" alt="No Image Found">
+                    </div>
+                    <div class="heading">
+                        <h4>{{item.processName}}</h4>
+                        <div class="badge">
+                            <span class="blink_me" *ngIf="item.display == 'N'">New</span>
+                            <span class="blink_me" *ngIf="item.display == 'U'">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p *ngIf="item.processDescription.length > 130"> {{item.processDescription.substr(0,130)}}...<a
+                                (click)="openPopup(item)" class="more-link">Read More</a></p>
+                        <p *ngIf="item.processDescription.length < 130">{{item.processDescription}}</p>
+                    </div>
+
+                    <div class="button-container">
+                        <div class="button" (click)="ShowBrochure(item)" *ngIf="item.brochureId != null">Brochure<span
+                                class="dds-icon dds-icon_download__l__stroke"></span></div>
+                        <div class="button" (click)="ShowDemo(item)" *ngIf="item.videoId != null">Video<span
+                                class="dds-icon dds-icon_play_bordered__l__stroke"></span></div>
+                        <!-- <div class="button" (click)="openPopup1(item)">Image<span class="dds-icon dds-icon_play_bordered__l__stroke"></span></div> -->
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal taxt_audit-report" tabindex="0" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog taxt-audit-popup" role="document">
+            <div class="modal-content" style="border:0px;">
+                <div class="modal-header popup-header">
+                    <h3 class="modal-title">{{data?.processName}}</h3>
+                    <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body popup-body popup-scrollbar">
+                    <div class="modal-left">
+                        <p>
+                            {{data?.processDescription}}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3>Demo</h3>
+                    <button type="button" class="close" aria-label="Close" (click)="CloseModel()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="popup-body" style="padding-bottom:0px !important;">
+                    <video width="100%" style="height:70vh" controls>
+                        <source [src]="video" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="AddEventProceeding1">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3>Brochure</h3>
+                    <button type="button" class="close" aria-label="Close" (click)="CloseModel()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="popup-body" style="padding-bottom:0px !important;">
+                    <iframe [src]="brochure" frameBorder="0" scrolling="auto" style="height:70vh;"
+                        width="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

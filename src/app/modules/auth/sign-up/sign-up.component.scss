@@ -1,0 +1,222 @@
+// .mat-card {
+//     box-shadow: 0px 0px 6px 1px #cccaca;
+//     border-radius: 0;
+//     // width: 90%;
+//     margin: 0 18%;
+// }
+
+// .mat-card h1 {
+//     font-size: 25px;
+//     padding-bottom: 12px;
+// }
+
+// .main {
+//     padding: 25px 25px 25px 25px;
+//     margin-top: 0px;transition: all 0.3s ease;
+//     height: calc(100vh - 60px);
+//     overflow: auto;
+//     scrollbar-width: thin;
+//     scrollbar-color: #bababa !important;
+//     display: block;
+            
+// }
+// .overflow{
+//     height: 300px;
+//     // height: calc(100vh - 60px);
+//     overflow: auto;
+//     scrollbar-width: thin;
+//     scrollbar-color: #bababa !important;
+//     display: block;
+// }
+// .processlist{
+//     display: flex;
+   
+// }
+
+// .header {
+//     width: 100%;
+//     background-color: #97999B;
+//     sup{
+//         color: #fff;
+//     }
+// }
+
+// .header h3 {
+//     font-size: 14px;
+//     line-height: 19px;
+//     color: white;
+//     padding: 10px 15px;
+//     font-family: 'open_sans-regular';
+// }
+
+// form {
+
+//     label {
+//         font-size: 14px;
+//         line-height: 19px;
+//         font-family: 'open_sans-regular';
+//         color: #707070;
+//         margin: 9px 0 10px 0;
+//     }
+
+//     input,
+//     textarea,
+//     select {
+//         border-radius: 0;
+//         box-shadow: inset 0px 2px 2px #00000029;
+//         border: 1px solid #CCCCCC;
+//         font-size: 14px;
+//         line-height: 19px;
+//         font-family: 'open_sans-regular';
+//         color: #000000;
+//         padding: 8px 10px;
+//     }
+
+//     button {
+//         border-radius: 0;
+//         border: 0;
+//         margin: 24px 0px 20px 15px !important;
+//         background-color: #0076A8;
+//         color: white;
+//         width: 100px;
+//         font-family: 'open_sans-regular';
+//         font-size: 13px;
+//         line-height: 12px;
+//         padding: 12px 0;
+//         min-height: 36px;
+//     }
+// }
+
+// .scroll label {
+//     margin: -2px 0 0 6px;
+//     width: calc(100% - 40px);
+
+//     span {
+//         font-size: 13px;
+//         vertical-align: middle;
+//         width: 13px;
+//         height: 13px;
+//         border-radius: 100%;
+//         border: 1px solid rgba(0, 0, 0, 0.4);
+//         margin:0 0 0 4px;
+//     }
+// }
+
+// .row {
+//     padding: 8px;
+
+//     // label {
+//     //     margin-bottom: 7px;
+//     //     font-family: 'open_sans-regular';
+//     //     font-size: 14px;
+//     //     line-height: 19px;
+//     //     color: #707070;
+//     // }
+// }
+
+// .input-group-addon {
+//     font-size: 14px;
+//     font-weight: 400;
+//     line-height: 1;
+//     color: #555;
+//     text-align: center;
+//     background-color: #f5f5f5;
+//     border: 1px solid #ccc;
+//     width: 12%;
+//     white-space: nowrap;
+//     vertical-align: middle;
+//     display: table-cell;
+//     padding-top: 12px;
+// }
+
+
+// .form-check-input:checked {
+//     background-color: #0076A8;
+//     border-color: #0076A8;
+// }
+
+// .scroll {
+//     overflow-y: auto;
+//     box-shadow: 0px 0px 1px 0px #9b9b9b, 0 1px 1px 0 #9b9b9b, 0 1px 1px 0 #9b9b9b;
+// }
+
+// /* width */
+// .scroll::-webkit-scrollbar {
+//     width: 3px;
+// }
+
+// /* Track */
+// .scroll::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 0px grey;
+//     border-radius: 0px;
+// }
+
+// /* Handle */
+// .scroll::-webkit-scrollbar-thumb {
+//     background: #041E42;
+//     border-radius: 0px;
+// }
+
+// /* Handle on hover */
+// .scroll::-webkit-scrollbar-thumb:hover {
+//     background: #041E42;
+// }
+
+// .con {
+//     width: 100%;
+//     height: 300px;
+// }
+
+// .con div {
+//     padding-top: 12px;
+// }
+
+// .regsub {
+//     text-align: right;
+//     float: left;
+//     width: 100%
+// }
+
+// sup {
+//     // top: -0.5em;
+//     color: red;
+// }
+
+// .col-sm-6 {
+//     position: relative;
+// }
+
+// .error {
+//     color: #D8000C;
+//     position: absolute;
+//     bottom: -19px;
+//     font-family: 'open_sans-regular';
+//     font-size: 12px;
+//     line-height: 15px;
+// }
+// .text-danger
+// {
+//     font-size: 12px;
+// }
+
+// .contactNo .error{bottom: 33px;}
+.optp {
+    padding: 5px 0 00 0;
+    position: absolute;
+    right: 4px;
+
+    a {
+        text-decoration: underline;
+        float: left;
+        margin: 0 7px;
+        font-family: 'open_sans-regular';
+        font-size: 12.5px;
+        line-height: 19px;
+        color: #0076A8; cursor: pointer;
+    }
+}
+// .mat-form-field-wrapper {
+//   padding-bottom: 0; 
+// }
+// form input.is-invalid{border:1px solid #f00; transition: 0.3 ease-in linear;}
+// form textarea.is-invalid{border:1px solid #f00; transition: 0.3 ease-in linear;}

@@ -1,0 +1,840 @@
+<!-- <p>master works!</p> -->
+<div class="heading">
+  <!--  <h1>Master Data Management</h1> -->
+  <div class="page-title-wrapper">
+    <ul>
+        <li>Master Data Management</li>
+        <li *ngIf="tab1">Industries</li>
+        <li *ngIf="tab2">Sectors</li>
+        <li *ngIf="tab3">Processes</li>
+    </ul>
+</div> 
+  <!-- <ul *ngIf="tab1">
+    <li><a [routerLink]="['/master']" [routerLinkActive]="['is-active']">Master Data Management</a>/</li>
+    <li>Industries</li>
+  </ul>
+  <ul *ngIf="tab2">
+    <li><a [routerLink]="['/master']">Master Data Management</a>/</li>
+    <li>Sectors</li>
+  </ul>
+  <ul *ngIf="tab3">
+    <li><a [routerLink]="['/master']">Master Data Management</a>/</li>
+    <li>Process</li>
+  </ul> -->
+  <!-- <h5><span style="color: #0076A8">Dashboard / </span> Master Data Management</h5> -->
+</div>
+
+<div class="consen custom-height">
+  <div class="row no-gutters cards-group">
+    <div class="col-md-4">
+      <mat-card (click)="changetab(1)" [ngClass]="{'message':true}" class="color1">
+        <div class="cards">
+          <div class="part1">
+            <h3 style="border-color:#0076A8;">Industries</h3>
+            <h2>{{lengthIndus}}</h2>
+          </div>
+          <div class="part2" style="background-color: #0076A8;">
+            <span class="dds-icon dds-icon_plus__l__stroke" (click)="addIndustry($event)"></span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card (click)="changetab(2)" class="color2">
+        <div class="cards">
+          <div class="part1">
+            <h3 style="border-color:#DA291C;">Sectors</h3>
+            <h2>{{lengthSector}}</h2>
+          </div>
+          <div class="part2" style="background-color: #DA291C">
+            <span class="dds-icon dds-icon_plus__l__stroke" (click)="addSector($event)"></span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card (click)="changetab(3)" class="color3">
+        <div class="cards">
+          <div class="part1">
+            <h3 style="border-color:#86BC25">Processes</h3>
+            <h2>{{lengthProcess}}</h2>
+          </div>
+          <div class="part2" style="background-color: #86BC25">
+            <span class="dds-icon dds-icon_plus__l__stroke" (click)="addProcess($event)"></span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div>
+  
+    <mat-card class="middle table-group" *ngIf="tab1">
+      
+      <div class="toolbar-block">
+        <div class="search">
+          <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />      
+          <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+        </div>
+        <button mat-button type="button"  class="primary" style="margin-left:20px;" (click)="addIndustry($event)">Add
+          Industry <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+      </div>
+      <!-- <h3 style="border-color:#0076A8;float: left;">Industries</h3> -->
+      <div class="main">
+      <div class="header" style="margin-bottom: 0px; display:flex; justify-content: space-between;">
+        <h3>Industries</h3>
+        <h3 style="width:130px; text-align:center;">Actions</h3>
+      </div>
+      <div class="expansionPanel">
+        <!-- <div class="example-action-buttons">
+                    <button mat-button (click)="accordion.openAll()">Expand All</button>
+                    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+                  </div> -->
+        <!-- #docregion multi -->
+        
+        <div class="masterExpansion custom-expansion-block">
+          <div class="table-container">
+            <mat-accordion>
+              <mat-expansion-panel *ngFor="let indus of indusSearch" #example>
+                <!-- <div > -->
+                <mat-expansion-panel-header (click)="$event.stopPropagation();">
+                  <mat-panel-title (click)="$event.stopPropagation();">
+                    <span  (click)="$event.stopPropagation();">
+                      {{indus.industryName}}
+                    </span>
+                  </mat-panel-title>
+                  <mat-panel-description (click)="$event.stopPropagation();">
+                    <span class="row">
+                      <div class="col dds-icon dds-icon_edit__l__stroke" (click)="editIndustry($event,indus);$event.stopPropagation()"></div>
+                      <!-- <div class="col dds-icon dds-icon_delete__l__stroke" (click)="$event.stopPropagation();"></div> -->
+                    </span>
+                    <div>
+                      <!-- <mat-icon *ngIf="!example.expanded"></mat-icon>
+                        <mat-icon *ngIf="example.expanded"></mat-icon> -->
+                    </div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <div *ngFor="let sect of indus.sectorList" class="subheading">
+                      <label class="form-check-label" for="exampleCheck1">{{sect.sectorName}}</label>
+                    </div>
+                </ng-template>
+                <!-- </div> -->
+              </mat-expansion-panel>
+              </mat-accordion>
+          </div>
+          <ng-container *ngIf="indusSearch?.length > 10">
+        <mat-paginator #industryPaginator [length]="indusSearch?.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+        </mat-paginator>
+      </ng-container>
+      </div>
+
+        <!-- *ngFor="" <input type="checkbox" class="form-check-input">&nbsp; -->
+      </div>
+    </div>
+    </mat-card>
+ 
+    <mat-card class="middle table-group" *ngIf="tab2">
+      <!-- <h3 style="border-color:#DA291C;float: left;">Sectors</h3> -->
+      <div class="toolbar-block">
+        <div class="search">
+          <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilterSector($event)" />      
+          <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+        </div>
+        <button mat-button type="button" class="primary" (click)="addSector($event)">Add
+          Sector <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+      </div>
+      <div class="main">
+      <div class="header" style="margin-bottom:0px;display:flex; justify-content: space-between;">
+        <h3>Sectors</h3>
+        <h3 style="width:130px; text-align:center;">Actions</h3>
+      </div>
+      <div class="custom-expansion-block">
+        <div class="table-container maxheight58">
+          <div class="expansionPanel">
+            <!-- <div class="example-action-buttons">
+                        <button mat-button (click)="accordion.openAll()">Expand All</button>
+                        <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+                      </div> -->
+            <!-- #docregion multi -->
+    
+            <div class="masterExpansion custom-expansion-block">
+              <mat-accordion class="mat-table" (click)="$event.stopPropagation();">
+                <mat-expansion-panel *ngFor="let sect of sectSearch" hideToggle="false" [expanded]="false" (click)="$event.stopPropagation();">
+    
+                  <mat-expansion-panel-header (click)="$event.stopPropagation();">
+                    <mat-panel-title (click)="$event.stopPropagation();">
+                      <span (click)="$event.stopPropagation();">
+                        {{sect.sectorName}}
+                      </span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <span class="row">
+                        <div class="col dds-icon dds-icon_edit__l__stroke" (click)="editSector($event,sect);$event.stopPropagation();"></div>
+                        <!-- <div class="col dds-icon dds-icon_delete__l__stroke" (click)="$event.stopPropagation();"></div> -->
+                      </span>
+                      <div>
+                        <!-- <mat-icon *ngIf="!example.expanded"></mat-icon>
+                          <mat-icon *ngIf="example.expanded"></mat-icon> -->
+                      </div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-template matExpansionPanelContent>
+                      <div *ngFor="let proc of sect.processReponseList" class="subheading">
+                        <label class="form-check-label" for="exampleCheck1">{{proc.previousProcessName}}</label>
+                      </div>
+                  </ng-template>
+    
+                </mat-expansion-panel>
+                <!-- <mat-paginator [length]="sectSearch?.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+                </mat-paginator> -->
+    
+              
+            </mat-accordion>
+          </div>
+          </div>
+      </div>
+      <ng-container *ngIf="sectSearch?.length > 10">
+        <mat-paginator #sectorPaginator [length]="sectSearch?.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+        </mat-paginator>
+      </ng-container>
+      </div>
+    </div>
+    </mat-card>
+  
+  </div>
+  <div>
+    <mat-card class="middle table-group" *ngIf="tab3">
+      <!-- <h3 style="border-color:#86BC25;float: left">Processes</h3> -->
+      <div class="inner-container">
+        <div class="toolbar-block">
+          <div class="search">
+            <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilterProcess($event)" />      
+            <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>       
+          </div>
+          <button mat-button type="button" class="primary" (click)="addProcess($event)">Add
+            Process <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+        </div> 
+        <div class="main">
+          <div class="header" style="margin-bottom:0px; display:flex; justify-content: space-between;">
+            <h3>Processes</h3>
+            <h3 style="width:130px; text-align:center;">Actions</h3>
+          </div>
+          <div class="custom-expansion-block">
+            <div class="table-container maxheight58">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let proc of procSearch"><label>{{proc.processName}}</label>
+                  <div class="dds-icon dds-icon_edit__l__stroke" (click)="editProcess($event,proc)"></div>
+                  <!-- <div class="dds-icon dds-icon_delete__l__stroke"></div> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <ng-container *ngIf="procSearch?.length > 10">
+        <mat-paginator #processPaginator [length]="procSearch?.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+                  </mat-paginator>
+      </ng-container>
+      
+    </mat-card>
+    
+  </div>
+
+
+  <div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+      <div class="taxt-audit-popup popup" style="min-width:560px;">
+        <div class="taxt-header popup-header">
+          <h3>Industry</h3>
+          <button mat-button  (click)="CloseModal()" class="close">&times;</button>
+        </div>
+
+
+        <form [formGroup]="industryForm" (ngSubmit)="IndustSubmit()">
+          <div class="popup-body">
+            <label>Enter Industry Name<sup>*</sup></label>
+            <input mat-input type="name" class="form-control" formControlName="name">
+            <div *ngIf="industryForm.controls['name'].invalid && (industryForm.controls['name'].touched || submited)">
+              <div class="error" *ngIf="industryForm.controls['name'].errors?.required">
+                Industry is required
+              </div>
+            </div>
+          </div>
+          <div class="popup-footer button-group">
+            <button mat-button  (click)="CloseModal()"
+              type="reset"  
+              onpointerenter="this.setAttribute()"
+              onpointerleave="this.setAttribute()">Cancel <span class="dds-icon dds-icon_close"></span></button>
+            <button mat-button type="submit"
+            onpointerenter="this.setAttribute()"
+            onpointerleave="this.setAttribute()" class="primary">Save <mat-icon>save</mat-icon></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="AddEventProceeding1">
+    <div class="taxt_audit-report">
+      <div class="taxt-audit-popup" style="max-width:560px; min-width: 560px;">
+        <div class="taxt-header popup-header">
+          <h3>Sector</h3>
+          <button mat-button  onpointerenter="this.setAttribute()" onpointerleave="this.setAttribute()" (click)="CloseModal()" type="reset" class="close">&times;</button>
+        </div>
+
+
+        <form [formGroup]="sectorForm" (ngSubmit)="SectorSubmit()">
+          <div class="popup-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Enter Sector Name</label>
+                <input type="name" class="form-control" formControlName="name">
+                <div *ngIf="sectorForm.controls['name'].invalid && (sectorForm.controls['name'].touched || submitt)">
+                  <div class="error" *ngIf="sectorForm.controls['name'].errors?.required">
+                    Sector is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label>Select Industry</label>
+                <br>
+  
+                <mat-form-field appearance="fill">
+                  <mat-select multiple class="form-control" placeholder="Select Industries" formControlName="industryId" panelClass="industryDrop">
+                    <mat-option *ngFor="let item of indusData" [value]="item">{{item.industryName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div
+                  *ngIf="sectorForm.controls['industryId'].invalid && (sectorForm.controls['industryId'].touched || submitt)">
+                  <div class="error" *ngIf="sectorForm.controls['industryId'].errors?.required">
+                    Industry is required
+                  </div>
+                </div>
+                <!-- <input type="name" class="form-control" formcontrolname="selectIndustry"
+                  placeholder="Consumer & Industrial Products"> -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="popup-footer button-group">
+            <button mat-button  onpointerenter="this.setAttribute()" onpointerleave="this.setAttribute()" (click)="CloseModal()" type="reset">Cancel <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+            <button mat-button type="submit" onpointerenter="this.setAttribute()"  onpointerleave="this.setAttribute()" class="primary">Save <mat-icon>save</mat-icon></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="AddEventProceeding2">
+    <div class="taxt_audit-report">
+      <div class="taxt-audit-popup" style="min-width:560px;">
+        <div class="taxt-header popup-header">
+          <h3>Process</h3>
+          <button mat-button  (click)="CloseModal()" class="close">&times;</button>
+        </div>
+
+        <form [formGroup]="processForm" (ngSubmit)="ProcessSubmit()">
+          <div class="popup-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <label>Process Name</label>
+                <input type="text" formControlName="name">
+                <div *ngIf="processForm.controls['name'].invalid && (processForm.controls['name'].touched || submit)">
+                  <div class="error" *ngIf="processForm.controls['name'].errors?.required">
+                    sector is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="header" style="margin-bottom:0px;">
+                <h3>Industry - Sector</h3>
+            </div>
+              <div class="indust">
+                <mat-accordion>
+                  <mat-expansion-panel *ngFor="let indus of indusData" #example>
+                  <!-- <div > -->
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span>
+                        {{indus.industryName}}
+                      </span>
+                    </mat-panel-title>
+                    <!-- <span>
+                      <div class="dds-icon dds-icon_delete__l__stroke"></div>
+                      <div class="dds-icon dds-icon_edit__l__stroke" (click)="editIndustry($event)"></div>
+                    </span> -->
+                    <mat-panel-description>
+                      <label class="number-count">{{indus.select}}
+                        <!-- <mat-icon *ngIf="!example.expanded"></mat-icon>
+                          <mat-icon *ngIf="example.expanded"></mat-icon> -->
+                        </label>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-template matExpansionPanelContent>
+                      <div *ngFor="let sect of indus.sectorList" class="subheading">
+                        <input type="checkbox" [checked]='sect.selected' (click)="onCheck(indus,sect)"
+                          class="form-check-input">&nbsp;
+                        <label class="form-check-label" for="exampleCheck1">{{sect.sectorName}}</label>
+                      </div>
+                  </ng-template>
+                  <!-- </div> -->
+                </mat-expansion-panel>
+              </mat-accordion>         
+            </div>
+          </div>
+          <div class="popup-footer button-group">
+            <button mat-button  (click)="CloseModal()">Cancel <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+            <button mat-button type="submit" class="primary"> Save <mat-icon>save</mat-icon></button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="indust">
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Consumer & Industrial Products -
+                Automotive</label>
+            </div>
+            <br>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Automotive Industrial Products -
+                Services</label>
+            </div>
+            <br>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Automotive Products Industrial Products -
+                Services</label>
+            </div>
+            <br>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Consumer & Industrial Products -
+                Automotive</label>
+            </div>
+            <br>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Automotive Industrial Products -
+                Services</label>
+            </div>
+            <br>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">&nbsp;
+              <label class="form-check-label" for="exampleCheck1">Automotive Products Industrial Products -
+                Services</label>
+            </div>
+          </div> -->
+
+
+  <!-- <div class="upload_head-strip">
+        <mat-accordion class="example-headers-align upload_btn-group">
+          <mat-expansion-panel class="panel_content" [expanded]="true" (opened)="panelOpenStateFive = true"
+            (closed)="panelOpenStateFive = false" hideToggle="true">
+            <div class="compliance-report input_field full_width">
+              <div class="compliance-table">
+                <div class="compliance-table">
+                  <div class="uploa-section">
+                    <div class="compliance-report" style="background-color: #041E42; height: 50%;">
+                      <div class="compliance-incom">process</div>
+                      <div class="compliance-incom">Sectors</div>
+                      <div class="compliance-incom">Industry</div>
+                    </div>
+                  </div>
+                  <mat-accordion class="example-headers-align compliance_fullwidth" multi>
+                    <div>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <div class="compliance-header">
+                            <div class="compliance-report">
+                              <div class="compliance-incom1">consumer & Industrial Products</div>
+                              <div class="compliance-incom1">Automotive</div>
+                              <div class="compliance-incom1"> Record to Report</div>
+                            </div>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div class="compliance-expansion">
+                          <div class="compliance-expansion-main">
+                            <div class="compliance-expansion-incom">
+                              <div class="table table-striped" style="margin-top: 50px;">
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-accordion>
+
+
+                  <mat-accordion class="example-headers-align compliance_fullwidth" multi>
+                    <div>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <div class="compliance-header">
+                            <div class="compliance-report">
+                              <div class="compliance-incom1">consumer & Industrial Products</div>
+                              <div class="compliance-incom1">Automotive</div>
+                              <div class="compliance-incom1"> Record to Report</div>
+                            </div>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div class="compliance-expansion">
+                          <div class="compliance-expansion-main">
+                            <div class="compliance-expansion-incom">
+                              <div class="table table-striped" style="margin-top: 50px;">
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-accordion>
+
+                  <mat-accordion class="example-headers-align compliance_fullwidth" multi>
+                    <div>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <div class="compliance-header">
+                            <div class="compliance-report">
+                              <div class="compliance-incom1">consumer & Industrial Products</div>
+                              <div class="compliance-incom1">Automotive</div>
+                              <div class="compliance-incom1"> Record to Report</div>
+                            </div>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div class="compliance-expansion">
+                          <div class="compliance-expansion-main">
+                            <div class="compliance-expansion-incom">
+                              <div class="table table-striped" style="margin-top: 50px;">
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-accordion>
+
+                  <mat-accordion class="example-headers-align compliance_fullwidth" multi>
+                    <div>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <div class="compliance-header">
+                            <div class="compliance-report">
+                              <div class="compliance-incom1">consumer & Industrial Products</div>
+                              <div class="compliance-incom1">Automotive</div>
+                              <div class="compliance-incom1"> Record to Report</div>
+                            </div>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div class="compliance-expansion">
+                          <div class="compliance-expansion-main">
+                            <div class="compliance-expansion-incom">
+                              <div class="table table-striped" style="margin-top: 50px;">
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-accordion>
+
+                  <mat-accordion class="example-headers-align compliance_fullwidth" multi>
+                    <div>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <div class="compliance-header">
+                            <div class="compliance-report">
+                              <div class="compliance-incom1">consumer & Industrial Products</div>
+                              <div class="compliance-incom1">Automotive</div>
+                              <div class="compliance-incom1"> Record to Report</div>
+                            </div>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div class="compliance-expansion">
+                          <div class="compliance-expansion-main">
+                            <div class="compliance-expansion-incom">
+                              <div class="table table-striped" style="margin-top: 50px;">
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Payroll</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Consumer Products</label>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <input type="checkbox" class="form-check-input">&nbsp;
+                                  <label class="form-check-label" for="exampleCheck1">Industrial Products &
+                                    Services</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                            <div class="compliance-expansion-incom">
+                              <ul>
+                                <li>Automotive</li>
+                                <li>Consumer Products Industrial</li>
+                                <li> Products & Services</li>
+                                <li>Audited financial statements</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-accordion> 
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion> -->
+  <!-- </div> -->
+
+
+
+
+  <!-- <div class="option" *ngIf="AddButton">
+  <ul style="list-style: none;padding-left: 0;" (mouseenter)="options()" >
+    <li (click)="editIndustry($event)">edit</li>
+    <li (click)="alert()">Delete </li>
+  </ul>
+
+</div> -->
+  <!-- <ul class="list-group" style="display: inline;">
+        <li class="list-group-item">Consumer & Industrial Products
+          <div class="dds-icon dds-icon_delete__l__stroke"></div>
+          <div class="dds-icon dds-icon_eyeopen" (click)="editProcess($event)"></div>
+        </li>
+        <li class="list-group-item">Financial Services
+          <div class="dds-icon dds-icon_delete__l__stroke"></div>
+          <div class="dds-icon dds-icon_eyeopen" (click)="editProcess($event)"></div>
+        </li>
+        <li class="list-group-item">Public Sector
+          <div class="dds-icon dds-icon_delete__l__stroke"></div>
+          <div class="dds-icon dds-icon_eyeopen" (click)="editProcess($event)"></div>
+        </li>
+        <li class="list-group-item">Technology, Media & Telecom
+          <div class="dds-icon dds-icon_delete__l__stroke"></div>
+          <div class="dds-icon dds-icon_eyeopen" (click)="editProcess($event)"></div>
+        </li>
+        <li class="list-group-item">Energy & Resources
+          <div class="dds-icon dds-icon_delete__l__stroke"></div>
+          <div class="dds-icon dds-icon_eyeopen" (click)="editProcess($event)"></div>
+        </li>
+      </ul> -->

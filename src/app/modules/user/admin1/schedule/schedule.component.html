@@ -1,0 +1,63 @@
+<!-- <p>schedule works!</p> (click)="changetab(1)" [class.active]="tab1"-->
+<div class="heading">
+    <h1>Schedule</h1>
+</div>
+<div class="container">
+<div class="btnn">
+    <button mat-button [class.active]="tab1" (click)="changetab(1)" >Schedule Process</button>
+    <button mat-button [class.active]="tab2" (click)="changetab(2)" >Case Management</button>
+</div>
+</div>
+<div class="container" *ngIf="tab2">
+    <div class="row container"  style="height: 700px">
+        <div class="col fin">
+            <div class="container scroll">
+                <div style="background-color: #041E42; color:white">
+                    <h3 scope="col">Setup Alert</h3>
+                </div>
+                <button style="background-color: #0076A8; float:right; color:white;border-color:#0076A8">Add Alert Rule</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="tab1">
+    <div class="row container">
+        <div class="col fin">
+            <div class="heads"  style="background-color: #041E42; color: #fff;display: flex;">
+                <h5>Subscription Start Date: 01 June 2022</h5>
+                <h5  style=" margin-left: 50px;">Subscription End Date: 01 August 2022</h5>
+            </div>
+            <div class="row container no-gutters" style="padding: 20px 0 0 20px;">
+                <div class="col subheading" [class.active]="subtab1" (click)="changesubtab(1)">
+                    <p>Schedule Daily</p>
+                </div>
+                <div class="col subheading" [class.active]="subtab2" (click)="changesubtab(2)">
+                    <p>Schedule Weekly</p>
+                </div>
+                <div class="col subheading" [class.active]="subtab3" (click)="changesubtab(3)">
+                    <p>Schedule Monthly</p>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+                <div *ngIf="subtab1">
+                    <input class="date" type="date">
+                    <input class="date" type="date">
+                    <input class="date" type="number">
+                </div>
+                <div *ngIf="subtab2">
+                    <input class="date" type="date">
+                    <input class="date" type="date">
+                    <input class="date" type="number">
+                </div>
+                <div *ngIf="subtab3">
+                    <input class="date" type="date">
+                    <input class="date" type="date">
+                    <input class="date" type="number">
+                </div>
+            <button style="background-color: #0076A8; float:right; color:white;border-color:#0076A8;margin: 37% 3% 3% 0;padding: 12px;">Schedule</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,104 @@
+// .main{
+//     height: 675px;
+//     overflow: auto;
+//     // border-radius: 0;
+//     // margin-bottom: 10px; margin-top: 1%;
+//     box-shadow: 0px -1px 6px 2px rgb(204, 202, 202);transition: all 0.3s ease;
+//     }
+//     // .container{
+//     //     margin-top: 50px;
+//     // }
+//     .heading {
+//         background-color: #FFFFFF;
+//         color: black;
+//         font-weight: bold;
+//         height: 80px;
+//         padding: 20px;
+//     }
+//     .heading h1{
+//         font-size: 25px;
+//         font-weight: 600;
+//         height: 60px;
+//         padding: 14px;
+//     }
+//     // .mat-card>:first-child{
+//     //     margin-top: 50px;
+//     // }
+//     .cards{
+//         border-style: ridge;
+//         margin: 20px;
+//         height: 180px;
+//         border-radius: 0;
+//     }
+//     .cards h3{
+//         font-size: 17px;
+//     text-align: center;
+//      }
+//      .dds-icon_user{
+//         color: #005587;
+//         font-size: 70px;
+//         text-align: center;
+//     }
+//     .btnn button{
+//         border: 1px solid #0076A8;
+//         display: inline;
+//         height: 35px;
+//         width: 15%;
+//         border-radius: 0;
+//         background-color: #fff;
+//         color: black;transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+//         // margin-left: 10px;
+//         // margin-right: 10px;
+//     }
+//     .btnn button.active{
+//         background-color: #0076A8;
+//         color: #fff
+//     }  
+    
+//     .search {
+//         width: 25%;
+//         float: right;
+//         border-radius: 0;
+//         box-shadow: inset 0px 2px 2px #00000029;
+//         border: 1px solid #CCCCCC;
+//         font-size: 14px;
+//         line-height: 19px;
+//         font-family: 'open_sans-regular';
+//         color: #000000;
+//         padding: 5.5px 10px;
+//         background: #FFFFFF;
+//         margin: 0 0 20px 0;
+    
+//         input {
+//             font-size: 12px;
+//             border-radius: 0;
+//             border: 0px none;
+//             padding: 0;
+//             margin: 0 3px 0 0;
+//             width: calc(100% - 30px);
+//             float: left;
+    
+//             &:focus {
+//                 box-shadow: none;
+//             }
+//         }
+    
+//         .dds-icon {
+//             float: left;
+//             padding: 3px 0 0 0;
+//             font-size: 17px; height: auto;
+//         }
+//     }
+//   ::ng-deep  .mat-paginator-container{
+//      justify-content: center !important;
+//     }
+//   ::ng-deep .mat-select{
+//    padding: 8px 9px !important;
+//   }  
+//   ::ng-deep .cdk-overlay-container{
+//    height: 0% !important;
+//    width: 0% !important;
+//   }
+//   .hidePaginator{
+//     visibility: hidden;
+//   }

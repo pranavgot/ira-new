@@ -1,0 +1,111 @@
+<div class="heading">
+    <h1>Clients</h1>
+</div>
+<div class="consen mainContainer custom-height2">
+    <div class="inner-container">
+        <div class="toolbar-block tabs-button-row">
+            <div class="tab-buttons">
+                <button mat-button [class.active]="tab1" (click)="changetab(1)">External Clients</button>&nbsp;
+                <button mat-button [class.active]="tab2" (click)="changetab(2)">Deloitte Users</button>
+            </div>
+            <div *ngIf="tab1" class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+        </div>
+        <!-- <div class="main" > -->
+        <div class="" *ngIf="tab1">
+            <div class="col clients-image-list">
+                <mat-card class="cards" *ngFor="let item of serchAllOrg" (click)="details(item.organizationId)">
+                    <ng-container *ngIf="item.imageDataresponse != null ">
+                        <div class="image-container-block">
+                            <div class="image-block">
+                                <img [src]="item.demo" style="background-color: gray !important;" alt="">
+                            </div>
+                            <div class="image-title">
+                                <h3>{{item.organizationName}}</h3>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="item.imageDataresponse == null ">
+                        <div class="image-container-block">
+                            <div class="image-block">
+                                <div class="dds-icon dds-icon_user"></div>
+                            </div>
+                            <div class="image-title">
+                                <h3>{{item.organizationName}}</h3>
+                            </div>
+                        </div>
+                    </ng-container>
+                </mat-card>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="" *ngIf="tab2" style="padding-top:20px;">
+            <div class="col">
+                <mat-card class="cards" *ngFor="let item of getAllOrg" style="width: 200px; float: left;" (click)="deloitedetails()">
+                    <ng-container *ngIf="item.organizationName == ''">
+                        <img style="height:100px; width:100%; object-fit:contain;" [src]="item.demo" alt="">
+                        <h3>{{item.organizationName}}</h3>
+                    </ng-container>
+                </mat-card>
+            </div>
+        </div> -->
+
+        <div class="" *ngIf="tab2">
+            <div class="col clients-image-list">
+                <mat-card class="cards" (click)="details(deloitteData.organizationId)">
+                   <ng-container *ngIf="deloitteData.imageDataresponse != null ">
+                            <div class="image-container-block">
+                                <div class="image-block">
+                                    <img [src]="deloitteData.demo"  alt="">
+                                </div>
+                                <div class="image-title">
+                                    <h3>{{deloitteData.organizationName}}</h3>
+                                </div>
+                            </div>
+                    </ng-container>
+                     <ng-container *ngIf="deloitteData?.imageDataresponse == null ">
+                            <div class="image-container-block">
+                                <div class="image-block">
+                                    <div class="dds-icon dds-icon_user"></div>
+                                </div>
+                                <div class="image-title">
+                                    <h3>{{deloitteData.organizationName}}</h3>
+                                </div>
+                            </div>
+                    </ng-container>
+                </mat-card>
+            </div>
+        </div>
+
+
+        <!-- <div class="" *ngIf="tab2">
+            <div class="col clients-image-list">
+                <mat-card class="cards" (click)="details(item.organizationId)">
+                    <div class="image-container-block">
+                        <div class="image-block">
+                            <div class="dds-icon dds-icon_user"></div>
+                        </div>
+                        <div class="image-title">
+                            <h3>Deloitte</h3>
+                        </div>
+                    </div>
+                    
+                </mat-card>
+            </div>
+        </div>
+          -->
+    </div>
+
+    
+        <div class="col-12" [ngClass]="{hidePaginator : tab2}" style="margin-top:20px;">
+            <ng-container *ngIf="dataSource!.data!.length > 10">
+            <mat-paginator [length]="dataSource?.data?.length" [pageSizeOptions]="[10, 20,50]" (page)="pageChangedExtr($event)">
+            </mat-paginator>
+        </ng-container>
+        </div>
+
+</div>

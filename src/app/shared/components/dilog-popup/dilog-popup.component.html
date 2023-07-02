@@ -1,0 +1,30 @@
+<div [ngClass]="success?'successmessage':''" *ngIf="Open && success">
+    <div>
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup popup" style="min-width:530px;">
+              <div class="taxt-header popup-header">
+                <h3>Success</h3>
+                <button mat-button class="close" (click)="closepopup()">&times;</button>
+              </div>
+              <div class="popup-body">
+                <p><mat-icon>check_circle_outline</mat-icon> {{message}}</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div [ngClass]="success?'':'errormessage'" *ngIf="Open && (success==false)">
+    <div>
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup popup"  style="min-width:530px;">
+              <div class="taxt-header popup-header">
+                <h3>Error</h3>
+                <button mat-button class="close" (click)="closepopup()">&times;</button>
+              </div>
+              <div class="popup-body">
+                <p><mat-icon>warning</mat-icon> {{message}}</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

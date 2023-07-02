@@ -1,0 +1,132 @@
+.left-nav-bar {
+    min-height: calc(100vh - 60px);
+    background: #53565A;
+    color:#fff;
+    &:hover{
+        z-index: 999;
+    }
+}
+
+.left_item:hover, .left_item.active {
+    //background-color: #005587;
+    box-shadow: inset 176px 0 0 0 #63666A;
+    border-radius:0px;
+}
+.left_item::ng-deep {
+    padding:0px;
+    display:flex !important;
+    width: 100%;
+    height:auto !important;
+    min-height:70px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s all;
+    /*transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);*/
+    .dds-icon_plus__l__stroke{
+        display:none;
+    }
+}
+
+.sub-menu{
+padding: 0 0 0 20px;
+.childLi{box-shadow: 0px 2px 6px #000000;}
+}
+
+.left_item p {
+    padding-right: 0px;
+    margin: auto 0; 
+    font-family: 'open_sans-regular'; 
+    font-size: 14px;
+    display:table;
+    line-height: 16px;
+    width:100%;
+    text-align: center;
+}
+ 
+
+
+.rt_icons {
+    padding-right: 5px;
+    margin: auto 0;
+    position: absolute;
+    right: 10px;
+    color: #fff; 
+    top: 18px;
+
+}
+.left_item::ng-deep:hover .left_icons:before, .left_item.active .left_icons:before{
+    color:#86BC25 !important;
+} 
+.menuLi{
+    //box-shadow: 0px 2px 6px #000000; 
+    padding: 5px; 
+    position: relative;
+    border-bottom:1px solid #63666A;
+
+    // padding: 29px 0px;
+    span{padding: 0;}
+    .left_icons {
+        padding-right: 0px;
+        margin: 0;
+        font-size: 26px;
+        font-weight: 500;
+        height: auto !important;
+        //color: #BBBCBC;
+        color:#fff;
+    }
+    .child.sub-menu{
+        display:none;
+        position: absolute;
+        min-width:176px;
+        top:5px;
+        z-index: -99;
+        background: #53565A;
+        color:#BBBCBC;
+        padding: 0px;
+        box-shadow:none;
+        border-radius: 0px;
+        transform: translateX(-110%);
+        transition: 0.2s all;
+    } 
+    &:hover{
+        .child.sub-menu{
+            display:none;
+            position: absolute;
+            left:176px;
+            min-width:200px;
+            top:5px;
+            z-index: 0;
+            background: #53565A;
+            color:#BBBCBC;
+            padding: 0px;
+            box-shadow:none;
+            border-radius: 0px;
+            transform: translateX(0);
+            .childLi{
+                box-shadow:none;
+                .left_item:hover{
+                    box-shadow:inset 200px 0 0 0 #63666A;
+                    .left_icons:before{
+                        color:#86BC25 !important;
+                    }
+                }
+            }
+        }
+    }
+    
+ }
+
+ .left_item::ng-deep .mat-list-item-content{
+    flex-direction: column !important;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box !important;
+ }
+ .mat-nav-list{
+    padding-top:0px !important;
+}
+.child.sub-menu{
+    transform: translateX(-100%);
+}

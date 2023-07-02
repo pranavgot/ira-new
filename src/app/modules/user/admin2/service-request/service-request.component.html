@@ -1,0 +1,175 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Dashboard</li>
+            <li>Service Request</li>
+        </ul>
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card class="table-group">
+            <div class="toolbar-block">
+                <p>Total Request: <span>10</span></p>
+                <button mat-button class="btn" (click)="edit($event)">New Service Request</button>
+            </div>
+            <div class="main">
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Request Type</th>
+                                <th scope="col">Request Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                                <!-- <th scope="col">Delete</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Solution Board</td>
+                                <td>15/9/2002</td>
+                                <td>Approved</td>
+                                <td>
+                                    <span class="dds-icon dds-icon_edit__l__stroke" (click)="edit($event)"
+                                        data-target="#myModal" data-toggle="modal"></span>&nbsp; &nbsp;
+                                    <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Level 1 Admin</td>
+                                <td>15/9/2002</td>
+                                <td>15/9/2002</td>
+                                <td>
+                                    <span class="dds-icon dds-icon_edit__l__stroke" data-target="#myModal"
+                                        data-toggle="modal"></span>&nbsp; &nbsp;
+                                    <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Solution Board</td>
+                                <td>15/9/2002</td>
+                                <td>Approved</td>
+                                <td>
+                                    <span class="dds-icon dds-icon_edit__l__stroke" (click)="edit($event)"
+                                        data-target="#myModal" data-toggle="modal"></span>&nbsp; &nbsp;
+                                    <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Level 1 Admin</td>
+                                <td>15/9/2002</td>
+                                <td>15/9/2002</td>
+                                <td>
+                                    <span class="dds-icon dds-icon_edit__l__stroke" data-target="#myModal"
+                                        data-toggle="modal"></span>&nbsp; &nbsp;
+                                    <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </mat-card>
+    </div>
+
+
+
+
+
+
+    <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <div class="taxt-header popup-header">
+                    <h3>Service Request</h3>
+                </div>
+
+                <form>
+                    <!-- <div class="row" style="padding: 20px"> [formGroup]="serviceForm" (ngSubmit)="ServiceSubmit()"-->
+                    <!-- <div class="col-sm-4">
+                            <label>Name</label>
+                            <input type="name" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Designation<sup>*</sup></label>
+                            <input type="designation" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Company</label>
+                            <input type="company" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 20px">
+                        <div class="col-sm-4">
+                            <label>Contact Number</label>
+                            <div class="input-group prefix">
+                                <span class="input-group-addon">+91</span>
+                                <input type="contactnumber" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="col-sm-4">
+                            <label>Email_id</label>
+                            <input type="email" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Request Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>-->
+                    
+                        <!-- <div class="col-sm-6">
+                            <label>Request Date</label>
+                            <input type="date" class="form-control" formcontrolname="date">
+                        </div> -->
+                        <!-- <div class="col-sm-4">
+                            <label>Request Type</label>
+                            <br>
+                            <select class="form-control">
+                                <option hidden>Select</option>
+                                <option value="1">Role change</option>
+                                <option value="2">solution board</option>
+                            </select>
+                        </div> -->
+                        <div class="popup-body">
+                            <div class="row" >
+                                <h5>Request for Role Change</h5>
+                                <div class="col-sm-12">
+                                    <input type="checkbox" class="form-check-input" style="margin-right: 20px;" formcontrolname="request">
+                                    <label style="margin-bottom: 20px;">Level-1 Admin</label> <br>
+                                    <!-- <input type="radio" value="level1">&nbsp;
+                                    <label style="margin-right: 50px;">LEVEL 1 Admin</label>
+                                    <input type="radio" value="level2">&nbsp;
+                                    <label for="css">LEVEL 2 Admin</label> -->
+                                </div>
+                                <br>
+                                <h5>Workspace Request</h5>
+                                <div *ngFor="let sub of subs">
+                                    <div class="col-sm-4" style="padding-top: 20px;">
+                                        <input type="checkbox" class="form-check-input" style="margin-right: 20px;">
+                                        <label class="form-check-label" for="exampleCheck1">{{sub.subscriptionType}}</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-sm-12" style="margin: 20px 0 20px 0">
+                                    <label>Message</label>
+                                    <textarea type="requestdate" class="form-control" formcontrolname="message"></textarea>
+                                </div>
+                                <br>
+                                
+                            </div>
+                            <div class="popup-footer button-group">
+                                <button mat-button (click)="CloseModal()">Cancel <span class="dds-icon dds-icon_close__l__stroke"></span></button>
+                                 <button mat-button class="primary"
+                                    routerLink="/user/admin1/user-management" type="submit">Submit <span class="dds-icon dds-icon_arrow_right__l__stroke"></span> </button>
+                            </div>    
+                        </div>
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

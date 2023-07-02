@@ -1,0 +1,167 @@
+<div class="heading">
+    <h1>Announcements</h1>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card class="">
+            <div class="toolbar-block">
+                <button mat-button routerLink="/user/admin1/add-announcements" class="primary">Add Announcement <span class="dds-icon dds-icon_plus__l__stroke"></span></button>
+
+            </div>
+            <div class="main">
+                <div class="announcement-block">
+                    <ul>
+                         <li  *ngFor="let item of announcement">
+                            <div class="ans-left">
+                                 <div class="date-box">
+                                    {{item.createdDate | date:"dd/MM/yyyy hh:mm a"}}
+                                 </div>   
+                            </div>
+                            <div class="ans-right">
+                                <h3>{{item.announcementName}}</h3>
+                                <p>{{item.announcementDescription}}</p>    
+                            </div>
+                         </li>   
+                    </ul>
+                </div>
+                <!-- <div class="table-layer">
+                    <div class="table-container">
+                        <table mat-table [dataSource]="announcementSearch" class="table table-striped" matSort>
+              
+                            Name Column
+                            <ng-container matColumnDef="no">
+                              <th mat-header-cell *matHeaderCellDef>Sl No.</th>
+                              <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef>Announcement Name</th>
+                                <td mat-cell *matCellDef="let element"> {{element.announcementName}} </td>
+                              </ng-container> 
+
+                              <ng-container matColumnDef="description">
+                                <th mat-header-cell *matHeaderCellDef>Announcement Description</th>
+                                <td mat-cell *matCellDef="let element"> {{element.announcementDescription}} </td>
+                              </ng-container>
+                
+                            <ng-container matColumnDef="time">
+                                <th mat-header-cell *matHeaderCellDef>Time</th>
+                                <td mat-cell *matCellDef="let element"> {{element.createdDate | date:"dd/MM/yyyy"}} </td>
+                              </ng-container>
+            
+                              <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef>Actions </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span class="dds-icon dds-icon_eyeopen" (click)="viewAnnouncement(element)"></span>
+                                    
+                                    /******Comment 2 lines***/
+                                    (click)="viewAnnouncement(element)" viewAnnouncement
+                                    <span class="dds-icon dds-icon_delete__l__stroke"></span>
+                                </td>
+                              </ng-container>
+                    
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                  No data found
+                                </td>
+                              </tr>
+                          </table>
+                    </div>
+                </div> -->
+                
+                <!-- <ng-container *ngIf="announcementSearch?.data.length > 10">
+                    <mat-paginator [length]="announcementSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+                    </mat-paginator> 
+                </ng-container> -->
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- <div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;margin-bottom: 20px;">Service Request Approval</h4>
+            </div>
+
+            <form style="padding: 20px;">
+                <div class="row" style="padding: 20px">
+                    <div class="col-sm-4">
+                        <label>Name</label>
+                        <input type="name" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Designation<sup>*</sup></label>
+                        <input type="designation" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Company</label>
+                        <input type="company" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="padding: 20px">
+                    <div class="col-sm-4">
+                        <label>Contact Number</label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <input type="contactnumber" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Email_id</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Request Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="padding: 20px">
+                    <div class="col-sm-4">
+                        <label style="margin-bottom: 20px;">Request for Admin Access</label> <br>
+                        <input type="radio" name="adminaccess" value="level1">&nbsp;
+                        <label style="margin-right: 50px;">LEVEL 1 Admin</label>
+                        <input type="radio" name="adminaccess" value="level2">&nbsp;
+                        <label for="css">LEVEL 2 Admin</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label>Message</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="padding: 20px">
+                    <div class="col-sm-3" style="margin-top: 20px;">
+                        <input type="checkbox" class="form-check-input" style="margin-right: 20px;">
+                        <label class="form-check-label" for="exampleCheck1">Solution Board</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="startdate">Start Date</label>
+                        <br>
+                        <input type="date" class="form-control" style="border: 1px solid #ced4da;">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="enddate">End Date</label>
+                        <br>
+                        <input type="date" class="form-control" style="border: 1px solid #ced4da;">
+                    </div>
+
+                </div>
+                <div class="col-sm-4" style="float: right; margin: 5% 0 5% 0">
+                    <button mat-button
+                        (click)="CloseModal()">Cancel</button>
+                    &nbsp; &nbsp;
+                    <button mat-button style="background-color: #0076A8; color: white;"
+                        routerLink="/user/admin1/user-management">Approve</button>
+                </div>                
+            </form>
+        </div>
+    </div>
+</div> -->

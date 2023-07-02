@@ -1,0 +1,225 @@
+<div class="heading">
+    <h1>Service Request</h1>
+</div>
+    <!-- <div class="btnn">
+        <button mat-button [class.active]="tab1" (click)="changetab(1)">Renew</button>&nbsp;
+        <button mat-button [class.active]="tab2" (click)="changetab(2)">New</button>
+    </div>
+    <br> -->
+    <form [formGroup]="addserviceForm" (ngSubmit)="addserviceSubmit()">
+        <div class="consen mainContainer">
+            <div class="inner-container">
+        <mat-card class="table-group">
+            <div class="row" style="margin:0px !important;">
+                <div class=" col-md-6">
+                    <div class="boxed" style="min-height:300px;">
+                        <h4>Subscriptions Renewal</h4>
+                        <div class="table-container">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th scope="col">Subscription Name</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th scope="col">Number of Runs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let itemm of usersubs">
+                                        <td><input type="checkbox" class="form-check-input"
+                                                (change)="UpdateSubs($event,itemm)" formControlName="oldsubscription"></td>
+                                        <td>{{itemm.processName}}</td>
+                                        <td>{{itemm.startDate |date:"dd/MM/yyyy hh:mm a"}}</td>
+                                        <td>{{itemm.endDate |date:"dd/MM/yyyy hh:mm a"}}</td>
+                                        <td>{{itemm.runCount}}</td>
+                                    </tr>
+                                    <tr *ngIf="usersubs == 0">
+                                        <td colspan="4">No Data Found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="boxed" style="min-height:300px;">
+                        <h4>New Subscriptions</h4>
+                        <div class="table-layer">
+                            <div class="table-container">
+                             <table class="table table-striped">
+                                 <thead>
+                                     <tr>
+                                         <th colspan="2" style="text-align: left;">Select Solutions</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td style="vertical-align: top;">
+                                             <h5 style="font-weight: bold;">Generic</h5>
+                                             <div class="table-container" style="height:auto !important; max-height:20vh !important;">
+                                                 <ng-container *ngFor="let process of processlist">
+                                                     <div *ngIf="process.processType == 'Generic'">
+                                                         <div class="flex-list" style="margin-bottom:10px;">
+                                                             <input type="checkbox" [checked]="process.checked" class="form-check-input"
+                                                                 (change)="UpdateSubs($event,process)"
+                                                                 formControlName="newsubscription">
+                                                             <label class="form-check-label"
+                                                                 for="exampleCheck1">{{process.processName}}</label>
+                                                         </div>
+                                                     </div>
+                                                     <div *ngIf="processlist.length == 0">
+                                                         <label style="margin-left: 50%;">No Data Found</label>
+                                                     </div>
+                                                 </ng-container>
+ 
+                                             </div>
+                                         </td>
+                                         <td style="vertical-align: top;">
+                                             <h5 style="font-weight: bold;">Client Specific</h5>
+                                             <div class="table-container" style="height:auto !important; max-height:20vh !important;">
+                                                 <ng-container *ngFor="let process of processlist">
+                                                     <div *ngIf="process.processType == 'Client Specific'">
+                                                         <div class="flex-list" style="margin-bottom:30px;">
+                                                             <input type="checkbox" [checked]="process.checked" class="form-check-input"
+                                                                 (change)="UpdateSubs($event,process)"
+                                                                 formControlName="newsubscription">
+                                                             <label class="form-check-label"
+                                                                 for="exampleCheck1">{{process.processName}}</label>
+                                                         </div>
+                                                     </div>
+                                                     <div *ngIf="processlist.length == 0">
+                                                         <label style="margin-left: 50%;">No Data Found</label>
+                                                     </div>
+                                                 </ng-container>
+                                             </div>
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                            </div>
+                         </div>    
+
+                    </div>
+
+                    <!-- <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Generic</th>
+                                    <th scope="col">Client Specific</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let process of processlist">
+                                    <td>
+                                        <ng-container *ngIf="process.processType == 'Generic'">
+                                            <label class="flex-list">
+                                                <input type="checkbox" [checked]="process.checked"
+                                                    class="form-check-input" (change)="UpdateSubs($event,process)"
+                                                    formControlName="newsubscription">&nbsp;
+                                                {{process.processName}}</label>
+                                        </ng-container>
+                                    </td>
+
+
+                                    <td>
+                                        <ng-container *ngIf="process.processType == 'Client Specific'">
+                                            <label class="flex-list"> <input type="checkbox" [checked]="process.checked"
+                                                    class="form-check-input" (change)="UpdateSubs($event,process)"
+                                                    formControlName="newsubscription">&nbsp;
+                                                {{process.processName}}</label>
+                                        </ng-container>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+
+
+                            <!-- <div class="table-container" style="height:auto !important; max-height:20vh !important;"> -->
+
+                                
+
+
+                            </div>
+            </div>
+                       
+            <!-- </div> -->
+            <br/>
+            <br/>
+
+            <div class="row" style="margin:0px !important;">
+                    <div class=" col-md-6">
+                        <div class="table-layer">
+                            <div class="table-container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">workspace</th>
+                                            <th scope="col">Start Date</th>
+                                            <th scope="col">End Date</th>
+                                            <!-- <th scope="col">Status</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let itemm of userworkspace">
+                                            <td><input type="checkbox" class="form-check-input"
+                                                    (change)="UpdateWs($event,itemm)" formControlName="oldworkspace"></td>
+                                            <td>{{itemm.subscriptionType}}</td>
+                                            <td>{{itemm.startDate|date:"dd/MM/yyyy hh:mm a"}}</td>
+                                            <td>{{itemm.endDate|date:"dd/MM/yyyy hh:mm a"}}</td>
+                                        </tr>
+                                        <tr *ngIf="userworkspace == 0">
+                                            <td colspan="4">No Data Found</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        
+                        <div class="header">
+                            <h3>Select Workspace</h3>
+                        </div>
+                        <div class="table-layer">
+                            <div class="table-container">
+                                    <div class=" col scroll con">
+                                        <!-- <h4 style="position: sticky;top: 0; font-size: 15px; background-color: #eee; padding: 5px;">Generic</h4> -->
+                                        <div class="flex-list" *ngFor="let sub of sublist">
+                                            <input type="checkbox" [checked]="sub.checked" class="form-check-input"
+                                                (change)="UpdateWs($event,sub)" formControlName="newworkspace">
+                                            <label class="form-check-label" for="exampleCheck1" style="margin-left:0px;">{{sub.subscriptionType}}</label>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="sublist == 0">
+                                        <label style="margin-left: 50%;">No Data Found</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                </div>
+                <br/>
+                <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <label>Message</label> -->
+                    <textarea cols="10" rows="5" type="requestdate" class="form-control" formControlName="message"
+                        placeholder="Please enter your message..."></textarea>
+                </div>
+    
+            </div>    
+
+            
+        </mat-card>
+    </div>
+    <div class="button-group">
+        <button mat-button type="reset"
+            routerLink="/user/external_user/service-request">Cancel <span class="dds-icon dds-icon_close__l__stroke"></span></button>&nbsp;
+        <button mat-button type="submit" class="primary">Submit <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+    </div>
+    </div>
+    </form>

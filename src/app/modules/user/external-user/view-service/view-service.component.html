@@ -1,0 +1,134 @@
+<div class="heading">
+    <h1>Service Request</h1>
+    <h5><span style="color: #0076A8">view / </span>Service Request</h5>
+</div>
+<div class="consen">
+    <mat-card>
+        <div>
+            <div class="row">
+                <div class="col" style="padding-left:0 ;">
+                    <h4>Subscriptions Renewal</h4>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th scope="col">Subscription Name</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let itemm of servicedata">
+                                    <ng-container *ngIf="itemm.requestType == 'Renew Solution'">
+                                        <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                        <td>{{itemm.processDTO.processName}}</td>
+                                        <td>{{itemm.requestStatus}}</td>
+                                    </ng-container>
+                                </tr>
+                                <tr *ngIf="!flag1">
+                                    <!-- <ng-container *ngIf="servicedata.requestType != 'Renew Solution'"> -->
+                                        
+                                         <td rowspan="2">No Data Selected</td>
+                                         <!-- <td></td> -->
+                                    <!-- </ng-container> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <div class="col" style="padding-left:0 ;">
+                    <h4>New Subscriptions</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                               <th scope="col">Subscription Name</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let itemm of servicedata">
+                                <ng-container *ngIf="itemm.requestType == 'new Solution'">
+                                    <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+
+                                    <td>{{itemm.processDTO.processName}}</td>
+                                    <td>{{itemm.requestStatus}}</td>
+                                </ng-container>
+                            </tr>
+                            <tr *ngIf="!flag3">
+                                <!-- <ng-container *ngIf="servicedata.requestType != 'new Solution'"> -->
+                                    <td rowspan="2">No Data Selected</td>
+                                    <!-- <td></td> -->
+                                <!-- </ng-container> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+                <!-- <hr> -->
+                <div>
+                    <div class="row">
+                        <div class="col"  style="padding-right:0 ;margin-top: 36px;padding-left: 0px;">
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">workspace</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let itemm of servicedata">
+                                            <ng-container *ngIf="itemm.requestType == 'Renew WorkSpace'">
+                                                <td>{{itemm.subscriptionDTO.subscriptionType}}</td>
+                                                <td>{{itemm.requestStatus}}</td>
+                                            </ng-container>
+                                        </tr>
+                                        <tr *ngIf="!flag2">
+                                            <!-- <ng-container *ngIf="servicedata.requestType != 'Renew WorkSpace'"> -->
+                                                <td rowspan="2" >No Data Selected</td>
+                                                <!-- <td></td> -->
+                                            <!-- </ng-container> -->
+                                        </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                        <div class="col" style="padding-right:0 ;margin-top: 36px; padding-right: 9px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">WorkSpace Name</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="!flag4">
+                                        <!-- <ng-container *ngIf="servicedata.requestType != 'new WorkSpace'"> -->
+                                            <td rowspan="2">No Data Selected</td>
+                                            <!-- <td></td> -->
+                                        <!-- </ng-container> -->
+                                    </tr>
+                                    <tr *ngFor="let itemm of servicedata">
+                                        <ng-container *ngIf="itemm.requestType == 'new WorkSpace'">
+                                            <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                            <td>{{itemm.subscriptionDTO.subscriptionType}}</td>
+                                            <td>{{itemm.requestStatus}}</td>
+                                        </ng-container>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <!-- <label>Message</label> -->
+                    <textarea cols="10" rows="5" type="requestdate" class="form-control" [value]="msg.requestMessage" readonly></textarea>
+                </div>
+                                <!-- <div class="col-sm-12">
+                        <textarea cols="10" rows="5" type="requestdate" class="form-control" formControlName="message"
+                            placeholder="Please enter your message..."></textarea>
+                    </div> -->
+    </mat-card>
+</div>
+    <!-- <div style="float: right;margin: 0 0 20px 60px; ">
+        <button mat-button class="btn" (click)="CloseModal()">Cancel</button> -->
+        <!-- &nbsp; &nbsp; -->
+        <!-- <button mat-button class="btn" style="background-color: #0076A8; color: white;"
+            routerLink="/user/admin1/user-management">Submit</button> (click)="CloseModal()"-->
+    <!-- </div> -->

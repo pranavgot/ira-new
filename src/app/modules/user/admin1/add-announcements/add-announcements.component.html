@@ -1,0 +1,113 @@
+<div class="heading">
+    <h1>Announcements</h1>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card class="table-group">
+            <!--[formGroup]="announcementForm" (ngSubmit)="announcementSubmit()" -->
+            <form [formGroup]="announcementForm" (ngSubmit)="announcementSubmit()">
+                <div class="header">
+                    <h3>Add Announcement</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label>Announcement Name<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submited && announcementForm.controls['name'].errors }"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                            maxlength="50" />
+
+                        </div>
+                        <div class="input-group">
+                            <label>Link<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="link"
+                            [ngClass]="{ 'is-invalid': submited && announcementForm.controls['link'].errors }"
+                                maxlength="50" />
+    
+                        </div>
+                        <div class="input-group">
+                            <label>Recipients<sup>*</sup></label>
+                            <select class="form-control reflect-model" formControlName="user"
+                            [ngClass]="{ 'is-invalid': submited && announcementForm.controls['user'].errors }">
+                                <option value="0" hidden>Select</option>
+                                <!-- <option valur="1">Leads</option>
+                                            <option value="2">Level-1 Admin</option>
+                                            <option value="3">Level-2 Admin</option> -->
+                                <option value="I">Internal</option>
+                                <option value="E">External</option>
+                                <!-- <option value="7">External Client User</option> -->
+                           </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label>Announcement Description<sup>*</sup></label>
+                            <textarea rows="4" cols="50" type="text" class="form-control reflect-model"
+                            [ngClass]="{ 'is-invalid': submited && announcementForm.controls['description'].errors }"
+                            formControlName="description" style="height:23vh;"></textarea>
+
+                        </div>                        
+                    </div>
+                <!-- <mat-form-field class="example-chip-list" style="border: 1px solid #cccaca" appearance="fill" formControlName="link">
+                            <mat-chip-list #chipList aria-label="Link selection">
+                              <mat-chip
+                                *ngFor="let link of links"
+                                (removed)="remove(link)">
+                                {{link}}
+                                <button matChipRemove>
+                                    <div class="dds-icon dds-icon_close__l__stroke"></div>
+                                </button>
+                              </mat-chip>
+                              <input #linkInput
+                                [formControl]="linkCtrl"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                        </mat-form-field> -->
+    
+    
+                <!-- <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                              <mat-option *ngFor="let link of filteredlinks | async" [value]="link">
+                                {{link}}
+                              </mat-option>
+                            </mat-autocomplete> --><!-- [matAutocomplete]="auto" -->
+    
+                <!-- <input type="text" class="form-control reflect-model"
+                            formControlName="email" /> -->
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label>Attachement<sup>*</sup></label>
+                            <div class="box-container upload-inner-container" style="height:23vh;">
+                                <label for="imgfile" class="button"
+                                [ngClass]="{ 'is-invalid': submited && announcementForm.controls['flie'].errors }">
+                                <input type="file" id="imgfile" accept="image/png, image/gif, image/jpeg"
+                                    (change)="imgFileUpload($event)" style="display: none;" formControlName="flie" />
+        
+                                <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                <br>
+                                <h5>Upload Files</h5>
+                                <!-- <p style="font-size: 9px;color: #707070;">Note: Exclude .JS and .EXE files</p> -->
+                                <!-- <img height="90%" *ngIf="imageUrl" [src]="imageUrl" class="image" /> -->
+                                </label>
+                                <p *ngIf="imgFile?.name?.length > 30"> {{imgFile?.name?.substr(0,30)}}...</p>
+                                <p *ngIf="imgFile?.name?.length < 30">{{imgFile?.name}}</p>
+                            </div>
+                           
+
+                        </div>  
+                    </div>
+                </div>
+    
+                
+                
+            </form>
+        </mat-card>
+    </div>
+    <div class="button-group">
+        <button mat-button type="submit">Schedule <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+        <!-- <button mat-button type="submit">Post</button> -->
+    </div>
+</div>

@@ -1,0 +1,209 @@
+<div class="client-header">
+    <div class="left_header">
+        <a [routerLink]= "['auth/landing']" class="logo"><img _ngcontent-jld-c34="" src="../../../assets/images/Group 7819.svg" alt="" routerLink="/auth/landing"></a>
+        <p>Risk Insights through Analytics (RIA)</p>
+    </div>
+    <div class="right_header">
+        <ul>
+            <li><a>About Us</a></li>
+            <li><a routerLink="/auth/explore">Platform & Solutions</a></li>
+            <li><a>FAQ's</a></li>
+            <li><a routerLink="/auth/contact-us">Contact Us</a> </li>
+        </ul>
+        <div class="right_buttons">
+            <ul style="padding-left: 0px;">
+                <li>
+                    <a href="">Existing User Sign-In</a>
+                </li>
+                <li><a routerLink="/auth/sign-up">New User Sign-Up</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+<div class="main">
+    <!-- <iframe src="" frameborder="0"></iframe> -->
+    <div class="sign-form-block">
+        <mat-card class="table-group">
+            <h1 style="text-align: center;">Registration</h1>
+            <form [formGroup]="signupForm" (ngSubmit)="registrationSubmit()">
+                <!-- <h6>Please take a moment to fill out the entire form.</h6> -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="header">
+                            <h3>User Details</h3>
+                        </div>
+                        <div class="input-group">
+                            <label>Name<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['name'].errors }"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                                maxlength="50" />
+
+                        </div>
+                        <div class="input-group">
+                            <label>Designation<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="designation"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['designation'].errors }"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                                maxlength="50" />
+                        </div>
+
+                        <label>Contact Number<sup>*</sup></label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <input type="text" class="form-control reflect-model" maxlength="10" minlength="10"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['contactNo'].errors }"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                formControlName="contactNo" />
+                        </div>
+                        <div class="input-group">
+                            <label>Email Id<sup>*</sup></label>
+                            <input type="email" class="form-control reflect-model" formControlName="emailId" value=""
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['emailId'].errors }"
+                                (keyup)="varifyEmail()" />
+
+                            <div
+                                *ngIf="signupForm.controls['emailId'].invalid && (signupForm.controls['emailId'].touched || submited)">
+                                <span class="error"
+                                    *ngIf="signupForm.controls['emailId'].errors?.email || signupForm.controls['emailId'].errors?.pattern">
+                                    Invalid Email.
+                                </span>
+                            </div>
+
+
+                            <div class=" optp" *ngIf="disableButton">
+                                    <a (click)="getOtp()">Get OTP</a>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>OTP<sup>*</sup></label>
+                            <input class="form-control reflect-model" formControlName="otp" maxlength="4" minlength="4"
+                                [ngClass]="{ 'is-invalid': otperror || submited && signupForm.controls['otp'].errors }"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="header">
+                            <h3>Organization Details</h3>
+                        </div>
+                        <div class="input-group">
+                            <label>Name<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="orgName"
+                                maxlength="50"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['orgName'].errors }" />
+                        </div>
+                        <div class="input-group">
+                            <label>Contact Person Name<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="spocName"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['spocName'].errors }"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                                maxlength="50" />
+
+                        </div>
+                        <div class="input-group">
+                            <label>Contact Person Designation<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model" formControlName="spocDesignation"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['spocDesignation'].errors }"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                                maxlength="50" />
+                        </div>
+                        <div class="input-group">
+                            <label>Industry<sup>*</sup></label>
+                            <mat-form-field appearance="fill">
+                                <mat-select class="form-control" formControlName="industryId"
+                                    [ngClass]="{ 'is-invalid': submited && signupForm.controls['industryId'].errors }">
+                                    <mat-option *ngFor="let item of indusData" [value]="item"
+                                        (onSelectionChange)="selectionChange($event, item)">{{item.industryName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="input-group">
+                            <label>Sector<sup>*</sup></label>
+
+                            <mat-form-field appearance="fill">
+                                <mat-select class="form-control" formControlName="sectorId"
+                                    [ngClass]="{ 'is-invalid': submited && signupForm.controls['sectorId'].errors }">
+                                    <mat-option *ngFor="let item of sectData" [value]="item">{{item.sectorName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="input-group">
+                            <label>Email Id<sup>*</sup></label>
+                            <input type="email" class="form-control reflect-model" formControlName="spocEmailId"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['spocEmailId'].errors }"
+                                value="" />
+                        </div>
+                        <div class="input-group">
+                            <label>Contact Number<sup>*</sup></label>
+                            <div class="input-group prefix">
+                                <span class="input-group-addon">+91</span>
+                                <input type="text" class="form-control reflect-model" maxlength="10" minlength="10"
+                                    [ngClass]="{ 'is-invalid': submited && signupForm.controls['spocphoneNo'].errors }"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                    formControlName="spocphoneNo" />
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Address<sup>*</sup></label>
+                            <input type="text" class="form-control reflect-model"
+                                [ngClass]="{ 'is-invalid': submited && signupForm.controls['address'].errors }"
+                                formControlName="address" maxlength="250" />
+                        </div>
+                    </div>
+                    <div class="col-md-4  process-box">
+                        <div class="header">
+                            <h3>Solutions Offered</h3>
+                        </div>
+                            <h4 style="font-weight: bold;">Generic</h4>
+                            <div class="input-group-check">
+                                    <div class="table-container" style="max-height:20vh; margin-bottom: 20px;">
+                                        <div class="processlist flex-list" *ngFor="let item of GprocData">
+                                        <input type="checkbox" (click)="selectProcess(item)" class="form-check-input">&nbsp;
+                                        <label class="form-check-label" for="exampleCheck1">{{item.processName}} <span
+                                                class="dds-icon dds-icon_info__l__stroke"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 style="font-weight: bold;">Client Specific</h4>
+                        <div class="input-group-check">
+                                <div class="table-container" style="max-height:20vh; margin-bottom: 20px;">
+                                <div class="processlist flex-list" *ngFor="let item of CprocData">
+                                    <input type="checkbox" (click)="selectProcess(item)" class="form-check-input">&nbsp;
+                                    <label class="form-check-label" for="exampleCheck1">{{item.processName}} <span
+                                            class="dds-icon dds-icon_info__l__stroke"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label style="color:#000 !important; margin-bottom:10px;">If you are interested in any other area, Please let us know...</label>
+                            <br>
+                            <textarea rows="8" cols="50" placeholder="Enter here...."
+                                formControlName="solutionDescription" class="form-control" style="height:130px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button mat-button color="primary" type="cancel" (click)="cancel()">Cancel</button>
+                    <button mat-button type="reset">Reset</button>
+                    <button mat-button type="submit" color="primary" class="primary">Submit </button>
+                </div>
+
+
+
+
+
+
+
+
+
+            </form>
+        </mat-card>
+    </div>
+
+</div>

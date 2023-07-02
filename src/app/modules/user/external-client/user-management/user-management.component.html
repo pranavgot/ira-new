@@ -1,0 +1,244 @@
+<div class="heading">
+    <h1>User Management</h1>
+    <ul>
+        <li><a [routerLink]="['/dashboard']">Dashboard /</a></li>
+        <li>User Management</li>
+    </ul>
+    <!-- <h5><span style="color: #0076A8;">Dashboard / </span>User Management</h5> -->
+</div>
+<div class="consen">
+<div class="row no-gutters">
+    <div class="col">
+        <mat-card>
+            <div class="cards">
+                <div class="part1">
+                    <h3 style="border-color:#0076A8;">Total Users</h3>
+                    <h2>501</h2>
+                </div>
+                <div class="part2" style="background-color: #0076A8;">
+                    <span class="dds-icon dds-icon_plus__l__stroke" routerLink="/user/external_client/add-user"></span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col">
+        <mat-card>
+            <div class="cards">
+                <div class="part1">
+                    <h3 style="border-color:#3391B9;">Level 1 Admins</h3>
+                    <h2>55</h2>
+                </div>
+                <div class="part2" style="background-color: #3391B9">
+                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col">
+        <mat-card class="">
+            <div class="cards">
+                <div class="part1">
+                    <h3 style="border-color:#66ACCB">Level 2 Admins</h3>
+                    <h2>150</h2>
+                </div>
+                <div class="part2" style="background-color: #66ACCB">
+                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col">
+        <mat-card class="">
+            <div class="cards">
+                <div class="part1">
+                    <h3 style="border-color:#51A03D;">Internal Users</h3>
+                    <h2>15</h2>
+                </div>
+                <div class="part2" style="background-color: #51A03D">
+                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col">
+        <mat-card class="">
+            <div class="cards">
+                <div class="part1">
+                    <h3 style="border-color:#C2DD91;">External Users</h3>
+                    <h2>400</h2>
+                </div>
+                <div class="part2" style="background-color: #C2DD91;">
+                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+<div>
+    <mat-card class="middle">
+        <button type="button" style="margin: 20px;" class="btnn" routerLink="/user/external_client/add-user">Add
+            User</button>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr style="background-color: #041E42; color:white">
+                        <th scope="col">User Name</th>
+                        <th scope="col">User Role</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Organization</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Level 1 Admin</td>
+                        <td>Manager</td>
+                        <td>iBridge</td>
+                        <td>+91 1234567890</td>
+                        <td>
+                            <!-- (click)="OpenModal(model)" data-target="#myModal" data-toggle="modal"-->
+                            <mat-slide-toggle></mat-slide-toggle>&nbsp;
+                            <span class="dds-icon dds-icon_edit__l__stroke" data-toggle="modal"
+                                data-target="#exampleModal" (click)="edit($event)"></span>&nbsp; &nbsp;
+                            <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Smith</td>
+                        <td>Level 1 Admin</td>
+                        <td>Manager</td>
+                        <td>iBridge</td>
+                        <td>+91 1234567890</td>
+                        <td>
+                            <mat-slide-toggle></mat-slide-toggle>&nbsp;
+                            <span class="dds-icon dds-icon_edit__l__stroke"></span>&nbsp; &nbsp;
+                            <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sumit</td>
+                        <td>Level 1 Admin</td>
+                        <td>Manager</td>
+                        <td>iBridge</td>
+                        <td>+91 1234567890</td>
+                        <td>
+                            <mat-slide-toggle></mat-slide-toggle>&nbsp;
+                            <span class="dds-icon dds-icon_edit__l__stroke"></span>&nbsp; &nbsp;
+                            <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Suman</td>
+                        <td>Level 1 Admin</td>
+                        <td>Manager</td>
+                        <td>iBridge</td>
+                        <td>+91 1234567890</td>
+                        <td>
+                            <mat-slide-toggle></mat-slide-toggle>&nbsp;
+                            <span class="dds-icon dds-icon_edit__l__stroke"></span>&nbsp; &nbsp;
+                            <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-card>
+</div>
+
+<!-- <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><label for="editOwnerName">Deployment Name</label></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="showModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+<div *ngIf="AddEventProceeding" style="padding: 0;">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;margin-bottom: 20px;">Edit Admin
+                    Information</h4>
+            </div>
+
+
+            <form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Name<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="John" class="form-control reflect-model"
+                            formControlName="name" /> -->
+                        <input type="name" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Designation<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="Manager" class="form-control reflect-model"
+                            formControlName="designation" /> -->
+                        <input type="designation" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Contact Number<sup>*</sup></label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <!-- <input type="text" placeholder="9999999999" class="form-control reflect-model"
+                                formControlName="contactnumber" /> -->
+                            <input type="contactnumber" class="form-control">
+                        </div>
+                    </div>
+                    <!-- </div>
+                <div class="row"> -->
+                    <div class="col-sm-6">
+                        <label>Email_id<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="abc@gmail.com" class="form-control reflect-model"
+                            formControlName="email" /> -->
+                        <input type="email" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label style="margin-bottom: 20px;">User Role<sup>*</sup></label> <br>
+                        <input type="radio" value="level1">&nbsp;
+                        <label style="margin-right: 50px;">Level-1 Admin</label>
+                        <input type="radio" value="level2">&nbsp;
+                        <label for="css">Level-2 Admin</label>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="float: right; margin: 5% 0 5% 0">
+                    <button mat-button style="width: 40%; height:35px; color: #0076A8; border-color: #0076A8;"
+                        (click)="CloseModal()">Cancel</button>
+                    &nbsp; &nbsp;
+                    <button mat-button style="width: 40%; height:35px; background-color: #0076A8; color: white;"
+                        routerLink="/user/admin1/user-management">Update</button>
+                </div>
+                <!-- </div> -->
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>

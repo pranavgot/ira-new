@@ -1,0 +1,302 @@
+// .content_pos {
+//     background-color: transparent;
+//     margin-top: -4%;
+// }
+
+// .container {
+//     max-width: 95%;
+//     padding: 0px;
+// }
+
+// .bg-img {
+//     margin-top: 52px;
+//     background: url(../../../../assets/images/explore_background.png) no-repeat;
+//     background-size: cover;
+//     height: 60%;
+//     width: -webkit-fill-available;
+//     padding: 0 0 25% 0;
+//     float: left;
+// }
+
+// .bot_pos {
+//     // position: absolute;
+//     // top: 70px;
+//     // right: 60px;
+//     background-color: #0076A8;
+//     padding: 5px 15px;
+//     color: #fff;
+//     margin: auto;
+//     margin-right: 60px !important;
+//     width: fit-content;
+//     cursor: pointer;
+// }
+
+// .cards {
+//     background-color: #fff;
+//     box-shadow: 0px 3px 6px #00000029;
+//     margin-bottom: 30px;
+// }
+
+// .sol {
+//     // display: flex;
+
+//     h3 {
+//         color: #005587;
+//         font-size: 24px;
+//         padding: 15px;
+//         font-family: 'open_sans-regular';
+//         line-height: 33px;
+//         margin: 0;
+//         float: left;
+//         width: 100%;
+//     }
+
+//     a {
+//         padding: 15px 0 5px 0px;
+//         position: absolute;
+//         right: 90px;
+//         border-bottom: 4px #86BC25 solid;
+//         margin-top: 3%;
+//     }
+// }
+
+// .heading {
+//     display: flex;
+//     background-color: #005587;
+
+//     h4 {
+//         font-size: 18px;
+//         padding: 10px 15px;
+//         color: #fff;
+//         margin: 0;
+//         font-family: 'open_sans-regular';
+//         line-height: 25px;
+//     }
+
+//     a {
+//         color: #FFFFFF;
+//         margin: auto;
+//         margin-right: 5px;
+//         font-size: 20px;
+//     }
+// }
+
+// .solution {
+//     box-shadow: 0px 3px 6px #00000029;
+//     margin: 0 auto 20px auto;
+//     width: 100%;
+//     height: 89%;
+//     max-width: 100%;
+//     max-height: 90%;
+
+//     img {
+//         // margin-left: 100px;
+//         width: 100%;
+//         height: 150px;
+//         // margin: 0 4% 0 61%;
+//     }
+// }
+
+// .description p {
+//     padding: 5px 20px 5px 20px;
+//     color: #000000;
+//     font-size: 14px;
+//     line-height: 20px;
+//     font-family: 'open_sans-regular';
+//     margin: 0 0 10px 0;
+// }
+
+// .block {
+//     padding: 15px;
+// }
+
+// .but {
+//     padding: 10px;
+//     vertical-align: middle;
+//     display: flex;
+//     margin: 0% 0% 0% 57%;
+
+//     .button {
+//         border: #86BC25 1px solid;
+//         color: #86BC25;
+//         margin: 5px;
+//         padding: 5px 10px;
+//         font-size: 14px;
+//         font-family: "open_sans-regular";
+//         line-height: 20px;
+//         width: 97px;
+//         margin-bottom: 30px;
+//         cursor: pointer;
+
+//         span {
+//             font-size: 17px;
+//             padding: 0 0 0 2px;
+//             vertical-align: middle;
+//         }
+
+//         &:last-child span {
+//             padding: 0 0 0 10px;
+//         }
+//     }
+// }
+
+// // .right_header .user{
+// //     padding: 25px 0 0 20px;
+// // }
+// // .right_header .border_right{
+// //     border-right: 1px #fff solid;
+// // }
+// .modal {
+//     background: rgba($color: #000000, $alpha: 0.8);
+// }
+
+// .modal-dialog {
+//     // width: auto;
+//     margin: 5vh 10% 0 10%;
+//     max-width: 80%;
+//     // height: 30vh;
+//     overflow: hidden;
+
+//     // .modal-content {
+//     // height: 75vh;
+//     // }
+
+//     .modal-header {
+//         background: #005587;
+
+//         h4 {
+//             color: #FFFFFF;
+//             font-size: 20px;
+//             font-family: 'open_sans-regular';
+//         }
+//     }
+
+//     .modal-body {
+//         overflow-y: scroll;
+//         height: 300px;
+//     }
+
+//     .modal-left {
+//         // width: 32%;
+//         display: inline-block;
+//         vertical-align: top;
+//         margin: 0 1% 0 0;
+
+//         p {
+//             display: inline-block;
+//             font-size: 14px;
+//             font-family: 'open_sans-regular';
+//             line-height: 23px;
+//             color: #000000;
+//         }
+//     }
+
+//     img {
+//         display: inline-block;
+//         margin: 0 0 0 1%;
+//         width: 32%;
+//         vertical-align: top;
+//         object-fit: contain;
+//         height: 280px;
+//     }
+// }
+
+// @media (max-width:767px) {
+//     .modal-dialog {
+//         .modal-left {
+//             width: 100%;
+//             margin: 0 0 0 0
+//         }
+
+//         img {
+//             width: 100%;
+//             margin: 20px 0 0 0
+//         }
+//     }
+// }
+
+// .taxt-header {
+//     float: left;
+//     background: #0076A8;
+//     display: flex;
+//     flex-shrink: 0;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: var(--bs-modal-header-padding);
+//     border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+//     border-top-left-radius: var(--bs-modal-inner-border-radius);
+//     border-top-right-radius: var(--bs-modal-inner-border-radius);
+//     width: 100%;
+//     padding: 10px;
+
+//     .taxt-audit-popup {
+//         width: 90%;
+//     }
+// }
+
+// .taxt-audit-popup {
+//     background: #fff;
+//     width: 65%;
+//     /* padding: 30px 30px 40px 30px; */
+//     position: absolute;
+//     top: 52%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+// }
+
+// .taxt-audit-popup1 {
+//     background: #fff;
+//     height: 82%;
+//     width: 100%;
+//     position: absolute;
+//     /* bottom: 44%; */
+//     /* top: 27%; */
+//     // margin-left: 50%;
+//     margin-top: 25%;
+//     /* height: 32%; */
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+// }
+
+// .blink_me {
+//     animation: blinker 1s linear infinite;
+//   }
+  
+//   @keyframes blinker {  
+//     50% { opacity: 0; }
+//   }
+
+//   .search {
+//     width: 25%;
+//     float: right;
+//     border-radius: 0;
+//     box-shadow: inset 0px 2px 2px #00000029;
+//     border: 1px solid #CCCCCC;
+//     font-size: 14px;
+//     line-height: 19px;
+//     font-family: 'open_sans-regular';
+//     color: #000000;
+//     padding: 5.5px 10px;
+//     background: #FFFFFF;
+//     margin: 20px 59px 20px 0px;
+
+//     input {
+//         font-size: 12px;
+//         border-radius: 0;
+//         border: 0px none;
+//         padding: 0;
+//         margin: 0 3px 0 0;
+//         width: calc(100% - 30px);
+//         float: left;
+
+//         &:focus {
+//             box-shadow: none;
+//         }
+//     }
+
+//     .dds-icon {
+//         float: left;
+//         padding: 3px 0 0 0;
+//         font-size: 17px; height: auto;
+//     }
+// }

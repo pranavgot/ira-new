@@ -1,0 +1,191 @@
+<!-- <p>service-request2 works!</p> -->
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Dashboard </li>
+            <li>Service Request</li>
+        </ul>        
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card class="table-group">
+            <div class="header">
+                <h3>Service Request</h3>
+            </div>
+    
+                <form>
+                    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <label>Request Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <label>Message</label>
+                                <textarea type="requestdate" rows="4" cols="4" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                                 <div class="input-group">
+                                    <div class="flex-list">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label>Request for Admin Access</label>
+                                    </div>
+                                 </div>   
+                                 <div class="input-group">
+                                    <div class="flex-list">
+                                        <input type="radio" value="level1">
+                                        <label>Level-1 Admin</label>
+                                    </div>
+                                 </div>   
+                                 <div class="input-group">
+                                    <div class="flex-list">
+                                        <input type="radio" value="level2">
+                                        <label for="css">Level-2 Admin</label>
+                                    </div>
+                                 </div>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="flex-list">
+                                    <input type="checkbox" class="form-check-input">
+                                    <label class="form-check-label" for="exampleCheck1">Solution Board</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group date">
+                                <label for="startdate">Start Date</label>
+                                <input type="date" id="startdate" class="form-control" name="startdate">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group date">
+                                <label for="enddate">End Date</label>
+                                <input type="date" id="enddate" class="form-control" name="enddate">
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="flex-list">
+                                    <input type="checkbox" class="form-check-input">
+                                    <label class="form-check-label" for="exampleCheck1">Extended Workspace</label>
+                                </div>
+                           </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group date">
+                                <label for="startdate">Start Date</label>
+                                <input type="date" id="startdate" class="form-control" name="startdate">
+    
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label for="enddate">End Date</label>
+                                <input type="date" id="enddate" class="form-control" name="enddate">
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="flex-list">
+                                    <input type="checkbox" class="form-check-input">
+                                    <label class="form-check-label" for="exampleCheck1">Custom Data Workspace</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group date">
+                                <label for="startdate">Start Date</label>
+                                <input type="date" id="startdate" class="form-control" name="startdate">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group date">
+                                <label for="enddate">End Date</label>
+                                <input type="date" id="enddate" class="form-control" name="enddate">
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="row">
+                        <!-- <div class="col fin"> -->
+                            <!-- <div class="heads">
+                                <h4>Subscriptions</h4>
+                            </div> -->
+                            <div class="table-container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th></th> -->
+                                            <th scope="col">Solutions</th>
+                                            <th scope="col">Start Date</th>
+                                            <th scope="col">End Date</th>
+                                            <th scope="col">Number of Runs</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input" style="margin-right: 20px;">Payroll</td>
+                                            <td>04-12-2020</td>
+                                            <td>04-12-2022</td>
+                                            <td style="padding-left:5%">5</td>
+                                            <td>Active</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input" style="margin-right: 20px;">Duplicate Invoice</td>
+                                            <td>04-12-2020</td>
+                                            <td>04-12-2022</td>
+                                            <td style="padding-left:5%">3</td>
+                                            <td>Expired</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input" style="margin-right: 20px;">Payscale</td>
+                                            <td>04-12-2020</td>
+                                            <td>04-12-2022</td>
+                                            <td style="padding-left:5%">4</td>
+                                            <td>Active</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input" style="margin-right: 20px;">Solution Board</td>
+                                            <td>04-12-2020</td>
+                                            <td>04-12-2022</td>
+                                            <td style="padding-left:5%">NA</td>
+                                            <td>Expired</td>
+                                        </tr>
+                                    </tbody>
+                                </table>    
+                            </div>
+                                
+                    <!-- </div> -->
+                </div>
+    
+    
+                    
+                </form>
+        </mat-card>
+    </div>
+    <div class="button-group">
+        <button mat-button>Cancel <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+        <button mat-button class="primary"
+            routerLink="/user/internal_user/service-request">Submit <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+    </div>
+</div>

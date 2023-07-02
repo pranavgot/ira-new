@@ -1,0 +1,1436 @@
+<div class="heading">
+    <h1 style="margin: 0 0 5px">New Solution</h1>
+    <h5><span style="color: #0076A8;">Dashboard / </span>Solution Board / New Solution</h5>
+</div>
+<div class="consen">
+    <h5 style="padding: 10px;">Dataset(s) Preparation:</h5>
+
+    <div class="bttn" style="display: flex;">
+        <ng-container *ngFor="let item of tabs;let i = index;">
+            <button mat-button [class.active]="item.isActive">{{item.value}}<span *ngIf="!((tabs.length-1)==i)"
+                    class="dds-icon dds-icon_chevron_right__l__stroke next"></span></button> &nbsp;
+
+        </ng-container>
+    </div>
+    <div *ngIf="tabs[0].id == 0 && tabs[0].isActive == true">
+        <mat-card>
+            <!-- <form> -->
+            <div class="row">
+
+                <!-- and choose the sheets within it. -->
+                <div>
+                    <div style="float:left ; width:100%" *ngIf="!showUploadFilesTab">
+                        <div class="but">
+
+                            <div>
+                                <!-- <button mat-raised-button matTooltip="file01-sheet1 &#13; file02-sheet2xyzabc&#13;a3"      
+                                aria-label="Button that displays a tooltip when focused or hovered over">
+                                <span class="dds-icon dds-icon_info__l__stroke" style="color: #26890d"></span>
+                            </button> -->
+                                <!-- http://devriaapi.ibridgets.com/RIA_CMN_MSTR/ria/ProcessMaster/getProcess -->
+                                <!-- <button mat-raised-button (click)="openDialog()">Pick one</button>
+
+                                <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                                <mat-menu #menu="matMenu">
+                                    <mat-accordion multi class="mat-table" is-open="true">
+                                        <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+                                            <mat-expansion-panel-header class="mat-row">
+                                                <span class="mat-cell">{{item.Fueling_Position}}</span>
+                                            </mat-expansion-panel-header>
+                                            <mat-accordion>
+                                                <div *ngFor="let comp of item.Components">
+                                                    <div (click)="accordionExpValue(comp,comp.Component)">
+                                                        {{comp.Component}}</div>
+                                                </div>
+                                            </mat-accordion>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu> -->
+
+                                <!-- <div class="dropdown">
+                                    <span>Mouse over me</span>
+                                    <div class="dropdown-content">
+                                    <p>Hello World!</p>
+                                    </div>
+                                  </div> -->
+                                <label for="inputfile" class="button">
+                                    <input type="file" id="inputfile" (change)="saveiputFiles($event)"
+                                        style="display: none;" multiple />
+                                    <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                    <br>
+                                    <h5>Upload Files</h5>
+                                    <p style="font-size: 9px;color: #707070;">Note: Exclude .JS and .EXE files</p>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="showUploadFilesTab">
+                        <span class="note required-field">Choose the sheets within the file(s)</span>
+                        <div class="header">
+                            <h5>Uploaded Files</h5>
+                        </div>
+
+                        <div class="selectCheck">
+                            <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                (change)="checkUncheckAllUploadFiles()" />
+                            <label>Select All</label>
+                        </div>
+
+                    </div>
+
+
+                    <table *ngFor="let item of fileListt" class="createNewSoltionsTable">
+                        <thead>
+                            <tr>
+                                <th><span class="dds-icon dds-icon_file_xls__l__filled"></span>{{item.fileName}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sheet of item.totalSheetList">
+                                <td><input type="checkbox" [(ngModel)]="sheet.isSheetSelected" class="form-check-input"
+                                        (change)="isAllSelectedUploadFiles()" style="margin:0 8px 0 0">
+                                    <img src="../../../../assets/images/xls_sheet.png" alt="" width="15px" height="15px"
+                                        style="margin:0 5px 0 0;"> <label>{{sheet.sheetName}}</label>
+                                </td>
+                            </tr>
+                            <tr *ngIf="item.isProgressBar">
+                                <td>
+                                    <img src="../../assets/images/loading.gif" alt="" width="20px" height="20px"
+                                        style="margin-top: -4px;margin-left: 100px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style=" text-align: right; margin:20px 0 0 0">
+                    <button *ngIf="fileListt.length > 0" mat-button class="btnn"
+                        (click)="showUploadFilesTab = false;fileListt = [];masterSelected = false;"
+                        style="border:1px solid #0076A8; background: #fff; color: #0076A8;">Prev</button>
+                    <button *ngIf="fileListt.length > 0" mat-button class="btnn" [disabled]="isUploadFilesNextBtnEnable"
+                        (click)="changeTabs({ id: 1})">Next</button>
+                </div>
+                <!--intg Chgs-->
+                <!-- <div style=" text-align: right; margin:20px 0 0 0">
+                    <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                        (click)="showUploadFilesTab = false;fileListtt = [];masterSelected = false;"
+                        style="border:1px solid #0076A8; background: #fff; color: #0076A8;">Prev</button>
+                    <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                        (click)="changeTabs({ id: 1})">Next</button>
+                </div> -->
+            </div>
+        </mat-card>
+    </div>
+
+    <!--intg Chgs-->
+
+    <ng-container *ngIf="tabs[1].id == 1 && tabs[1].isActive == true">
+
+        <mat-card style="padding-bottom: 70px;">
+            <span class="note required-field">Click the view icon to see a preview of the filtered files' or sheets'
+                information.
+            </span>
+            <div class="sheet">
+                <div class="header">
+                    <h5>Selected Files
+                        <span style="float: right;">Preview Data</span>
+                    </h5>
+                </div>
+                <div>
+                    <table *ngFor="let item of fileListtt;let i = index;" class="createNewSoltionsTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="dds-icon dds-icon_file_xls__l__filled"></span>{{item.fileName}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let sheet of item.totalSheetList; let j = index;">
+                            <tr *ngIf="sheet?.isSheetSelected">
+                                <td style="padding-left: 50px"><img src="../../../../assets/images/xls_sheet.png" alt=""
+                                        width="15px" height="15px" style="margin:0 5px 0 0;"><label>
+                                        {{sheet.sheetName}}</label>
+
+                                    <span (click)="previewPopup('', '', '', '',sheet.tableName)"
+                                        class="dds-icon dds-icon_eyeopen" style="float: right;"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="float: right; margin-top: 20px">
+                    <button *ngIf="fileListt.length > 0" mat-button class="btnn"
+                        (click)="changeTabs({ id: 0})">Prev</button>
+                    <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                        (click)="changeTabs({ id: 2});createIdentical(-1);hideCreateIdenticalBtn=false;">Next</button>
+                </div>
+            </div>
+        </mat-card>
+    </ng-container>
+
+    <div class="combination" *ngIf="tabs[2].id == 2 && tabs[2].isActive == true">
+        <ng-container *ngIf="sortedList[0].length != 0">
+            <ng-container *ngFor="let table of sortedList; let i=index">
+                <h3>Append Sheets</h3>
+                <span class="note required-field">To append the sheets, please choose the ones with identical columns.
+                    Select atleast two sheets for appending </span>
+                <!-- <div class="header">
+                    <h5>Select the combination</h5>
+                </div> -->
+                <!-- <h6>
+                    <span>Filename</span>
+                    <span style="margin-left: 44%;">Sheetname</span>
+                </h6> -->
+                <table class="createNewSoltionsTable appendTable">
+                    <thead style="background-color: #0076A8">
+                        <tr>
+                            <th style="padding-left:78px !important ;background-color: #0076A8;">Filename</th>
+                            <th style="width: 50%" style="padding-left:53px !important ;background-color: #0076A8;">
+                                Sheetname</th>
+                            <th style="background-color: #0076A8;">Preview</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trrr" *ngFor="let item of table; let j=index">
+                            <td>
+
+                                <input type="checkbox" [(ngModel)]="item.isSelected"
+                                    (change)="isAllSelected($event,item,i, j)"><span style="color: #26890d"
+                                    class="dds-icon dds-icon_file_xls__l__filled"></span>{{item.fileName}}
+                            </td>
+                            <td style="width: 50%">
+                                <img src="../../../../assets/images/xls_sheet.png" alt="" width="15px" height="15px"
+                                    style="margin:0 5px 0 0;"> {{item.sheetName}}
+                            </td>
+                            <td><span (click)="previewPopup('', '', '', '',item.tableName)"
+                                    class="dds-icon dds-icon_eyeopen" style="float: right;"></span></td>
+                            <!-- <td style="width: 50%"> </td> -->
+
+                        </tr>
+                    </tbody>
+                </table><!-- (click)="createIdentical(i)"  -->
+                <div *ngIf="submitted" class="error">{{submittedErrorMsg}}</div>
+
+                <button mat-button class="btnn" [disabled]="!hideCreateIdenticalBtnWithLength" (click)="addAppendName()"
+                    style="margin: 30px;">
+                    Append</button>
+            </ng-container>
+        </ng-container>
+        <button mat-button class="btnn" *ngIf="hideCreateIdenticalBtn" style="margin: 30px;"
+            (click)="createIdentical(-1);hideCreateIdenticalBtn=false;">
+            Append</button>
+
+
+
+
+        <table *ngIf="sortedCheckedList.length != 0" class="createNewSoltionsTable appendTable">
+            <thead>
+                <tr>
+                    <th colspan="3" style="text-align: left;background-color: #0076A8">Append Set(s)</th>
+                </tr>
+            </thead>
+            <tbody class="append">
+                <ng-container *ngFor="let item of sortedCheckedList; let k=index">
+                    <tr style="padding-left: 60px ;height: auto; padding: 10px 60px; border-bottom: 0px none;">
+
+                        <td colspan="3" style="width: 50px;vertical-align: baseline;
+                        font-weight: bold;">{{item.showAppendName}}</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid;">
+                        <td>
+                            <div *ngFor="let value of item.tableList" style="margin:0 0 5px 0">
+                                <span class="dds-icon dds-icon_file_xls__l__filled" style="color: #26890d"></span>
+                                {{value.fileName}}
+                            </div>
+                        </td>
+                        <td style="width: 50%">
+                            <div *ngFor="let value of item.tableList" style="margin:0 0 5px 0">
+                                <img src="../../../../assets/images/xls_sheet.png" alt="" width="15px" height="15px"
+                                    style="margin:0 5px 0 0;"><label>{{value.sheetName}}</label>
+                            </div>
+                        </td>
+                        <td style="width:110px; text-align: center;">
+                            <span class="dds-icon dds-icon_eyeopen"></span>
+                        </td>
+
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <br>
+        <button mat-button class="btnn" *ngIf="sortedCheckedList.length != 0" style="margin: 25px;"
+            (click)="createIdentical(-1);hideCreateIdenticalBtn=false; mergeCheckedList = [];sortedCheckedList = []">
+            Reset </button>
+
+        <div style="float: right;">
+            <button *ngIf="fileListtt.length > 0" mat-button class="btnn" (click)="changeTabs({ id: 1})">Prev</button>
+            <button *ngIf="fileListtt.length > 0" mat-button class="btnn" (click)="saveAppendAPI()">Save</button>
+            <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                (click)="changeTabs({ id: 3},'unChedkedList')">Next</button>
+        </div>
+    </div>
+
+
+    <div class="combination" *ngIf="tabs[3].id == 3 && tabs[3].isActive == true">
+        <ng-container>
+            <span class="note required-field">Select the files, then join them based on common columns </span>
+            <div class="header">
+                <!-- <h5>Combinations</h5> -->
+                <h5>Files
+                    <div style="float: right; margin-right: 28px">Preview</div>
+                </h5>
+            </div>
+
+            <!--join form-->
+            <!-- combination -->
+            <table *ngIf="sortedCheckedList.length > 0" class="table table-striped createNewSoltionsTable">
+                <tbody>
+                    <tr class="" *ngFor="let obj of sortedCheckedList; let i = index">
+                        <!-- (change)="isAllSelected($event,item,i, j)" -->
+                        <td><input type="checkbox" [(ngModel)]="obj.isSelected" (change)="checkedInJoin($event,obj,i)"
+                                style=" margin-right: 10px;">
+                            {{obj.showAppendName}}
+                            <div class="rightIcons">
+                                <span class="dds-icon dds-icon_eyeopen"></span>
+                            </div>
+                        </td>
+                        <!-- <button *ngIf="mergeCheckedList.length != 0" mat-button class="btnn" (click)="resetMerge()">Reset</button>  -->
+                        <!-- <td style="width: 100%;"></td> -->
+
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="submitted" class="error">{{submittedErrorMsg}}</div>
+
+            <button *ngIf="sortedCheckedList.length > 0" mat-button class="btnn" (click)="join2Sheets()">Join</button>
+
+            <div *ngIf="mergeCheckedList.length != 0">
+
+                <form style="border: 1px #000 solid;" [formGroup]="joinSetForm">
+                    <div class="row" style="background-color: #0076A8; color: #fff; width: 100%; margin: auto;">
+                        <div class="col-md-2" style="font-weight: 600;background-color: #0076A8; color: #fff;">Join Set
+                        </div>
+                        <div class="col-md-3" style="font-weight: 600;background-color: #0076A8; color: #fff;"></div>
+                        <div class="col-md-3" style="font-weight: 600;background-color: #0076A8; color: #fff;"></div>
+                        <div class="col-md-3" style="font-weight: 600;background-color: #0076A8; color: #fff;"></div>
+                        <div class="col-md-1" style="font-weight: 600;background-color: #0076A8; color: #fff;"></div>
+                    </div>
+                    <div formArrayName="Merg">
+                        <div *ngFor="let merg of MergeArr().controls ;let i=index;" [formGroupName]="i">
+
+                            <div class="" style="padding: 7px;">Join Table Name : {{mergeCheckedList[i].showMergeName}}
+                            </div>
+                            <div formArrayName="tableControl">
+                                <div class="" *ngFor="let table of TableArr(i).controls ;let j=index;"
+                                    [formGroupName]="j">
+                                    <div class="row">
+
+                                        <div class="col-md-2"></div>
+
+                                        <div class="col-md-3">
+
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control" [placeholder]="placetable"
+                                                    formControlName="table1"
+                                                    (selectionChange)="selectPrimaryTable($event,j,i)">
+                                                    <ng-container
+                                                        *ngFor="let data of mergeCheckedList[i]?.dropDownList[j].primaryTableList">
+                                                        <!-- <ng-container *ngFor="let pt of data.primaryTableList"> -->
+                                                        <mat-option [value]="data">
+                                                            <!-- <mat-option  [hidden]="!pt.isSelected && j!=0" [hidden]="item.isSelected" [value]="item"> -->
+                                                            <!-- *ngIf="!item.isSelected"-->
+
+                                                            {{data.value}}
+
+                                                        </mat-option>
+                                                        <!-- </ng-container> -->
+                                                    </ng-container>
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div class="col-md-2">
+
+
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control" placeholder="Select Join"
+                                                    (selectionChange)="selectJoin($event,j,i)" formControlName="join">
+                                                    <mat-option *ngFor="let value of joinType" [value]="value">
+                                                        {{value}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div class="col-md-3">
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control" placeholder="Select Foreign Table"
+                                                    formControlName="table2"
+                                                    (selectionChange)="selectForeignTable($event,j,i)">
+                                                    <ng-container
+                                                        *ngFor="let dataa of mergeCheckedList[i]?.dropDownList[j].foreignTableList">
+                                                        <!-- <ng-container *ngFor="let ft of dataa.foreignTableList"> -->
+                                                        <!-- [hidden]="pt.isSelected" -->
+                                                        <mat-option [value]="dataa">{{dataa.value}} </mat-option>
+                                                        <!-- </ng-container> -->
+                                                    </ng-container>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button mat-button class="dds-icon dds-icon_plus__l__stroke btnn"
+                                                style="color: #fff;font-size: 14px;" (click)="addTableJoins(i,j)"
+                                                [disabled]="mergeCheckedList[i]?.allTablesSelected" *ngIf="j==0"
+                                                style=" line-height:14px;color: #fff;font-size: 14px;" title="Table">
+                                            </button>
+                                            <button mat-button class="dds-icon dds-icon_delete__l__stroke btnn"
+                                                style="color: #fff;font-size: 14px;" *ngIf="j!=0"
+                                                (click)="removeTable(i,j)"
+                                                style="width: 50px; font-size:22px; line-height:14px; color: #fff;font-size: 14px;"></button>
+                                        </div>
+                                    </div>
+
+
+                                    <div formArrayName="column">
+                                        <div *ngFor="let item of columnArr(i,j).controls ;let k=index;"
+                                            [formGroupName]="k">
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+
+                                                <div class="col-md-3">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-select class="form-control" placeholder="Select Column"
+                                                            formControlName="column1"
+                                                            (selectionChange)="selectPrimarykey($event,k,j,i)">
+                                                            <mat-option
+                                                                *ngFor="let item of mergeCheckedList[i]?.dropDownList[j]?.columns[k]?.primaryKeyList"
+                                                                [value]="item">
+                                                                {{item.fieldName}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-select class="form-control" placeholder="Select Column"
+                                                            formControlName="column2"
+                                                            (selectionChange)="selectForeignKey($event, k,j,i)">
+                                                            <mat-option
+                                                                *ngFor="let item of mergeCheckedList[i]?.dropDownList[j]?.columns[k]?.foreignKeyList"
+                                                                [value]="item">
+                                                                {{item.fieldName}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-2" style="border-bottom: 1px solid;">
+                                                    <button mat-button class="dds-icon dds-icon_plus__l__stroke btnn"
+                                                        style="color: #fff;font-size: 14px;"
+                                                        (click)="addColumnJoin(i,j)" *ngIf="k==0"
+                                                        style="line-height:14px; color: #fff;font-size: 14px;"
+                                                        title="Column">
+                                                    </button>
+                                                    <button mat-button class="dds-icon dds-icon_delete__l__stroke btnn"
+                                                        style="color: #fff;font-size: 14px;" *ngIf="k!=0"
+                                                        (click)="removeCol(i,j,k)"
+                                                        style="width: 50px; font-size:22px; line-height:14px; color:#fff;font-size: 14px;"></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <button *ngIf="mergeCheckedList.length != 0" mat-button class="btnn" style="float: left;"
+                (click)="resetMerge()">Reset</button>
+
+            <div style="float: right;">
+                <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                    (click)="changeTabs({ id: 2},'prevInMerge')">Prev</button>
+                <button *ngIf="fileListtt.length > 0" mat-button class="btnn" (click)="MergeSubmit()">Save</button>
+                <button *ngIf="fileListtt.length > 0" mat-button class="btnn"
+                    (click)="changeTabs({ id: 4},'appendList')">Next</button>
+            </div>
+        </ng-container>
+    </div>
+
+
+
+    <ng-container *ngIf="tabs[4].id == 4 && tabs[4].isActive == true">
+        <div class="row targetFileRow">
+            <span class="note required-field" style="margin:10px 0 0 0; width:calc(100% - 120px)">Here is the complete
+                list
+                of files
+                that are appended, joined, and other individual
+                files that can be used to build the datasets. </span>
+            <!-- <button mat-button class="btnn preview" (click)="showTargetFilePopup = true;">Preview</button> -->
+            <div class="col-md-6">
+                <ng-container *ngFor="let tf of targetFiles;let i= index;">
+                    <ng-container *ngIf="tf.fileType == 'append'">
+                        <div class="col-md-12 combination scroll" style="padding: 0px">
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr class="header">
+                                        <th>Append Files</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sl of tf.sheetList;let j = index">
+                                        <td style="width: 1%;border: 0;cursor: pointer;"
+                                            [class.active]="sl.isRowTabAvtive"
+                                            (click)="fileClickedinTF(j,i,sl,tf.fileType)">
+                                            {{sl.appendName}}
+                                            <span (click)="previewPopup('', '', '', '',sl.appendName)"
+                                                class="dds-icon dds-icon_eyeopen" style="float: right;"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="tf.fileType == 'join'">
+                        <div class="col-md-12 combination scroll" style="padding: 0px">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="header">
+                                        <th>Join Files</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sl of tf.sheetList;let j = index">
+                                        <td style="width: 1%;border: 0;cursor: pointer;"
+                                            [class.active]="sl.isRowTabAvtive"
+                                            (click)="fileClickedinTF(j,i,sl,tf.fileType)">
+                                            {{sl.mergeName}}
+                                            <span (click)="previewPopup('', '', '', '',sl.mergeName)"
+                                                class="dds-icon dds-icon_eyeopen" style="float: right;"></span>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="tf.fileType == 'files'">
+
+                        <div class="col-md-12 combination scroll" style="padding: 0px">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="header">
+                                        <th>Source Files</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let sl of tf.sheetList;let j = index;">
+
+                                    <tr>
+                                        <td style="width: 1%;border: 0;cursor: pointer;"
+                                            [class.active]="sl.isRowTabAvtive"
+                                            (click)="fileClickedinTF(j,i,sl,tf.fileType)">
+                                            {{sl.fileName}}
+                                            <span (click)="previewPopup('', '', '', '',sl.tableName)"
+                                                class="dds-icon dds-icon_eyeopen" style="float: right;"></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </ng-container>
+                </ng-container>
+            </div>
+
+
+            <div class="col-md-6 scroll" style="margin-top: 10px;padding: 0;">
+                <table class="table table-striped" *ngIf="clickedRowDataInTF?.length != 0">
+                    <thead>
+                        <tr style="background-color: #0076A8; z-index: 1;">
+                            <th scope="col" style="margin:auto; color: #fff; width: 10%">#</th>
+                            <th scope="col" style="margin:auto; color: #fff; width: 25%">Column Name</th>
+                            <th scope="col" style="margin:auto;color: #fff; width: 20%">Data Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let rowObj of clickedRowDataInTF; let k = index">
+                            <td scope="row" style="width:10%">
+                                <input type="checkbox" [(ngModel)]="rowObj.isChecked">
+                            </td>
+                            <td style="width:25%">
+                                <!--make it column name-->
+                                <ng-container
+                                    *ngIf="fileTypeInTF == 'files' || fileTypeInTF == 'append'|| fileTypeInTF == 'join'">
+                                    <span mat-raised-button matTooltip="{{rowObj.fieldName}}" matTooltipPosition="above"
+                                        matTooltipClass="allow-cr"
+                                        aria-label="Button that displays a tooltip in various positions">
+                                        <div>{{rowObj.fieldName}}</div>
+                                    </span>
+                                </ng-container>
+                            </td>
+                            <td style="width:20%;">
+                                <mat-form-field appearance="fill">
+                                    <mat-select class="form-control" placeholder="Select DataType"
+                                        [(ngModel)]="rowObj.columnType">
+                                        <mat-option *ngFor="let dt of dataTypee" [value]="dt.value">
+                                            {{dt.value}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+            <div style="margin-left: 83%; width: auto;">
+                <!-- *ngIf="fileListtt.length > 0" -->
+                <button mat-button class="btnn" (click)="changeTabs({ id: 3})">Prev</button>
+                <button mat-button class="btnn" (click)="changeTabs({ id: 5})">Next</button>
+
+
+            </div>
+        </div>
+    </ng-container>
+
+
+
+
+    <div *ngIf="tabs[5].id == 5 && tabs[5].isActive == true">
+        <mat-card>
+            <span class="note required-field">Use the column names from the files listed below to create the dataset(s),
+                then
+                define the dataset columns using analytical operations or by using the column name directly.</span>
+            <div>
+                <button mat-button class="btnn" style="margin-left: 0px !important ;"
+                    (click)="allExpandState = true">Expand
+                    All </button>
+                <button mat-button class="btnn" (click)="allExpandState = false">Collapse All </button>
+
+                <button mat-button class="btnn" style="width: 135px; float: right;" (click)="createDataSetinDM()">
+                    Create DataSet</button>
+                <button mat-button class="btnn" style="width: 135px; float: right;"
+                    (click)="enableUploadSQLPopup = true;sqlScriptForm.reset()">
+                    Upload SQL Script</button>
+            </div>
+
+
+            <div class="dataModeling">
+                <div class="row">
+                    <div class="col-md-5 combination ">
+                        <ng-container *ngFor="let tf of targetFiles">
+                            <div class="scroll" style="margin-bottom: 10px;">
+                                <ng-container *ngIf="tf.fileType =='append'">
+
+                                    <div class="header" style="position: sticky;top:0; z-index: 1">
+                                        <h5>Append Files</h5>
+                                    </div>
+
+                                    <mat-accordion multi class="mat-table" is-open="true">
+                                        <mat-expansion-panel [expanded]="allExpandState"
+                                            (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                                            *ngFor="let item of tf.sheetList;let i=index;">
+
+                                            <mat-expansion-panel-header class="mat-row">
+                                                <p class="dataP">{{item.appendName}}</p>
+
+                                                <div class="rightIcons1">
+                                                    <span (click)="previewPopup('', '', '', '',item.appendName)"
+                                                        class="dds-icon dds-icon_eyeopen"></span>
+                                                </div>
+                                            </mat-expansion-panel-header>
+                                            <mat-accordion *ngFor="let comp of item.tableAppendFieldsDto;let j=index;"
+                                                style="cursor: pointer;">
+                                                <div (click)="accordionFilesRowClicked(item,i,comp,j,'AF')">
+                                                    {{comp.fieldName}}</div>
+                                            </mat-accordion>
+
+
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </ng-container>
+                            </div>
+
+                            <div class="scroll" style="margin-bottom: 10px;">
+                                <ng-container *ngIf="tf.fileType =='join'">
+                                    <div class="header" style="position: sticky;top:0;z-index: 1">
+                                        <h5>Join Files</h5>
+                                    </div>
+                                    <mat-accordion multi class="mat-table" is-open="true">
+                                        <mat-expansion-panel [expanded]="allExpandState"
+                                            (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                                            *ngFor="let item of tf.sheetList;let i=index;">
+                                            <mat-expansion-panel-header class="mat-row">
+                                                <p class="dataP">{{item.mergeName}}</p>
+
+                                                <div class="rightIcons1">
+                                                    <span (click)="previewPopup('', '', '', '',item.mergeName)"
+                                                        class="dds-icon dds-icon_eyeopen"></span>
+                                                </div>
+                                            </mat-expansion-panel-header>
+                                            <mat-accordion class="scroll"
+                                                *ngFor="let comp of item.mergeFieldListDTO;let j=index;"
+                                                style="cursor: pointer;">
+                                                <div (click)="accordionFilesRowClicked(item,i,comp,j,'JF')">
+                                                    {{comp.fieldName}}</div>
+                                            </mat-accordion>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </ng-container>
+                            </div>
+
+                            <div class="scroll" style="margin-bottom: 10px;">
+                                <ng-container *ngIf="tf.fileType =='files'">
+                                    <div class="header" style="position: sticky;top:0;z-index: 1;">
+                                        <h5>Source Files</h5>
+                                    </div>
+                                    <mat-accordion multi class="mat-table" is-open="true">
+                                        <mat-expansion-panel [expanded]="allExpandState"
+                                            (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                                            *ngFor="let item of tf.sheetList;let i=index;">
+
+                                            <mat-expansion-panel-header class="mat-row">
+                                                <p class="dataP">{{item.fileName}}</p>
+
+                                                <div class="rightIcons1">
+                                                    <span class="dds-icon dds-icon_eyeopen"
+                                                        (click)="previewPopup('', '', '', '',item.tableName)"></span>
+                                                </div>
+                                            </mat-expansion-panel-header>
+                                            <mat-accordion *ngFor="let comp of item.sheet;let j=index;"
+                                                style="cursor: pointer;">
+                                                <div (click)="accordionFilesRowClicked(item,i,comp,j,'SF')">
+                                                    {{comp.fieldName}}</div>
+                                            </mat-accordion>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+
+
+                        <!-- 
+                            
+                        <ng-container *ngIf="tf.fileType =='files'">
+                            <mat-expansion-panel-header class="mat-row">
+                                {{item.fileName}}
+                            </mat-expansion-panel-header>
+                            <mat-accordion *ngFor="let comp of item.sheet;let j=index;">
+                                <div (click)="accordionFilesRowClicked(item,i,comp,j,'JF')">
+                                    {{comp.fieldName}}</div>
+                            </mat-accordion>
+                        </ng-container> -->
+
+
+
+                        <div class="scroll">
+                            <div class="header" style="position: sticky;top:0; z-index: 1">
+                                <h5>DataSet Files <span style="float: right;">Actions</span></h5>
+                            </div>
+
+                            <!-- datasetDetailsListShowList -->
+                            <div *ngIf="allDatasetDetailsList?.length == 0 || allDatasetDetailsList == null"
+                                class="mat-table" style="text-align: center; font-size:13px">No files found</div>
+                            <mat-accordion multi class="mat-table" is-open="true"
+                                *ngIf="allDatasetDetailsList?.length != 0">
+
+                                <mat-expansion-panel [expanded]="allExpandState" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false"
+                                    *ngFor="let item of allDatasetDetailsList; let i = index">
+                                    <!-- (click)="datasetTableExpand(item,i)" -->
+                                    <mat-expansion-panel-header class="mat-row" style="margin-top: 30px;">
+                                        <input type="checkbox" (click)="onCheck(item)" class="form-check-input">&nbsp;
+
+                                        <p class="dataP">{{item.datasetName}}</p>
+
+                                        <div class="rightIcons">
+                                            <span class="dds-icon dds-icon_eyeopen" title="View Dataset"
+                                                (click)="previewPopup('','','','',item.datasetName)"></span>
+                                            <span class="dds-icon dds-icon_edit__l__stroke" title="Edit Dataset"
+                                                (click)="editDatasetFile(item)"></span>
+                                            <span class="dds-icon dds-icon_file" title="View Script"
+                                                (click)="callGetViewscript(item)"></span>
+                                            <span (click)="deleteTables($event,item,i,'dataset')"
+                                                class="dds-icon dds-icon_delete__l__stroke"></span>
+                                        </div>
+
+                                    </mat-expansion-panel-header>
+                                    <!-- -->
+                                    <mat-accordion *ngFor="let comp of item.datasetFieldDTOList;let j = index;"
+                                        style="cursor: pointer;">
+                                        <div (click)="accordionFilesRowClicked(item,i,comp,j,'DS')">
+                                            {{comp.fieldName}}</div>
+                                    </mat-accordion>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 combination expTable" *ngIf="createExpressionList.length != 0">
+                        <div class="header">
+                            <h5>Create Expression</h5>
+                        </div>
+                        <form [formGroup]="createExpressionForm">
+
+                            <table class="table table-striped" *ngFor="let item of createExpressionList;let i= index;"
+                                style="margin-bottom:60px ;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:100%;text-align: left;">
+
+                                            <input (select)="inputInCreateExpression($event,i)"
+                                                formControlName="sourceFieldName"
+                                                (click)="inputInCreateExpression($event,i)"
+                                                (keyup)="inputInCreateExpression($event,i)"
+                                                [value]="item.sourceFieldName" placeholder="Column Name"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': submited && createExpressionForm.controls['sourceFieldName'].errors }"
+                                                maxlength="50" />
+
+
+                                            <div class="row" style="margin-top: 10px;">
+                                                <mat-form-field appearance="fill" class="col-md-6"
+                                                    style="padding-left: 1px;">
+                                                    <mat-select class="form-control" placeholder="Select DataType"
+                                                        formControlName="columnType" [value]="item.columnType"
+                                                        (selectionChange)="changeDTinCreateExpression($event,i)"
+                                                        [ngClass]="{ 'is-invalid': submited && createExpressionForm.controls['columnType'].errors }">
+                                                        <mat-option *ngFor="let dt of dataTypee" [value]="dt.value">
+                                                            {{dt.value}}</mat-option>
+                                                    </mat-select>
+
+                                                </mat-form-field>
+
+                                                <ng-container *ngIf="item.isColumnType">
+                                                    <mat-form-field appearance="fill" class="col-md-6"
+                                                        style="padding-right: 1px;">
+                                                        <mat-select class="form-control" placeholder="Select DateFormat"
+                                                            formControlName="dateTimeFormats">
+                                                            <!-- (selectionChange)="changeDateTimeinCreateExpression($event,i)" -->
+                                                            <mat-option *ngFor="let dt of dateTimeFormats"
+                                                                [value]="dt.value">
+                                                                {{dt.value}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </ng-container>
+                                            </div>
+
+
+                                            <div class="row" style="margin-top: 10px">
+
+                                                <div class="dropdown col-md-1">
+                                                    <div>
+                                                        <img src="../../assets/images/fx.png" alt="" id="menu" style="vertical-align: middle;                              margin: auto;
+                                                    width: 28px;
+                                                    height: 26px;"
+                                                            (click)="isOpenAccordion = (isOpenAccordion == false) ? true : false">
+                                                    </div>
+                                                    <div class="dropdown-content scroll">
+                                                        <div class="search">
+                                                            <input id="form1" class="form-control" placeholder="Search"
+                                                                (keyup)="applyFilter($event)" />
+                                                            <span
+                                                                class="dds-icon dds-icon_search__l__stroke icons"></span>
+                                                        </div>
+                                                        <mat-accordion multi class="mat-table" is-open="true">
+                                                            <mat-expansion-panel *ngFor="let item of searchfx">
+                                                                <mat-expansion-panel-header class="mat-row">
+                                                                    {{item.functionName}}
+
+                                                                </mat-expansion-panel-header>
+                                                                <mat-accordion
+                                                                    *ngFor="let comp of item.funcDescritptionsList"
+                                                                    style="border-bottom: 1px solid #000; border-radius: 0;padding: 0;">
+                                                                    <div
+                                                                        (click)="accordionExpValue(comp,comp.Component)">
+                                                                        {{comp.functionType}}</div>
+                                                                </mat-accordion>
+                                                            </mat-expansion-panel>
+                                                        </mat-accordion>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <textarea cols="20" rows="10" style="width: 100%;"
+                                                        placeholder="Expression" formControlName="sourceExpressionName"
+                                                        [ngClass]="{ 'is-invalid': submited && createExpressionForm.controls['expression'].errors }"
+                                                        (select)="textAreaInCreateExpression($event,i)"
+                                                        (click)="textAreaInCreateExpression($event,i)"
+                                                        (keyup)="textAreaInCreateExpression($event,i)" name="Expression"
+                                                        class="form-control" [value]="item.sourceExpressionName" id="">
+                                                </textarea>
+                                                </div>
+                                            </div>
+
+                                            <label style="margin: 10px;">Where Criteria:</label>
+                                            <div class="addRow">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-select class="form-control" placeholder="Select Opearator"
+                                                        (selectionChange)="changeSignOperator($event,'','',i,item,'parent')"
+                                                        [value]="item.signOperator" formControlName="signOperator"
+                                                        [ngClass]="{ 'is-invalid': submited && createExpressionForm.controls['signOperator'].errors }">
+                                                        <mat-option *ngFor="let signOpearator of signOperatorList"
+                                                            [value]="signOpearator.value">
+                                                            {{signOpearator.value}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+
+                                                <!--  -->
+                                                <ng-container *ngIf="!item.isISNULLorNOTNULL">
+                                                    <input [(ngModel)]="item.value" placeholder="Value"
+                                                        class="form-control" formControlName="value"
+                                                        [ngClass]="{ 'is-invalid': submited && createExpressionForm.controls['value'].errors }">
+                                                </ng-container>
+
+                                                <mat-form-field appearance="fill" *ngIf="item.isColumnType"
+                                                    class="col-md-3">
+                                                    <input matInput [matDatepicker]="picker">
+                                                    <mat-datepicker-toggle matIconSuffix [for]="picker">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                </mat-form-field>
+
+                                                <span (click)="addOpearatorValueFields(i,item)"
+                                                    class="dds-icon border dds-icon_plus__l__stroke"></span><br>
+                                            </div>
+
+
+
+                                            <!-- <ng-container *ngFor="let whereObj of item?.whereList;let j=index"> -->
+                                                <div formArrayName="whereList">
+                                                    <div *ngFor="let itemm of whereArr().controls ;let j=index;"
+                                                        [formGroupName]="j">
+
+                                                        <div class="addRow">
+
+                                                            <!--opearator-->
+                                                            <mat-form-field appearance="fill">
+                                                                <mat-select class="form-control"
+                                                                    placeholder="Select AND/OR"
+                                                                    formControlName="operator">
+                                                                    <!-- [value]="whereObj.operator" 
+                                                                    (selectionChange)="changeOperator($event,j,'',i,item)"-->
+                                                                    <mat-option *ngFor="let opearator of opearatorList"
+                                                                        [value]="opearator.value">
+                                                                        {{opearator.value}}</mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+
+
+                                                            <!--sign operator-->
+                                                            <mat-form-field appearance="fill">
+                                                                <mat-select class="form-control"
+                                                                    placeholder="Select Operator"
+                                                                    formControlName="signOperator"
+                                                                    (selectionChange)="changeSignOperator($event,j,'',i,item,'child')">
+                                                                    <!-- [value]="whereObj.signOperator" 
+                                                                   -->
+                                                                    <mat-option
+                                                                        *ngFor="let signOpearator of signOperatorList"
+                                                                        [value]="signOpearator.value">
+                                                                        {{signOpearator.value}}</mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+
+
+                                                                <input placeholder="Value" formControlName="value"
+                                                                    class="form-control">
+                                                            <!-- [(ngModel)]="whereObj.value" -->
+                                                            <span (click)="delOpearatorValueFields(j,'',i,item)"
+                                                                class="dds-icon border dds-icon_delete__l__stroke"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <!-- </ng-container> -->
+
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+
+                                <ng-container>
+                                    <button mat-button class="btnn" *ngIf="item.isEdit"
+                                        (click)="add_SaveCreateExpression(item)">SAVE</button>
+                                    <button mat-button class="btnn" *ngIf="item.isEdit == false"
+                                        (click)="add_SaveCreateExpression(item)" style="float:right ;">ADD</button>
+                                </ng-container>
+                            </table>
+
+                        </form>
+
+
+
+
+
+
+                        <ng-container *ngFor="let obj of datasetDetailsList;let i=index">
+
+                            <ng-container *ngIf="obj.isDatasetTableExpand">
+                                <div class="scroll">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr style="background-color: #0076A8">
+                                                <th style="margin:auto;">Dataset Name :&nbsp;{{obj.datasetName}}</th>
+
+                                                <th colspan="1"></th>
+                                                <th class="col-md-3" style="text-align:right;"
+                                                    (click)="deleteDataSet(i)">
+                                                    <span class="dds-icon dds-icon_close__l__stroke"
+                                                        style="color: #fff;"></span>
+                                                </th>
+                                            </tr>
+                                            <tr style="background-color: #0076A8">
+                                                <th>Column Name</th>
+                                                <th>Column Type</th>
+
+                                                <th style="text-align:right;">View Expression</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-container>
+                                                <tr *ngFor="let item of obj.datasetFieldDTOList;let j=index">
+                                                    <ng-container>
+                                                        <td [class.active]="item.isEdit" style=" width: 1%;border: 0;">
+                                                            {{item.sourceFieldName}}</td>
+                                                        <td [class.active]="item.isEdit" style=" width: 1%;border: 0;">
+                                                            {{item.columnType}}</td>
+
+                                                        <td style="text-align:right;width: 1%;border: 0;"
+                                                            [class.active]="item.isEdit">
+                                                            <span (click)="editRowInDataSet(i,j,item)"
+                                                                class="dds-icon dds-icon_edit__l__stroke"></span>
+                                                            <span (click)="deleteRowInDataset(i,j,item)"
+                                                                class="dds-icon dds-icon_delete__l__stroke"></span>
+                                                        </td>
+
+                                                    </ng-container>
+                                                </tr>
+                                            </ng-container>
+                                        </tbody>
+                                        <div>
+                                        </div>
+
+                                    </table>
+                                </div>
+
+                                <div style="display: flex;margin: 10px 0;">
+                                    <label style="margin-left: 38px;">Having</label>
+                                    <input style="margin-left: 38px;" matInput [(ngModel)]="obj.having"
+                                        placeholder="Having" class="form-control">
+                                </div>
+                                <form [formGroup]="datasetTableForm">
+
+                                    <div style="display: flex;margin: 10px 0;">
+                                        <label style="margin-left: 38px;">Group By</label>
+                                        <mat-form-field appearance="fill" style="margin-left: 21px;width: 706px;">
+                                            <mat-select multiple class="form-control" placeholder="Select groupBy"
+                                                formControlName="groupBy"
+                                                (selectionChange)="selectgroupByOrderByInDM($event,obj,i,'groupby')">
+                                                <mat-option *ngFor="let obObj of obj.groupBytoDB"
+                                                    [value]="obObj.dbtablefieldName">
+                                                    {{obObj.filefieldName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div style="display: flex;margin: 10px 0;">
+                                        <label style="margin-left: 35px;">Order By</label>
+                                        <mat-form-field appearance="fill" style="margin-left: 26px;width: 706px;">
+                                            <mat-select multiple class="form-control" placeholder="Select orderBy"
+                                                formControlName="orderBy"
+                                                (selectionChange)="selectgroupByOrderByInDM($event,obj,i,'orderby')">
+                                                <mat-option *ngFor="let gbObj of obj.orderBytoDB"
+                                                    [value]="gbObj.dbtablefieldName">
+                                                    {{gbObj.filefieldName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </form>
+
+                                <!-- *ngIf="fileListtt.length > 0" -->
+                                <button mat-button class="btnn" (click)="saveDataSet(obj,i)" style="float:right ;">Save
+                                    Dataset</button>
+
+                            </ng-container>
+                        </ng-container>
+
+                    </div>
+
+                    <!-- *ngIf="fileListtt.length > 0" -->
+                    <div style="text-align: right; float: right;">
+                        <button mat-button class="btnn" (click)="changeTabs({ id: 4}, 'prev')">Prev</button>
+                        <button mat-button class="btnn" (click)="executeProject()">Execute</button>
+                        <button mat-button class="btnn" (click)="SaveContinue()" style="width:140px">Continue</button>
+                    </div>
+                </div>
+
+            </div>
+        </mat-card>
+
+
+    </div>
+</div>
+
+
+
+<div *ngIf="enableAppendNamePopup">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup ">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Append Name</h4>
+            </div>
+            <form [formGroup]="appendForm">
+                <div class="row popup">
+                    <div class=" field">
+                        <label>Enter Name</label>
+                        <input type="text" formControlName="appendNameControl"
+                            [ngClass]="{ 'is-invalid': submited && appendForm.controls['appendNameControl'].errors }">
+                    </div>
+                </div>
+                <!-- <div *ngIf="appendNameControl.errors && appendNameControl.errors['invalid']" class="error">Append
+                    Name cannot be blank!</div>
+                <div *ngIf="appendNameControl.errors && appendNameControl.errors['exists']" class="error">Append
+                    Name exists already!</div> -->
+                <!-- <div class="col-sm-12" style="margin-top: 30px;"> -->
+                <div class="col-sm-12" style="float: right; text-align: right;">
+                    <button mat-button type="submit" (click)="createAppendSet()">Add</button>
+                    <!-- [disabled]="appendNameControl.errors && appendNameControl.errors['invalid'] || appendNameControl.errors && appendNameControl.errors['exists'] || appendNameControl.value == null || appendNameControl.value.trim().length == 0" -->
+                    <button mat-button style="color: #0076A8; background: #fff;"
+                        (click)="enableAppendNamePopup = false;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="enableMergeNamePopup">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Join Name</h4>
+            </div>
+            <form [formGroup]="joinForm">
+                <div class="row popup">
+                    <div class=" field">
+                        <label>Enter Name</label>
+                        <input type="text" formControlName="appendNameControl"
+                            [ngClass]="{ 'is-invalid': submited && joinForm.controls['appendNameControl'].errors }">
+                    </div>
+                </div>
+                <!-- <div *ngIf="appendNameControl.errors && appendNameControl.errors['invalid']" class="error">Join
+                    Name cannot be blank!</div>
+                <div *ngIf="appendNameControl.errors && appendNameControl.errors['exists']" class="error">Join Name
+                    exists already!</div> -->
+                <!-- <div class="col-sm-12" style="margin-top: 30px;"> -->
+                <div class="col-sm-12" style="float: right; text-align: right;">
+                    <button mat-button (click)="mergeSet();">Add</button>
+                    <!-- [disabled]="appendNameControl.errors && appendNameControl.errors['invalid'] || appendNameControl.errors && appendNameControl.errors['exists'] || appendNameControl.value == null || appendNameControl.value.trim().length == 0" -->
+                    <button mat-button style="color: #0076A8; background: #fff;"
+                        (click)="enableMergeNamePopup = false;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showTargetFilePopup">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup preview" style="width: 1000px">
+            <div class="taxt-header">
+                <!-- <h4 style="background-color: #0076A8; color: white; padding: 10px;"></h4> -->
+            </div>
+            <form>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let header of columnsArr">{{header}}</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of selectedM_A_S; let j = index">
+                            <td *ngFor="let val of columnsArr; let j = index"
+                                style="width:120px; word-break: break-all;">
+                                {{data[val]}}</td>
+                            <!-- </ng-container> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <div style="float:left;margin: 22px;" *ngIf="rowCount ">Row Count: {{rowCount}}</div>
+            <div class="col-sm-3" style="float: right;text-align: right;">
+
+                <button mat-button style="border:1px solid #0076A8; background: none; color:#0076A8"
+                    (click)="showTargetFilePopup = false;">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="isOpenAccordion">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup preview" style="width: 400px; height:340px;left: 71%;top: 72%;">
+            <mat-accordion multi class="mat-table" is-open="true">
+                <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+                    <mat-expansion-panel-header class="mat-row"
+                        style="border-bottom: 1px solid #000; border-radius: 0;">
+                        {{item.Fueling_Position}}
+
+                    </mat-expansion-panel-header>
+                    <mat-accordion *ngFor="let comp of item.Components"
+                        style="border-bottom: 1px solid #000; border-radius: 0;padding: 0;">
+                        <div *ngFor="let comp of item.Components" style="border-bottom: 1px solid #000;">
+                        <div (click)="accordionExpValue(comp,comp.Component)" style="border-bottom: 1px solid #000;border-radius: 0;
+                            width: 400px; padding-left: -25px; margin-left: -24px;padding-left: 40px;font-size: 15px;">
+                            {{comp.Component}}</div>
+                        </div>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div style="float: right; padding: 182px 20px 20px 20px">
+                <button mat-button style="color: #0076A8; border-radius: 0; border: 1px solid #0076A8;"
+                    (click)="isOpenAccordion = false">Cancel</button>
+            </div>
+        </div>
+        <div>
+            <button mat-button style="color: #0076A8; border-radius: 0; border: 1px solid #0076A8;"
+                (click)="isOpenAccordion = false">Cancel</button>
+        </div>
+    </div>
+</div> -->
+
+
+
+<!--create DataSet popup-->
+<div *ngIf="enableDataSetPopUp">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">DataSet</h4>
+            </div>
+            <form [formGroup]="datasetForm">
+                <div class="row popup">
+                    <div class=" field">
+                        <label>Enter DataSet Name</label>
+                        <input type="text" formControlName="appendNameControl" (change)="existDataset()">
+                    </div>
+                </div>
+                <!-- <div *ngIf="appendNameControl.errors && appendNameControl.errors['invalid']" class="error">DataSet
+                    Name cannot be blank!</div> -->
+                <!-- <div *ngIf="appendNameControl.errors && appendNameControl.errors['exists']" class="error">DataSet Name
+                    exists already!</div> -->
+                <div class="col-sm-12" style="float: right; text-align: right;">
+                    <!-- [disabled]="appendNameControl.errors && appendNameControl.errors['invalid'] || appendNameControl.errors && appendNameControl.errors['exists'] || appendNameControl.value == null || appendNameControl.value.trim().length == 0 " -->
+                    <button mat-button style="background-color: #0076A8; color: white;"
+                        (click)="createNewDataSet();">Add</button>
+                    <button mat-button style="color: #0076A8; background: #fff;"
+                        (click)="enableDataSetPopUp = false;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--save dataset dropdowns popup-->
+<div *ngIf="saveDataSetPopup">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup" style="width:1200px">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Save Dataset
+                    <button style="background-color: #0076A8; color: white;float: right;" (click)="closeDatasetPopup()">
+                        <span aria-hidden="true">&times;</span></button>
+                </h4>
+            </div>
+
+            <form [formGroup]="dataSetForm">
+                <div class="row popup" formArrayName="DSetRows" style="margin-top: 10px;">
+                    <div></div>
+                    <ng-container *ngFor="let dataset of DataSetArr().controls ;let i=index;" [formGroupName]="i">
+                        <!-- <ng-container *ngFor="let dataset of dataSetForm.get('DSetRows').controls ;let i=index;" [formGroupName]="i"> -->
+
+                        <div class="row">
+
+                            <mat-form-field appearance="fill" class="col-md-4">
+                                <mat-select class="form-control" [placeholder]="placetable" formControlName="Ptable"
+                                    (selectionChange)="selectPrimaryTableInDS($event,i)">
+                                    <ng-container *ngFor="let data of dataSetData[i]?.primaryTableList">
+                                        <mat-option [value]="data">
+                                            {{data.tableName}}
+                                        </mat-option>
+                                    </ng-container>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="col-md-4">
+                                <mat-select class="form-control" placeholder="Join Type" formControlName="join"
+                                    (selectionChange)="selectJoinTypeInDS($event,i)">
+                                    <ng-container *ngFor="let data of joinType">
+                                        <mat-option [value]="data">
+                                            {{data}}
+                                        </mat-option>
+                                    </ng-container>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill" class="col-md-4">
+                                <mat-select class="form-control" placeholder="Foreign Table" formControlName="Ftable"
+                                    (selectionChange)="selectForeignTableInDS($event,i)">
+                                    <ng-container *ngFor="let data of dataSetData[i]?.foreignTableList">
+                                        <mat-option [value]="data">
+                                            {{data.tableName}}
+                                        </mat-option>
+                                    </ng-container>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                            <!-- <mat-form-field appearance="fill" class="col">
+                                <mat-select class="form-control" placeholder="Foreign Key" formControlName="Fcolumn"
+                                    (selectionChange)="selectForeignKeyInDS($event,i)">
+                                    <ng-container *ngFor="let data of dataSetData[i]?.foreignKeyList">
+                                        <mat-option [value]="data">
+                                            {{data.fieldName}}
+                                        </mat-option>
+                                    </ng-container>
+                                </mat-select>
+                            </mat-form-field> -->
+
+                            <div formArrayName="columns">
+                                <div *ngFor="let item of columnArrInDS(i).controls ;let j=index;" [formGroupName]="j">
+                                    <div class="row" style="margin-top: 10px;">
+                                        <!-- //childArray                                 -->
+                                        <!-- <div class="col-md-2"></div>  -->
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control" placeholder="Select Column"
+                                                    (selectionChange)="selectPrimaryKeyInDS($event,j,i)"
+                                                    formControlName="column1">
+                                                    <mat-option
+                                                        *ngFor="let item of dataSetData[i]?.columns[j]?.primaryKeyList"
+                                                        [value]="item">
+                                                        {{item.fieldName}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control" placeholder="Select Column"
+                                                    (selectionChange)="selectForeignKeyInDS($event,j,i)"
+                                                    formControlName="column2">
+                                                    <ng-container *ngIf="dataSetData[i]?.foreignTableList != undefined">
+                                                        <mat-option selectForeignKeyInDS
+                                                            *ngFor="let item of dataSetData[i]?.columns[j]?.foreignKeyList"
+                                                            [value]="item">
+                                                            {{item.fieldName}}
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button mat-button class="dds-icon dds-icon_plus__l__stroke btnn"
+                                                style="color: #fff;font-size: 14px;" (click)="addcolumnRowInDS(j,i)"
+                                                *ngIf="j==0"
+                                                style="line-height:14px; color: #fff;font-size: 14px;">Column
+                                            </button>
+                                            <button mat-button class="dds-icon dds-icon_delete__l__stroke btnn"
+                                                style="color: #fff;font-size: 14px;" *ngIf="j!=0"
+                                                (click)="deletecolumnRowInDS(j,i)"
+                                                style="width: 50px; font-size:22px; line-height:14px; color:#fff;font-size: 14px;"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </ng-container>
+
+                </div>
+
+                <div class="col-sm-12" style="float: right; text-align: right;">
+                    <button mat-button style="background-color: #0076A8; color: white;"
+                        (click)="saveDataSetDropdowns();">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="enableViewScriptPopup">
+    <div class="taxt_audit-report enableUploadSQLPopup">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">View Script</h4>
+            </div>
+            <form [formGroup]="viewscriptForm">
+                <textarea mat-input type="name" cols="50" style="min-height: 60vh;width: 100%;" class="form-control"
+                    formControlName="sqlScript" name="s"></textarea>
+            </form>
+            <div class="col-sm-12" style="float: right; text-align: right;">
+                <button mat-button (click)="updateScriptByDatasetId(viewscriptForm)">Save</button>
+                <button mat-button style="color: #0076A8; background: #fff;"
+                    (click)="enableViewScriptPopup = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="enableUploadSQLPopup">
+    <div class="taxt_audit-report enableUploadSQLPopup">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Uplaod Script</h4>
+            </div>
+            <form [formGroup]="sqlScriptForm">
+                <input type="text" formControlName="datasetName" placeholder="DataSet Name" (change)="existDataset()" />
+                <textarea mat-input type="name" formControlName="sqlScript" class="form-control" name="s"></textarea>
+
+            </form>
+            <div class="col-sm-12" style="float: right; text-align: right;">
+                <button mat-button (click)="saveDataSetApi()">Save</button>
+                <button mat-button style="color: #0076A8; background: #fff;"
+                    (click)="enableUploadSQLPopup = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

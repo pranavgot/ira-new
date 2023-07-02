@@ -1,0 +1,20 @@
+<div class="client-header">
+  <div class="left_header">
+    <img _ngcontent-jld-c34="" src="../../../assets/images/Group 7819.svg" alt="">
+    <p>Risk Insights through Analytics (RIA)</p>
+  </div>
+  <div class="right_header">
+    <div class="dds-icon dds-icon_notification__l__stroke"></div>
+    <div class="user-menu">
+      <button mat-button [matMenuTriggerFor]="menu1">{{user?.userName}} <mat-icon>account_circle</mat-icon> <span
+          class="dds-icon dds-icon_chevron_down__s__stroke"></span></button>
+      <mat-menu #menu1="matMenu" xPosition="after" yPosition="below" overlapTrigger="true">
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+<div class="report-container popup-body" style="margin-bottom: 0px !important;">
+  <powerbi-report id="embedView" [embedConfig]="reportconfig">
+  </powerbi-report>
+</div>

@@ -1,0 +1,27 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field appearance="fill">
+        <mat-accordion multi class="mat-table" is-open="true">
+            <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+                <mat-expansion-panel-header class="mat-row">
+                    <span class="mat-cell">{{item.Fueling_Position}}</span>
+                </mat-expansion-panel-header>
+                <mat-accordion>
+                    <div *ngFor="let comp of item.Components">
+                        {{comp.Component}}
+                        <!-- <div (click)="accordionExpValue(comp,comp.Component)">
+                            {{comp.Component}}</div> -->
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-label>Favorite Animal</mat-label>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+
+

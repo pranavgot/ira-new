@@ -1,0 +1,403 @@
+<div class="heading">
+    <h1>Dashboard</h1>
+</div>
+<div class="consen">
+        <div class="row cards-group">
+            <div class="col">
+                <mat-card class="color1">
+                    <div class="cards">
+                        <div class="part1">
+                            <h3>Subscriptions</h3>
+                            <p>{{cards?.totalSubscriptions}}</p>
+                        </div>
+                        <div class="part2">
+                            <span class="dds-icon dds-icon_archive__l__stroke"
+                                routerLink="/user/admin1/solutionboard/add-process"></span>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col">
+                <mat-card class="color2">
+                    <div class="cards">
+                        <div class="part1">
+                            <h3>Subscriptions Expiry</h3>
+                            <p>{{cards.SubscriptionsExpiry}}</p>
+                        </div>
+                        <div class="part2 bg">
+                            <span class="dds-icon dds-icon_calendar__s__stroke"></span>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col">
+                <mat-card class="color3">
+                    <div class="cards">
+                        <div class="part1">
+                            <h3 >Projects</h3>
+                            <p>{{cards.MyProjectsCount}}</p>
+                        </div>
+                        <div class="part2 bg">
+                            <span class="dds-icon dds-icon_users__l__stroke"></span>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    
+
+   
+    <h3>Projects</h3>
+    <div class="row" *ngIf="tab">
+        <div class="col-sm-6">
+            <mat-card class="middle">
+                <h3>Subscriptions</h3>
+                <div id="chart">
+                    <apx-chart [series]="chart1?.series" [chart]="chart1?.chart"
+                        [labels]="chart1?.labels" [responsive]="chart1?.responsive"></apx-chart>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-sm-6">
+            <mat-card class="middle">
+                <!-- <h3>Users - Leads</h3>
+                <h6>Success</h6>
+                <div class="colors" style="background-color: #02BC77;"></div>
+                <h6>Failed</h6>
+                <div class="colors" style="background-color: #4791FF;"></div> -->
+                <div id="chart">
+                    <apx-chart
+                      [series]="chart2?.series"
+                      [chart]="chart2?.chart"                      
+                      [xaxis]="chart2?.xaxis"
+                      [stroke]="chart2?.stroke"
+                      [colors]="chart2?.colors"
+                      [dataLabels]="chart2?.dataLabels"
+                      [legend]="chart2?.legend"
+                      [markers]="chart2?.markers"
+                      [grid]="chart2?.grid"
+                      [yaxis]="chart2?.yaxis"
+                      [title]="chart2?.title"
+                    ></apx-chart>
+                  </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="tab">
+        <!-- <div class="col-sm-4">
+            <mat-card class="middle">
+                <h3>Latest Updates</h3>
+            </mat-card>
+        </div> -->
+        <div class="col-sm-6" style="margin:0 auto">
+            <mat-card class="middle">
+                <h3>Projects</h3>
+                <div id="chart">
+                    <apx-chart [series]="chartOptions1?.series" [chart]="chartOptions1?.chart" [fill]="chartOptions1?.fill"
+                        [grid]="chartOptions1?.grid" [dataLabels]="chartOptions1?.dataLabels"
+                        [plotOptions]="chartOptions1?.plotOptions" [xaxis]="chartOptions1?.xaxis"
+                        [yaxis]="chartOptions1?.yaxis" [title]="chartOptions1.title"></apx-chart>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="main" *ngIf="tab1">
+        <div class="header">
+            <h4>Users</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>12px
+                        <tr>
+                            <th scope="col" style="padding-left: 20px;">User Name</th>
+                            <th scope="col">User Type</th>
+                            <th scope="col">User Role</th>
+                            <th scope="col">Organization</th>
+                            <th scope="col">Contact No.</th>
+                            <th scope="col">Email-Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+    <div class="main" *ngIf="tab2">
+        <div class="header">
+            <h4>Subscriptions</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col">Organization</th>
+                            <th scope="col">Subscription Name</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Number of Runs</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">5</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Duplicate Invoice</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">3</td>
+                            <td>Expired</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payscale</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">4</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Solution Board</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">NA</td>
+                            <td>Expired</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+
+
+    <div class="main" *ngIf="tab3">
+        <div class="header">
+            <h4>Solutions</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Solutions</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>Assigned</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>Yet to Assign</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>Assigned</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>Yet to Assign</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+    <div class="main" *ngIf="tab4">
+        <div class="header">
+            <h4>Subscriptions</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col">Organization</th>
+                            <th scope="col">Subscription Name</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Number of Runs</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payroll</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">5</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Duplicate Invoice</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">3</td>
+                            <td>Expired</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Payscale</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">4</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>iBridge</td>
+                            <td>Solution Board</td>
+                            <td>04-12-2020</td>
+                            <td>04-12-2022</td>
+                            <td style="padding-left:5%">NA</td>
+                            <td>Expired</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+
+    <div class="main" *ngIf="tab5_1">
+        <div class="header">
+            <h4>User Projects</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col" style="padding-left: 20px;">User Name</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Process Name</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+    <div class="main" *ngIf="tab5_2">
+        <div class="header">
+            <h4>My Projects</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col" style="padding-left: 20px;">User Name</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Process Name</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div> -->
+
+
+
+
+</div>

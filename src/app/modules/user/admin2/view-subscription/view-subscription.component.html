@@ -1,0 +1,363 @@
+<div class="heading">
+  <div class="page-title-wrapper">
+    <ul>
+      <li>Subscription Management</li>
+      <li>Edit Subscription(s)</li>
+    </ul>
+  </div>
+</div>
+<div class="consen mainContainer">
+  <div class="inner-container subscription-height-scroll">
+    <mat-card *ngIf="showUserDetails">
+      <form [formGroup]="UserdetailsForm">
+        <h3 class="block-title">User Details</h3>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>User Name<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="name" />
+
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label> User Designation<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="designation" />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label> User Status<sup>*</sup></label>
+              <p>
+                Inactive <mat-slide-toggle formControlName="status"></mat-slide-toggle> Active
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Email Id<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="email" />
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>User Contact Number<sup>*</sup></label>
+              <div class="input-group prefix">
+                <span class="input-group-addon">+91</span>
+                <input type="text" class="form-control reflect-model" formControlName="contactnumber" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+    <mat-card>
+      <form [formGroup]="subsdetailsForm">
+        <h3 class="block-title">Organization Details</h3>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Organization Name<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="name" />
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Contact Person Name<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="Cname" />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Contact Person Designation<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="designation" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Email Id<sup>*</sup></label>
+              <input type="text" class="form-control reflect-model" formControlName="email" />
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="input-group">
+              <label>Contact Person Number<sup>*</sup></label>
+              <div class="input-group prefix">
+                <span class="input-group-addon">+91</span>
+                <input type="text" class="form-control reflect-model" formControlName="contactnumber" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <h3 class="block-title">Solution Subscriptions</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <label>Generic</label>
+                <div class="table-layer1 clbg2">
+                  <div class="col bord maxheight">
+                    <div class="header">
+                      <input type="checkbox" [checked]="masterSelectGProc" class="form-check-input" name="list_name"
+                        value="m1" id="selectAll" (change)="selectAllGproc($event)" />
+                      <label for="selectAll">Select All</label>
+                      <input type="text" class="form-control reflect-model" (keyup)="applyGenericProcFilter($event)"
+                        placeholder="Search" />
+                      <button mat-button>
+                        <span class="dds-icon dds-icon_search__l__stroke"></span>
+                      </button>
+                    </div>
+
+                    <div class="check-box-list">
+                      <div *ngFor="let process of GprocData; let i = index" class="subheading file-main">
+                        <input type="checkbox" [checked]="process.checked" [disabled]="process.disable" name="first"
+                          (change)="addnew($event,i,process,'generic')" class="form-check-input" />
+                        <label class="form-check-label" for="exampleCheck1">{{
+                          process.processName
+                          }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <label>Client Specific</label>
+                <div class="table-layer1 clbg2">
+                  <div class="col bord maxheight">
+                    <div class="header">
+                      <input type="checkbox" [checked]="masterSelectCSProc" class="form-check-input" name="list_name"
+                        value="m1" id="selectAll" (change)="selectAllCSproc($event)" />
+                      <label for="selectAll">Select All</label>
+                      <input type="text" class="form-control reflect-model" (keyup)="applyCSProcFilter($event)"
+                        placeholder="Search" />
+                      <button mat-button>
+                        <span class="dds-icon dds-icon_search__l__stroke"></span>
+                      </button>
+                    </div>
+
+                    <div class="check-box-list">
+                      <div *ngFor="let process of CSprocData; let i = index" class="subheading file-main">
+                        <input type="checkbox" [checked]="process.checked" [disabled]="process.disable" name="first"
+                          (change)="addnew($event,i,process,'client specific')" class="form-check-input" />
+                        <label class="form-check-label" for="exampleCheck1">{{
+                          process.processName
+                          }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <!-- <h4 style="position: sticky;top: 0;font-size: 15px;background-color: #eee;padding: 5px;">
+          Generic
+          <div class="search1">
+            <input id="form2" class="form-control" placeholder="Search" (keyup)="applyGenericProcFilter($event)" />
+            <span class="dds-icon dds-icon_search__l__stroke icons"></span>
+          </div>
+        </h4> -->
+
+        <!-- <input type="checkbox" [checked]="masterSelectGProc"
+          style="height: 20px; width: 20px; padding: 0; margin-top: 5px" (click)="selectAllGproc($event)"
+          class="form-check-input" />
+        <label class="form-check-label" for="exampleCheck1"><b>Select All</b></label> -->
+        <div formArrayName="process">
+          <div class="table-layer">
+            <div class="table-container" style="margin-bottom:0px; overflow:visible; min-height:120px; ">
+              <table mat-table #table [dataSource]="datasubs" class="table table-striped" matSort
+                style="margin-bottom:0px !important;">
+                <ng-container matColumnDef="subName">
+                  <th mat-header-cell *matHeaderCellDef>Subscription Name</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    {{ subscriptions[i]?.processName }}
+                    <span style="color: #f00" *ngIf="subscriptions[i].new">({{ subscriptions[i]?.new }})</span>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="startdate">
+                  <th mat-header-cell *matHeaderCellDef>Start Date</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill" style="width: 150px">
+                      <input matInput placeholder="dd-mm-yyyy" class="form-control reflect-model"
+                        formControlName="startDate" [min]="todayDate"
+                        [ngClass]="{'is-invalid': submited && procArr().controls[i].get('startDate')?.errors }"
+                        onkeydown="return false" [matDatepicker]="startDate" (dateChange)="dateChange($event,i)" />
+                      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                      <mat-datepicker #startDate></mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="enddate">
+                  <th mat-header-cell *matHeaderCellDef>End Date</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill" style="width: 150px">
+                      <input matInput placeholder="dd-mm-yyyy" class="form-control reflect-model"
+                        formControlName="endDate" onkeydown="return false" [min]="minPDate[i]"
+                        [ngClass]="{'is-invalid': submited && procArr().controls[i].get('endDate')?.errors }"
+                        [matDatepicker]="stopDate" />
+                      <mat-datepicker-toggle matSuffix [for]="stopDate"></mat-datepicker-toggle>
+                      <mat-datepicker #stopDate></mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="runcount">
+                  <th mat-header-cell *matHeaderCellDef>Number of Runs</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <input type="text" class="form-control reflect-model" formControlName="runCount" maxlength="2"
+                      [ngClass]="{
+                      'is-invalid':
+                        submited && procArr().controls[i].get('runCount')?.errors
+                    }" oninput="this.value = this.value.replace(/^0/, '').replace(/[^0-9 ]/g, ''); " />
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef>User Name</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill">
+                      <mat-select multiple class="form-control" placeholder="Select User" formControlName="selectUser"
+                        panelClass="selectUser" [ngClass]="{'is-invalid': submited && subscriptions[i].error }">
+                        <mat-option *ngFor="let item of userDataUser" [value]="item.userId">
+                          {{ item.userName }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                    <br/>
+                    <span *ngIf="procArr().controls[i]?.get('status')?.value">Active</span>
+                    <span *ngIf="!procArr().controls[i]?.get('status')?.value">In Active</span>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                    No data found
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div formArrayName="WorkSpace">
+          <div class="table-layer">
+            <div class="table-container" style="max-height:400px; min-height:120px;overflow:visible;" >
+              <table mat-table [dataSource]="subs" class="table table-striped" matSort style="margin-bottom:0px;">
+                <ng-container matColumnDef="workspace">
+                  <th mat-header-cell *matHeaderCellDef>Workspace</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <span style="display:flex; align-items:center;">
+                      <span><input type="checkbox" formControlName="check" class="form-check-input"
+                          style="height: 20px; width: 20px; padding: 0"
+                          (change)="enableWorkField(i, $event)" /></span>{{
+                      subs[i].subscriptionType
+                      }}<sup style="color: #f00" *ngIf="subs[i].higlight">*</sup><span style="color: #f00"
+                        *ngIf="subs[i].new">({{ subs[i].new }})</span>
+                    </span>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="startdate">
+                  <th mat-header-cell *matHeaderCellDef>Start Date</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill" style="width: 150px">
+                      <input matInput placeholder="dd-mm-yyyy" class="form-control reflect-model"
+                        formControlName="startDate" [min]="todayDate" [ngClass]="{
+                          'is-invalid':
+                            submited && Work().controls[i].get('startDate')?.errors
+                        }" onkeydown="return false" [matDatepicker]="startDate1"
+                        (dateChange)="dateChange1($event,i)" />
+                      <mat-datepicker-toggle matSuffix [for]="startDate1"></mat-datepicker-toggle>
+                      <mat-datepicker #startDate1></mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="enddate">
+                  <th mat-header-cell *matHeaderCellDef>End Date</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill" style="width: 150px">
+                      <input matInput placeholder="dd-mm-yyyy" class="form-control reflect-model"
+                        formControlName="endDate" onkeydown="return false" [min]="minSDate[i]" [ngClass]="{
+                          'is-invalid':
+                            submited && Work().controls[i].get('endDate')?.errors
+                        }" [matDatepicker]="stopDate1" />
+                      <mat-datepicker-toggle matSuffix [for]="stopDate1"></mat-datepicker-toggle>
+                      <mat-datepicker #stopDate1></mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef>User Name</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index">
+                    <mat-form-field appearance="fill">
+                      <mat-select multiple class="form-control" placeholder="Select User" formControlName="selectUser"
+                        panelClass="selectUserBlock" [ngClass]="{
+                          'is-invalid':
+                            submited && Work().controls[i].get('selectUser')?.errors
+                        }">
+                        <mat-option *ngFor="let item of userDataUser" [value]="item">
+                          {{ item.userName }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell [formGroupName]="i" *matCellDef="let element; let i = index" style="min-width:150px; display:flex; height:60px; align-items:center;">
+                    <mat-slide-toggle formControlName="status" style="margin-right:10px;"></mat-slide-toggle>
+                    <span *ngIf="Work().controls[i]?.get('status')?.value">Active</span>
+                    <span *ngIf="!Work().controls[i]?.get('status')?.value">In Active</span>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="workColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: workColumns; let i = index"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" [attr.colspan]="workColumns.length">
+                    No data found
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+
+      </form>
+    </mat-card>
+  </div>
+  <div class="button-group">
+    <button mat-button type="reset" routerLink="/user/admin2/subscription">Cancel <span
+        class="dds-icon dds-icon_close__l__stroke"></span></button>
+    <button mat-button type="button" (click)="submit()" class="primary">
+      Save <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</div>

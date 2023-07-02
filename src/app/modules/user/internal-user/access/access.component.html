@@ -1,0 +1,104 @@
+<div class="container fixed-container">
+    <div class="welcome-div">
+        <h1>Welcome!</h1>
+        <form>
+            <p>The page you're trying to access has restricted access.<br/> Please refer to your system admin.</p>
+              <span class="spacer-line"></span>  
+            <button  type="button" (click)="openPopup()">Request Access</button>
+        </form>
+    
+    </div>
+    <div class="modal" id="accessReqModal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog">
+            <div class="modal-content popup">
+                <div class="modal-header popup-header">
+                    <h1 class="modal-title">Request Access</h1>
+                    <button class="close close_modal_btn" aria-label="Close" (click)="closePopup()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="" [formGroup]="requestAccessForm">
+                 <div class="modal-body popup-body">
+                        <div class="row nfom">
+                            <div class="col-md-6 column">
+                                <div class="input-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="userName"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="input-group">
+                                    <label>Email Id</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="emailid"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 column"> 
+                                <div class="input-group">
+                                    <label>Organization Name</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="orgName"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="input-group">
+                                    <label>Contact Number<sup>*</sup></label>
+                                    <div class="input-group prefix">
+                                        <span class="input-group-addon">+91</span>
+                                        <input type="text" class="form-control reflect-model" formControlName="contactNo"
+                                            maxlength="10" minlength="10" [ngClass]="{ 'is-invalid': submitted && requestAccessForm.controls['contactNo'].errors }"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    </div>
+                                    <div *ngIf="requestAccessForm.controls['contactNo'].invalid && (requestAccessForm.controls['contactNo'].touched || submitted)">
+                                        <div class="error" *ngIf="requestAccessForm.controls['contactNo'].errors">
+                                            Contact number is required
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                            </div>
+                            
+                            <!-- <div class="col-md-6 col-sm-12 column">
+                                <label>Branch </label>
+                                <input type="text" class="form-control reflect-model" formControlName="branch"
+                                [ngClass]="{ 'is-invalid': submitted && requestAccessForm.controls['branch'].errors }" maxlength="50" />
+                                 <div *ngIf="requestAccessForm.controls['branch'].invalid && (requestAccessForm.controls['branch'].touched || submitted)">
+                                    <div class="error" *ngIf="requestAccessForm.controls['branch'].errors">
+                                        Branch is required
+                                    </div>
+                                </div> 
+                            </div> -->
+                            <div class="col-md-6 column">
+                                <div class="input-group">
+                                    <label>Designation<sup>*</sup></label>
+                                    <input type="text" class="form-control reflect-model" formControlName="designation"
+                                    [ngClass]="{ 'is-invalid': submitted && requestAccessForm.controls['designation'].errors }" maxlength="50" />
+                                    <div *ngIf="requestAccessForm.controls['designation'].invalid && (requestAccessForm.controls['designation'].touched || submitted)">
+                                        <div class="error" *ngIf="requestAccessForm.controls['designation'].errors">
+                                            Designation is required
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="input-group">
+                                    <label>Message<sup>*</sup></label>
+                                    <textarea  style="width:100%; height:120px;" rows="5" cols="50" placeholder="Describe why you need access to the application." formControlName="requestMessage"
+                                    [ngClass]="{ 'is-invalid': submitted && requestAccessForm.controls['requestMessage'].errors }"></textarea>
+                                    <div  *ngIf="requestAccessForm.controls['requestMessage'].invalid && (requestAccessForm.controls['requestMessage'].touched || submitted)">
+                                        <div class="error" *ngIf="requestAccessForm.controls['requestMessage'].errors">
+                                            Message is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer popup-footer button-group">
+                    <button mat-button (click)="closePopup()">Cancel</button>
+                    <button mat-button color="primary"type="submit" (click)="submitAccessRequest()">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+  </div>
+</div>

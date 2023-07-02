@@ -1,0 +1,473 @@
+<!-- <p>approvals works!</p> -->
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Approvals</li>
+            <li *ngIf="tab1">Pending</li>
+            <li *ngIf="tab2">Approved</li>
+        </ul>
+    </div>
+</div>
+<div class="consen">
+    <div class="row cards-group">
+        <div class="col-sm-3" [class.active]="tab1" (click)="changetab(1)">
+            <mat-card class="color1">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Pending</h3>
+                        <h2>{{serviceSearch?.data.length}}</h2>
+                    </div>
+                    <div class="part2">
+                        <span class="dds-icon dds-icon_lightbulb__l__stroke"
+                            routerLink="/user/admin1/add-process"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-sm-3" [class.active]="tab2" (click)="changetab(2)">
+            <mat-card class="color2">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Approved</h3>
+                        <h2>0{{approveDataSearch?.data.length}}</h2>
+                    </div>
+                    <div class="part2 bg">
+                        <span class="dds-icon dds-icon_edit__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <mat-card class="table-group middle" *ngIf="tab1">
+        <div class="main">
+            <div class="toolbar-block">
+                <h4>Pending Lists</h4>
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search"
+                        (keyup)="applyFilter($event)" />
+                    <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+                </div>
+            </div>
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table class="table table-striped" mat-table [dataSource]="serviceSearch"
+                        class="table table-striped solutions-table" matSort>
+                        <ng-container matColumnDef="userResponse.userName">
+                            <th mat-header-cell *matHeaderCellDef> User Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.userName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.organizationMstDTO.organizationName">
+                            <th mat-header-cell *matHeaderCellDef> Organization </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.userResponse.organizationMstDTO.organizationName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.designation">
+                            <th mat-header-cell *matHeaderCellDef> Designation </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.designation}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.userRoleResponse[0].roleName">
+                            <th mat-header-cell *matHeaderCellDef> User Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.userRoleResponse[0].roleName}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="requestDate">
+                            <th mat-header-cell *matHeaderCellDef> Request Date </th>
+                            <td mat-cell *matCellDef="let element" style="white-space: nowrap;"> {{element.requestDate |
+                                date:"dd/MM/yyyy hh:mm a"}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="requestType">
+                            <th mat-header-cell *matHeaderCellDef style="text-align:center !important;"> Request Type </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center !important;"> {{element.requestType}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center;">
+                                <span class="dds-icon dds-icon_eyeopen" (click)="edit($event,element)"
+                                    data-target="#myModal"></span>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <ng-container *ngIf="serviceSearch?.data.length > 10">
+                <mat-paginator  #pendPaginator [length]="serviceSearch?.data.length" [pageSizeOptions]="[10,20,50]"
+                    aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+
+    <mat-card class="table-group middle" *ngIf="tab2">
+        <div class="main">
+            <div class="toolbar-block">
+                <h4>Approved Lists</h4>
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search"
+                        (keyup)="applyFilter1($event)" />
+                    <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+                </div>
+            </div>
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table class="table table-striped" mat-table [dataSource]="approveDataSearch"
+                        class="table table-striped solutions-table" matSort>
+                        <ng-container matColumnDef="userResponse.userName">
+                            <th mat-header-cell *matHeaderCellDef>User Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.userName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.organizationMstDTO.organizationName">
+                            <th mat-header-cell *matHeaderCellDef> Organization </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.userResponse.organizationMstDTO.organizationName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.designation">
+                            <th mat-header-cell *matHeaderCellDef> Designation </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.designation}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userResponse.userRoleResponse[0].roleName">
+                            <th mat-header-cell *matHeaderCellDef> User Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userResponse.userRoleResponse[0].roleName}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="requestDate">
+                            <th mat-header-cell *matHeaderCellDef> Request Date </th>
+                            <td mat-cell *matCellDef="let element" style="white-space: nowrap;"> {{element.requestDate |
+                                date:"dd/MM/yyyy hh:mm a"}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="requestType">
+                            <th mat-header-cell *matHeaderCellDef style="text-align:center !important;"> Request Type </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center !important;"> {{element.requestType}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center;">
+                                <span class="dds-icon dds-icon_eyeopen" (click)="edit($event,element)"
+                                    data-target="#myModal"></span>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns1.length">
+                                No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <ng-container *ngIf="approveDataSearch?.data.length > 10">
+            <mat-paginator  #appPaginator [length]="approveDataSearch?.data.length" [pageSizeOptions]="[10,20,50]"
+                aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+
+
+    <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3 *ngIf="tab1">Review & Approve</h3>
+                    <h3 *ngIf="tab2">Approved Details</h3>
+                    <button mat-button type="reset" class="close" (click)="CloseModal()">&times;</button>
+                </div>
+                <form [formGroup]="approveserviceForm">
+                    <div class="popup-body" style="padding-bottom:0px !important; height:calc(100vh - 350px);">
+                        <div class="padd-column">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>User Name</label>
+                                        <input type="name" class="form-control" formControlName="name" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Designation</label>
+                                        <input type="designation" class="form-control" formControlName="designation"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Organization</label>
+                                        <input type="company" class="form-control" formControlName="Organization"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="padd-column">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label>Contact Number</label>
+                                    <div class="input-group prefix">
+                                        <span class="input-group-addon">+91</span>
+                                        <input type="contactnumber" class="form-control" formControlName="contactnumber"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <label>Email Id</label>
+                                        <input type="email" class="form-control" formControlName="emailId" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="roww"> -->
+
+                        <div class="padd-column" style="margin-bottom:20px;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="subheading new-subheading">SUBSCRIPTIONS Renewal</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="table-container scroll-container">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" style="text-align: left;">Subscription Name
+                                                            </th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let itemm of getAllService1">
+                                                            <ng-container *ngIf="itemm.requestType == 'Renew Solution'">
+                                                                <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                                                <td style="text-align: left;">
+                                                                    {{itemm.processDTO.processName}}</td>
+                                                                <td>{{itemm.requestStatus}}</td>
+                                                            </ng-container>
+                                                        </tr>
+                                                        <ng-container *ngIf="!flag1">
+                                                            <td colspan="2">No Data Selected</td>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="table-container scroll-container">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" style="text-align: left;">workspace</th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let itemm of getAllService1">
+                                                            <ng-container
+                                                                *ngIf="itemm.requestType == 'Renew WorkSpace'">
+                                                                <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                                                <td style="text-align: left;">
+                                                                    {{itemm.subscriptionDTO.subscriptionType}}</td>
+                                                                <td>{{itemm.requestStatus}}</td>
+                                                            </ng-container>
+                                                        </tr>
+                                                        <!-- <tr *ngIf="!flag2">
+                                                                <td *ngIf="!flag2" style="text-align: center;">No Data Selected</td>
+                                                            </tr> -->
+                                                        <ng-container *ngIf="!flag2">
+                                                            <td colspan="2">No Data Selected</td>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="subheading new-subheading">New Subscriptions</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="table-container scroll-container">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" style="text-align: left;">Subscription Name
+                                                            </th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let itemm of getAllService1">
+                                                            <ng-container *ngIf="itemm.requestType == 'new Solution'">
+                                                                <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                                                <td style="text-align: left;">
+                                                                    {{itemm.processDTO.processName}}</td>
+                                                                <td>{{itemm.requestStatus}}</td>
+                                                            </ng-container>
+                                                        </tr>
+                                                        <ng-container *ngIf="!flag3">
+                                                            <td colspan="2">No Data Selected</td>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="table-container scroll-container">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" style="text-align: left;">WorkSpace Name
+                                                            </th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let itemm of getAllService1">
+
+                                                            <ng-container *ngIf="itemm.requestType == 'new WorkSpace'">
+
+                                                                <!-- <ng-container *ngFor="let subcptnObj of itemm.subscriptionDTO"> -->
+                                                                <!-- <input type="checkbox" class="form-check-input" (change)="UpdateSubs($event,itemm)"  formControlName="oldsubscription">&nbsp; -->
+                                                                <td style="text-align: left;">
+                                                                    {{itemm.subscriptionDTO.subscriptionType}}</td>
+                                                                <td>{{itemm.requestStatus}}</td>
+                                                                <!-- </ng-container> -->
+                                                            </ng-container>
+                                                        </tr>
+                                                        <ng-container *ngIf="!flag4">
+                                                            <td colspan="2">No Data Selected</td>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- </div>
+                                <div class="column"> -->
+
+                        </div>
+                        <!-- </div> -->
+                        <!-- <hr> -->
+
+                        <!-- <div class="roww"> -->
+                        <div class="padd-column">
+
+
+
+                        </div>
+                        <div class="padd-column">
+                            <div class="input-group">
+                                <label>Message</label>
+                                <!-- <ng-container *ngFor="let itemm of getAllService1"> -->
+                                <textarea cols="10" rows="5" type="requestdate" class="form-control" [value]="message"
+                                    readonly>{{getAllService1}}</textarea>
+                                <!-- </ng-container> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="popup-footer button-group">
+                        <button mat-button type="reset" (click)="CloseModal()">Cancel <span
+                                class="dds-icon dds-icon_close__l__stroke"></span></button>
+                        <button *ngIf="tab1" mat-button (click)="approve()" type="submit">Approve <span
+                                class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="displayReqAccessModal">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup" style="min-width:1165px;">
+                <div class="taxt-header popup-header">
+                    <h3>Review & Approve</h3>
+                    <button mat-button class="close" type="reset" (click)="CloseAccessModal()">&times;</button>
+                </div>
+                <form [formGroup]="requestAccessForm">
+                    <div class="popup-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <label>User Name</label>
+                                    <input type="name" class="form-control" formControlName="userName">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <label>Designation</label>
+                                    <input type="designation" class="form-control" formControlName="designation">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <label>Organization</label>
+                                    <input type="company" class="form-control" formControlName="Organization">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Contact Number</label>
+                                <div class="input-group prefix">
+                                    <span class="input-group-addon">+91</span>
+                                    <input type="contactnumber" class="form-control" formControlName="contactNo">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="column-group">
+                                    <label>Email Id</label>
+                                    <input type="email" class="form-control" formControlName="emailId">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <label>Message</label>
+                                    <textarea cols="10" rows="5" type="requestdate" class="form-control"
+                                        [value]="accessReqMessage" [disabled]="true"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" popup-footer button-group">
+                        <button mat-button type="reset" (click)="CloseAccessModal()">Cancel <span
+                                class="dds-icon dds-icon_close__l__stroke"></span></button>
+                        <button mat-button type="submit"
+                            (click)="approveIUAccessReq()">Approve <span
+                                class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

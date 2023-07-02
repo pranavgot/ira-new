@@ -1,0 +1,90 @@
+<div class="client-header">
+  <div class="left_header">
+    <div class="dds-icon dds-icon_list__l__stroke" (click)="navColap()"></div>
+    <img _ngcontent-jld-c34="" src="../../../assets/images/deliote-logo.svg" alt="">
+    <p>Risk Insights through Analytics (RIA)</p>
+  </div>
+
+  <div class="right_header">
+    <div class="dds-icon dds-icon_notification__l__stroke"></div>
+    <div class="user-menu">
+      <button mat-button [matMenuTriggerFor]="menu1"><div class="user-name-block">{{userdisplay}}</div> <!--<span class="dds-icon dds-icon_user__l__stroke"></span>--> <span
+          class="dds-icon dds-icon_chevron_down__s__stroke"></span></button>
+      <mat-menu #menu1="matMenu" xPosition="after" yPosition="below" overlapTrigger="true">
+        <button mat-menu-item (click)="profile()">Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="profilepopup">
+  <div class="taxt_audit-report profile-popup">
+    <div class="taxt-audit-popup popup-box">
+      <div class="taxt-header popup-header">
+        <div class="profile-upload">
+          <span>{{userdisplay}}</span>
+          <input type="file" />
+        </div>
+      </div>
+      <form>
+        <div class="popup-body">
+          <button mat-button class="profile-edit"><span class="dds-icon dds-icon_edit__l__stroke"></span></button>
+          <mat-card>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>Name</label>
+                  <input type="text" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>User Role</label>
+                  <input type="text" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>Email ID</label>
+                  <input type="text" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>Organisation</label>
+                  <input type="text" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>Current Password</label>
+                  <input type="password" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>New Password</label>
+                  <input type="password" placeholder="" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group">
+                  <label>Confirm Password</label>
+                  <input type="password" placeholder="" />
+                </div>
+              </div>
+
+            </div>
+          </mat-card>
+        </div>
+        <div class="popup-footer button-group">
+          <button mat-button (click)="closePopup()">Cancel <span
+              class="dds-icon dds-icon_close__l__stroke"></span></button>
+          <button mat-button class="primary">Submit <mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

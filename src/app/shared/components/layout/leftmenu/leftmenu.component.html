@@ -1,0 +1,26 @@
+<div class="sidenav_container scrollbar scrollbar-primary">
+    <div fxLayout="column" fxLayoutGap="100px">
+        <div class="left-nav-bar">
+            <mat-nav-list>
+                <div *ngFor="let page of menus" class="menuLi" (mouseenter)="LeftHov(page)" (mouseleave)="LeftOut()">
+                    <a mat-list-item class="left_item" [ngClass]="page?.active?'active':''" (click)="pageActive(page)" [routerLink]="page.path" >
+                        <span class="dds-icon left_icons" [ngClass]="page.icon"></span>
+                        <p>{{page.name}}</p>
+                        <span class="dds-icon  rt_icons  dds-icon_plus__l__stroke" 
+                            *ngIf="page.child && !page.showChild"></span>
+                        <span class="dds-icon  rt_icons  dds-icon_minus__l__stroke" 
+                            *ngIf="page.child && page.showChild"></span>
+                    </a>
+                    <div class="child sub-menu" >
+                        <div *ngFor="let item of page.childdata" class="childLi">
+                            <a mat-list-item class="left_item" [routerLink]="item.path" (click)="menuClick(item)">
+                                <p>{{item.name}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </mat-nav-list>
+        </div>
+
+    </div>
+</div>

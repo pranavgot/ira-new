@@ -1,0 +1,59 @@
+<div class="heading powerbi-header">
+    <h1>Process Name: {{process.processName}}</h1>
+    <div class="toolbar-block button-group" style="padding:0px !important;">
+        <button mat-button (click)="reportData()">View Report <span class="dds-icon dds-icon_eyeopen"></span></button>
+        <button mat-button class="primary" *ngIf="assigned" [ngClass]="published?'disab':'enab'" [disabled]="published" (click)="publishSolution()" >Publish <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+        <button mat-button class="primary" *ngIf="!assigned" (click)="Submit()">Submit <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+    </div>
+</div>
+<div class="consen mainContainer full-container">
+
+    <div class="inner-container">
+        <div class="main">
+            <div class="report-container">
+                <powerbi-report id="embed" [ngClass]="create?'':'displ'" [embedConfig]="reportConfig">
+                </powerbi-report>
+                <powerbi-report id="embedEdit" [ngClass]="create?'displ':''" [embedConfig]="reportEditConfig">
+                </powerbi-report>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3>PowerBI Report</h3>
+                    <button mat-button class="close" (click)="hideViewReport()">&times;</button>
+                </div>
+                <div class="report-container popup-body powerbi-container" style="padding-bottom: 0px;">
+                        <powerbi-report id="embedView" [embedConfig]="reportViewConfig" style="height: 70vh;">
+                        </powerbi-report>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tokenpopup">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup min-max-width90">
+                <div class="taxt-header popup-header">
+                    <h3>Scession End</h3>
+                    <button mat-button class="close" (click)="hideViewReport()">&times;</button>
+                </div>
+                <form [formGroup]="saveas" (ngSubmit)="ReportSave()">
+                    <div class="popup-body">
+                        <p>your power bi repot will be expired in 5 minutes </p>
+                        <input *ngIf="create" type="text" class="form-control reflect-model" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submited && saveas.controls['name'].errors }"
+                            maxlength="50" />
+                    </div>
+                    <div class="popup-footer button-group">
+                        <button mat-button  (click)="CloseModal()">Cancel  <span class="report-modal-close dds-icon dds-icon_close__l__stroke"></span></button>
+                        <button mat-button class="primary" type="submit">Save <mat-icon>save</mat-icon></button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

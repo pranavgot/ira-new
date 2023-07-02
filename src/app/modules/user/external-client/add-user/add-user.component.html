@@ -1,0 +1,69 @@
+<div class="heading">
+    <h1>User Management</h1>
+    <h5><span style="color: #0076A8;">Dashboard / </span>User Management</h5>
+</div>
+    <div class="consen">
+    <div>
+        <mat-card>
+            <h4>Add User</h4>
+             <form>
+                <div class="header">
+                    <h3>User Information</h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Name<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="John" class="form-control reflect-model"
+                            formControlName="name" /> -->
+                            <input type="name" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Designation<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="Manager" class="form-control reflect-model"
+                            formControlName="designation" /> -->
+                            <input type="designation" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Contact Number<sup>*</sup></label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <!-- <input type="text" placeholder="9999999999" class="form-control reflect-model"
+                                formControlName="contactnumber" /> -->
+                                <input type="contactnumber" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Email_id<sup>*</sup></label>
+                        <!-- <input type="text" placeholder="abc@gmail.com" class="form-control reflect-model"
+                            formControlName="email" /> -->
+                            <input type="email" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- <label style="margin-bottom: 20px;">User Role<sup>*</sup></label>
+                         <br>
+                        <input type="radio" name="admin1" value="level1">&nbsp;
+                        <label style="margin-right: 50px;">Level-1 Admin</label>
+                        <input type="radio" name="admin2" value="level2">&nbsp;
+                        <label >Level-2 Admin</label> -->
+
+                        <label style="margin-bottom: 20px;">User Role<sup>*</sup></label> <br>
+                        <input type="radio" name="processtype" value="admin1">&nbsp;
+                        <label style="margin-right: 50px;">Level-1 Admin</label>
+
+                        <input type="radio" name="processtype" value="admin2">&nbsp;
+                        <label for="css">Level-2 Admin</label>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="margin-top:26%; float:right">
+                    <button mat-button color="primary" style="width: 100px; height:35px;background-color: #fff; color: black;left:50%;border: 1px solid #0076A8" 
+                    routerLink="/user/admin1/user-management">Cancel</button>
+                        <button mat-button color="primary" style="width: 100px; height:35px;margin-left: 55%;" 
+                        routerLink="/user/admin1/user-management">Submit</button>
+                </div>
+            </form> 
+        </mat-card>
+    </div>
+</div>

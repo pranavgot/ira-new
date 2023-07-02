@@ -1,0 +1,175 @@
+<!-- <p>view-leads works!</p> -->
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>Leads</li>
+            <li>Lead Info</li>
+        </ul>
+    
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card>
+            <form>
+                <div class="header">
+                    <h3>Organization Details</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <label>Organization Name</label>
+                                    <input type="text" disabled class="form-control reflect-model" [value]="userData?.orgName" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <label>Contact Person Name</label>
+                                    <input type="text" disabled class="form-control reflect-model" [value]="userData?.spocName" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <label>Contact Person Designation</label>
+                                    <input type="text" disabled class="form-control reflect-model" [value]="userData?.spocDesignation" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Contact Person Number</label>
+                                <div class="input-group prefix">
+                                    <span class="input-group-addon">+91</span>
+                                    <input type="text" disabled class="form-control reflect-model" [value]="userData?.spocphoneNo" />
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <label>Email Id</label>
+                                    <input type="text" disabled class="form-control reflect-model" [value]="userData?.spocEmailId" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <label>Address</label>
+                                    <textarea rows="4" cols="50" type="text" disabled class="form-control reflect-model"
+                                        [value]="userData?.address" style="height:220px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>             
+                <br>
+                <div class="header">
+                    <h3>User Details</h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Name</label>
+                        <input type="text" disabled class="form-control reflect-model" [value]="userData?.name
+                        " />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Designation</label>
+                        <input type="text" disabled class="form-control reflect-model" [value]="userData?.designation" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Email Id</label>
+                        <input type="text" disabled class="form-control reflect-model" [value]="userData?.emailId" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Contact Number</label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <input type="text" disabled class="form-control reflect-model" name
+                                [value]="userData?.contactNo" />
+                        </div>
+                    </div>
+    
+                </div>
+                <br>
+                <div class="header">
+                    <h3>Area of Interest</h3>
+                </div>
+                <div class="col-md-12" *ngIf="userData.processId?.length == 0">
+                    <p class="empty" style="text-align: center; width:100%;">No Solutions Selected</p>
+                </div>
+                <br>
+                <div class="row" *ngIf="userData.processId?.length != 0">
+                <div class="col-sm-6 con">
+                    <label>Generic</label>
+                    <div class="col bord maxheight">
+                        <!-- <div class="header">
+                          <input type="checkbox" class="form-check-input" name="list_name" value="m1" id="selectAll"/>
+                          <label for="selectAll">Select All</label>
+                          <input type="text" class="form-control reflect-model"  placeholder="Search" />
+                          <button mat-button>
+                            <span class="dds-icon dds-icon_search__l__stroke"></span>
+                          </button>
+                        </div> -->
+      
+                        <div class="check-box-list">
+                          <ng-container *ngFor="let item of procData">
+                            <div class="subheading file-main"  *ngIf="item.checked">
+                                <!-- <input class="col-sm-6" type="checkbox" class="form-check-input"> -->
+                                <label class="form-check-label" for="exampleCheck1">{{item.processName}}</label>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    <!-- <div *ngFor="let item of procData">-->
+                        <!-- <input class="col-sm-6" type="checkbox" [checked]="item.checked"  disabled class="form-check-input">&nbsp; -->
+                        <!-- <p class="form-check-label" *ngIf="item.checked" for="exampleCheck1">{{item.processName}}</p>
+                    </div> -->
+                </div>
+                <div class="col-sm-6 con">
+                    <label>Client-specific</label>
+                    <div class="col bord maxheight">
+                        <!-- <div class="header">
+                          <input type="checkbox" class="form-check-input" name="list_name" value="m1" id="selectAll"/>
+                          <label for="selectAll">Select All</label>
+                          <input type="text" class="form-control reflect-model"  placeholder="Search" />
+                          <button mat-button>
+                            <span class="dds-icon dds-icon_search__l__stroke"></span>
+                          </button>
+                        </div> -->
+      
+                        <div class="check-box-list">
+                          <ng-container *ngFor="let item of CprocData">
+                            <div class="subheading file-main"  *ngIf="item.checked">
+                                <!-- <input class="col-sm-6" type="checkbox" class="form-check-input"> -->
+                                <label class="form-check-label" for="exampleCheck1">{{item.processName}}</label>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    
+                    <!-- <div *ngFor="let item of CprocData">
+                        <input class="col-sm-6" type="checkbox" [checked]="item.checked"  disabled class="form-check-input">&nbsp;
+                        <p class="form-check-label" *ngIf="item.checked" for="exampleCheck1">{{item.processName}}</p>
+                    </div> -->
+                </div>
+            </div>
+                <div class="row" *ngIf="userData?.solutionDescription">
+                    <div class="col-sm-12">
+                        <label style="padding-left:0">Other Interested Area...</label>
+                        <br>
+                        <textarea rows="8" cols="50" disabled class="form-control"
+                            [value]="userData?.solutionDescription"></textarea>
+                    </div>
+                </div>
+    
+                <div class="col-sm-6"></div>
+                
+            </form>
+        </mat-card>
+    </div>
+    <div class="button-group" >
+        <button mat-button routerLink="/user/admin2/lead">Cancel <span class="dds-icon dds-icon_close__l__stroke"></span></button>&nbsp;
+        <button mat-button class="btn" (click)="registerUser()">Register<span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+    </div>
+</div>

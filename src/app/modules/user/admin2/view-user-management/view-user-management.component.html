@@ -1,0 +1,203 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>User Management</li>
+            <li>Edit User</li>
+        </ul>
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card>
+            <form [formGroup]="userorgdetailsForm" (ngSubmit)="userorgdetailsSubmit()">
+                <div class="header">
+                    <h3>User Details</h3>
+                </div>
+                <div class="main">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label>User Name<sup>*</sup></label>
+                                <input type="text" class="form-control reflect-model" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['name'].errors }"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');" maxlength="50"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label>Designation<sup>*</sup></label>
+                                <input type="text" class="form-control reflect-model"
+                                [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['designation'].errors }"
+                                    formControlName="designation" oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="50" /> 
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top: 35px;">
+                            <div class="flex-list toggle-btn-block">
+                                <label>Inactive</label>
+                                <mat-slide-toggle formControlName="status" [checked]="userorgData?.status == '1'"></mat-slide-toggle> &nbsp;
+                                <label>Active</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label>Email Id<sup>*</sup></label>
+                                <input type="text" class="form-control reflect-model" style="background: rgb(240, 237, 237);"
+                                [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['email'].errors }"
+                                    formControlName="email" maxlength="35" readonly/>
+    
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Contact Number<sup>*</sup></label>
+                            <div class="input-group prefix">
+                                <span class="input-group-addon">+91</span>
+                                <input type="text"  class="form-control reflect-model"
+                                [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['contactnumber'].errors }"
+                                    formControlName="contactnumber" maxlength="10" minlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="header">
+                        <h3>Organization Details</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                       <label>Organization Name<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model" style="background: rgb(240, 237, 237);"
+                                        [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['org_name'].errors }"
+                                            formControlName="org_name" maxlength="50" readonly/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <label>Contact Person Name<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model"
+                                        [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['spocname'].errors }"
+                                            formControlName="spocname" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');" maxlength="50" />
+            
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <label>Contact Person Designation<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model"
+                                        [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['spocdesignation'].errors }"
+                                            formControlName="spocdesignation" oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');" maxlength="50" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                        <label>Contact Person Number<sup>*</sup></label>
+                                        <div class="input-group prefix">
+                                            <span class="input-group-addon">+91</span>
+                                            <input type="text" class="form-control reflect-model"
+                                            [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['spoccontactnumber'].errors }"
+                                                formControlName="spoccontactnumber" maxlength="10" minlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                                        </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <label>Email Id<sup>*</sup></label>
+                                        <input type="text"  class="form-control reflect-model"
+                                        [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['spocemail'].errors }"
+                                            formControlName="spocemail" maxlength="35"/>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <label>Address<sup>*</sup></label>
+                                        <textarea rows="4" cols="50" type="text" class="form-control reflect-model"
+                                        [ngClass]="{ 'is-invalid': submited && userorgdetailsForm.controls['address'].errors }"
+                                            formControlName="address" maxlength="150" style="height:212px;"></textarea>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="sub-title">Subscriptions</h5>
+                    <div class="table-layer">
+                        <div class="table-container scroll-container">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Subscription Name</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th scope="col">Number of Runs</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="usersubs?.length != 0">
+                                    <tr *ngFor="let item of usersubs">
+                                        <td>{{item.processName}}</td>
+                                        <td>{{item.startDate | date:"dd-MM-yyyy, hh:mm a"}}</td>
+                                        <td>{{item.endDate | date:"dd-MM-yyyy, hh:mm a"}}</td>
+                                        <td>{{item.runCount}}</td>
+                                        <td>{{item.status | uppercase }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td *ngIf="usersubs?.length == 0 || usersubs?.length == null" colspan="5"> No data found </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <h5 class="sub-title">Workspace</h5>
+                    <div class="table-layer">
+                        <div class="table-container scroll-container">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Workspace Name</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <!-- <th scope="col">Number of Runs</th> -->
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody  *ngIf="userworkspace?.length != 0">
+                                    <tr *ngFor="let item1 of userworkspace">
+                                        <td>{{item1.subscriptionType}}</td>
+                                        <td>{{item1.startDate | date:"dd-MM-yyyy, hh:mm a"}}</td>
+                                        <td>{{item1.endDate | date:"dd-MM-yyyy, hh:mm a"}}</td>
+                                        <!-- <td>{{item1.runCount}}</td> -->
+                                        <td>{{item1.status | uppercase }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td *ngIf="userworkspace?.length == 0 || userworkspace?.length == null" colspan="4"> No data found </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              
+            </form>
+        </mat-card>
+    </div>
+    <div class="button-group">
+        <button mat-button  type="reset" (click)="cancel()">Cancel <span class="dds-icon dds-icon_close__l__stroke"></span></button>
+        <!-- <button mat-button class="primary" (click)="userorgdetailsSubmit()" type="submit">Save <mat-icon>save</mat-icon></button> -->
+        <button mat-button type="button" (click)="userorgdetailsSubmit()" class="primary">Save <mat-icon>save</mat-icon>
+          </button>
+    </div>
+</div>
+    

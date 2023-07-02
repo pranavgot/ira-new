@@ -1,0 +1,220 @@
+/*.mat-card {
+    height: 80px;
+    border-radius: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    padding-bottom: 0;
+    box-shadow: 0px -1px 6px 1px rgb(204, 202, 202);
+}
+
+.no-gutters .mat-card {
+    box-shadow: inset 0px 2px 4px #00000029, 0px 10px 10px #0000001A; height: 100%;
+}
+
+.no-gutters .col-sm-3 {
+    width: 215px;
+
+    .cards {
+        float: left; width:100%
+    }
+}
+
+.container {
+    margin-top: 5%;
+}
+
+.heading {
+    background-color: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+    width: 100%;
+
+    h1 {
+        font-size: 22px;
+        line-height: 24px;
+        font-family: 'open_sans-bold';
+        margin: 0 0 3px 0;
+        color: #1C1C1C;
+        float: left;
+        width: 100%;
+    }
+
+    ul {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            margin: 0 8px 0 0;
+            color: #000000;
+            font-family: 'open_sans-regular';
+            font-size: 10px;
+            line-height: 14px;
+            list-style: none;
+
+            a {
+                color: #005587;
+                font-family: 'open_sans-regular';
+                font-size: 10px;
+                line-height: 14px;
+                float: left;
+                text-decoration: none;
+                padding: 0 7px 0 0;
+            }
+        }
+    }
+}
+
+h5 {
+    font-size: 15px;
+}
+
+
+
+.search {
+    width: 25%;
+    float: right;
+    border-radius: 0;
+    box-shadow: inset 0px 2px 2px #00000029;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: 'open_sans-regular';
+    color: #000000;
+    padding: 5.5px 10px;
+    background: #FFFFFF;
+    margin: 0 0 20px 0;
+
+    input {
+        font-size: 12px;
+        border-radius: 0;
+        border: 0px none;
+        padding: 0;
+        margin: 0 3px 0 0;
+        width: calc(100% - 30px);
+        float: left;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .dds-icon {
+        float: left;
+        padding: 3px 0 0 0;
+        font-size: 17px;
+        height: auto;
+    }
+}
+
+.middle {
+    // height: 600px;
+    margin-top: 20px;
+    padding: 10px 10px 10px 13px;
+}
+
+.part1 {
+    width: calc(100% - 40px);
+    padding: 10px 0px 0px 0px; float: left;
+
+    h2 {
+        color: #0076A8;
+        float: left;
+        width: 100%;
+        padding: 0 0 0 14px;
+        margin: 0;
+        font-size: 20px;
+        line-height: 30px;
+        font-family: 'open_sans-medium';
+
+    }
+
+    h3 {
+        border-left: 5px solid #0076A8;
+        margin: 0 0px 1px 0;
+        padding: 2px 0px 0.3px 9px;
+        font-size: 13px;
+        font-family: 'open_sans-semiBold';
+        line-height: 19px;
+        float: left;
+        width: 100%;
+
+    }
+}
+
+.part2 {
+    width: 40px;
+    height: 56px;
+    text-align: center;
+    padding: 18px 0; float: left;
+
+    span {
+        font-size: 26px;
+        color: white !important;
+    }
+}
+
+h2 {
+    font-size: 32px;
+    color: #0076A8;
+}
+
+h3 {
+    border-left-style: solid;
+    border-width: 7px;
+    margin: 0 -13px 16px;
+    padding-left: 10px;
+    font-size: 20px;
+
+}
+
+table td,
+table th {
+    padding: 0 20px;
+}
+
+th {
+    &:nth-child(5) {
+        width: 120px
+    }
+
+    &:last-child {
+        width: 100px
+    }
+
+}
+
+.icn span {
+    font-size: 20px;
+}
+*/
+/*.taxt-header {
+    float: left;
+    background: #0076A8;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--bs-modal-header-padding);
+    border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+    border-top-left-radius: var(--bs-modal-inner-border-radius);
+    border-top-right-radius: var(--bs-modal-inner-border-radius);
+    width: 100%;
+    padding: 10px;
+
+    .taxt-audit-popup {
+        width: 90%;
+    }
+}
+
+.taxt-audit-popup {
+    background: #fff;
+    width: 65%;*/
+    /* padding: 30px 30px 40px 30px; */
+    /*position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}*/

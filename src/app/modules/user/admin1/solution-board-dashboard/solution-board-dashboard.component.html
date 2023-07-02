@@ -1,0 +1,479 @@
+<div class="heading">
+    <h1>Solutions Board</h1>
+</div>
+<div class="consen">
+    <div class="row cards-group my-projects-cards">
+        <div class="col">
+            <mat-card (click)="showTableSBD ='solutions'" class="color1">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 style="border-color:#0076A8;">Solutions</h3>
+                        <h2>{{lengthProcess}}</h2>
+                    </div>
+                    <div class="part2" style="background-color: #0076A8;">
+                        <span class="dds-icon dds-icon_lightbulb__l__stroke"
+                            routerLink="/user/admin1/solutionboard/add-process"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card (click)="showTableSBD ='draftSolutions'" class="color2">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 style="border-color:#DA291C;">Draft Solutions</h3>
+                        <h2>{{lendraft}}</h2>
+                    </div>
+                    <div class="part2 bg" style="background-color: #DA291C">
+                        <span class="dds-icon dds-icon_edit__l__stroke" style="color: #DA291C"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card (click)="showTableSBD ='assignedSolutions'" class="color3">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 style="border-color:#86BC25">Assigned Solutions</h3>
+                        <h2>{{lengthAssign}}</h2>
+                    </div>
+                    <div class="part2 bg" style="background-color: #86BC25">
+                        <span class="dds-icon dds-icon_hourglass__l__stroke" style="color: #86BC25"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card (click)="showTableSBD ='publishedSolutions'" class="color4">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 style="border-color:#999999">Published Solutions</h3>
+                        <h2>{{lenpublish}}</h2>
+                    </div>
+                    <div class="part2 bg" style="background-color: #999999">
+                        <span class="material-icons">publish</span>
+                        <!-- <span class="dds-icon dds-icon_checkmark__l__stroke" style="color: #999999"></span> -->
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="col">
+            <mat-card (click)="showTableSBD ='publishedSolutions'" class="color5">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 style="border-color:#999999">Solution Approvals</h3>
+                        <!-- <h2>{{lenpublish}}</h2> -->
+                    </div>
+                    <div class="part2 bg" style="background-color: #999999">
+                        <span class="dds-icon dds-icon_checkmark__l__stroke" style="color: #999999"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+    <!--Solutions table-->
+
+
+
+    <mat-card class="middle table-group" *ngIf="showTableSBD == 'solutions'">
+        <div class="toolbar-block">
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+            <a mat-button href="javascript:void(0);" (click)="Popup()">Create New Solutions <span
+                    class="dds-icon dds-icon_plus__l__stroke"></span></a>
+        </div>
+        <div class="main ">
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table mat-table [dataSource]="processSearch" class="table table-striped solutions-table" matSort>
+    
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Solution / Process </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="processType">
+                            <th mat-header-cell *matHeaderCellDef> Process Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processType}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Assigned To </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center !important;">
+                                {{element.assignedToWhomName=='null'?'--':element.assignedToWhomName}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="createdDate">
+                            <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.createdDate | date:"dd/MM/yyyy, hh:mm a"}}
+                            </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Astatus">
+                            <th mat-header-cell *matHeaderCellDef style="text-align:center !important;"> Assigned Status </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center !important;">
+                                {{element.statusAfterAssign=='null'?'--':element.statusAfterAssign}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="assign">
+                            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Assign </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span *ngIf="!(element.statusName=='Published'||element.statusName=='Assigned')" style="display:flex; justify-content:center;"
+                                    class="dds-icon dds-icon_delegate_user__l__stroke" (click)="openPopUp(element)"></span>
+                                    <span *ngIf="(element.statusName=='Published'||element.statusName=='Assigned')" style="display:flex; justify-content:center;">--</span>
+                            </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_edit__l__stroke" (click)="viewprocess(element)"></span>
+                                <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                            </td>
+                        </ng-container>
+    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                            No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <ng-container *ngIf="processSearch?.data.length > 10">
+                <mat-paginator #solutiontPaginator [length]="processSearch?.data.length" [pageSizeOptions]="[10,20,50]"
+                    aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+
+
+   
+
+    <!--Draft Solutions Table-->
+    <mat-card class="middle table-group" *ngIf="showTableSBD == 'draftSolutions'">
+        <div class="toolbar-block">
+            <h3 style="margin-right:auto; margin-bottom:0px; border:0px; padding-left: 0px;  margin-left:0px;">Draft Solutions</h3>
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+            <a mat-button href="javascript:void(0);" (click)="Popup()">Create New Solutions <span
+                    class="dds-icon dds-icon_plus__l__stroke"></span></a>
+        </div>
+
+        <div class="main">
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table mat-table [dataSource]="draftSearch" class="table table-striped" matSort>
+    
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Solution / Process </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="processType">
+                            <th mat-header-cell *matHeaderCellDef> Process Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processType}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef> Created By </th>
+                            <td mat-cell *matCellDef="let element">{{element.userName=='null'?'--':element.userName}}</td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="createdDate">
+                            <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.createdDate | date:"dd/MM/yyyy, hh:mm a"}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Astatus">
+                            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Assigned Status </th>
+                            <td mat-cell *matCellDef="let element" style="text-align:center"> {{element.statusAfterAssign}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="assign">
+                            <th mat-header-cell *matHeaderCellDef> Assign </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_delegate_user__l__stroke" (click)="openPopUp(element)"></span>
+                            </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_edit__l__stroke" (click)="viewprocess(element)"></span>
+                                <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                            </td>
+                        </ng-container>
+        
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                            No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+           
+
+         <ng-container *ngIf="draftSearch?.data.length > 10">
+            <mat-paginator #draftPaginator  [length]="draftSearch?.data.length" [pageSizeOptions]="[10, 20, 30,50]"
+                aria-label="Select page" panelClass="count-select">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+
+    <!--Pending Approval-->
+    <mat-card class="middle table-group" *ngIf="showTableSBD == 'assignedSolutions'">
+        <div class="toolbar-block">
+            <h3 style="margin-right:auto; margin-bottom:0px; border:0px; padding-left: 0px;  margin-left:0px;">Assigned Solutions</h3>
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+            <a mat-button href="javascript:void(0);" (click)="Popup()">Create New Solutions <span
+                    class="dds-icon dds-icon_plus__l__stroke"></span></a>
+        </div>
+        
+        <div class="main">
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table mat-table [dataSource]="AssignSearch" class="table table-striped" matSort>
+        
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Solution / Process </th>
+                            <td mat-cell *matCellDef="let element"> {{element.solutionName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="processType">
+                            <th mat-header-cell *matHeaderCellDef> Process Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processType}} </td>
+                        </ng-container>
+        
+        
+        
+                        <ng-container matColumnDef="assignedDate">
+                            <th mat-header-cell *matHeaderCellDef> Assigned Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.assignedDate | date:"dd/MM/yyyy, hh:mm a"}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="expCompletionDate">
+                            <th mat-header-cell *matHeaderCellDef> Expected Completion Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.expCompletionDate | date:"dd/MM/yyyy, hh:mm a"}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef> Created By </th>
+                            <td mat-cell *matCellDef="let element"> {{element.assignedByName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_edit__l__stroke" (click)="viewprocess(element)"></span>
+                                <span class="dds-icon dds-icon_delete__l__stroke"></span>
+                            </td>
+                        </ng-container>
+                        
+                        <tr mat-header-row *matHeaderRowDef="AssignedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: AssignedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="AssignedColumns.length">
+                            No data found
+                            </td>
+                        </tr>
+        
+                    </table>
+                    </div>
+            </div>
+            
+            <ng-container *ngIf="AssignSearch?.data.length > 10">
+            <mat-paginator #assignedPaginator  [length]="AssignSearch?.data.length" [pageSizeOptions]="[10, 20, 30,50]"
+                aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+
+
+    <!--Published Solutions-->
+    <mat-card class="middle table-group" *ngIf="showTableSBD == 'publishedSolutions'">
+        <div class="toolbar-block">
+            <h3 style="margin-right:auto; margin-bottom:0px; border:0px; padding-left: 0px; margin-left:0px;">Published Solutions</h3>
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+            </div>
+            <a mat-button href="javascript:void(0);" (click)="Popup()">Create New Solutions <span
+                    class="dds-icon dds-icon_plus__l__stroke"></span></a>
+        </div>
+
+        <div class="main">
+            <div class="table-layer">
+                <div class="table-container min-height-scroll">
+                    <table mat-table [dataSource]="publishSearch" class="table table-striped" matSort>
+        
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="processName">
+                            <th mat-header-cell *matHeaderCellDef> Solution / Process </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="processType">
+                            <th mat-header-cell *matHeaderCellDef> Process Type </th>
+                            <td mat-cell *matCellDef="let element"> {{element.processType}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef> Created By </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="createdDate">
+                            <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.createdDate | date:"dd/MM/yyyy, hh:mm a"}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+                        </ng-container>
+                        <!-- <ng-container matColumnDef="assign">
+                            <th mat-header-cell *matHeaderCellDef> Assign </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_delegate_user__l__stroke" (click)="openPopUp(element)"></span>
+                            </td>
+                        </ng-container> -->
+        
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_edit__l__stroke" (click)="viewprocess(element)"></span>
+                                <span class="dds-icon dds-icon_delete__l__stroke"></span>
+                            </td>
+                        </ng-container>
+        
+                        <tr mat-header-row *matHeaderRowDef="PublishedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: PublishedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="PublishedColumns.length">
+                            No data found
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+            </div>
+           
+        <ng-container *ngIf="publishSearch?.data.length > 10">
+            <mat-paginator #publishedPaginator [length]="publishSearch?.data.length" [pageSizeOptions]="[10, 20, 30,50]"
+                aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+        </div>
+    </mat-card>
+</div>
+<!----------Popup------------>
+
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header popup-header">
+                <h3>Selection Type</h3>
+                <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="popup-body">
+                <ul class="select-items-group">
+                    <li>
+                        <div class="select-item">
+                            <input type="checkbox" id="generic-item" [disabled]="generic" [checked]="generic" name="genericitem" (click)="GCSradio(1)"/>
+                            <label for="genericitem"><span class="generic-sol-icon"></span><span>Generic
+                                    Solutions</span></label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="select-item">
+                            <input type="checkbox" id="clientspecificitem" [disabled]="!generic" [checked]="!generic" name="client-specific-item" (click)="GCSradio(2)" />
+                            <label for="clientspecificitem"><span class="generic-sol-icon"></span><span>Client Specific
+                                    Solution</span></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="popup-footer button-group">
+                <button mat-button (click)="closePopup()">Cancel <span class="dds-icon dds-icon_close"></span></button>
+                <button mat-button (click)="addprocess()">Continue <span
+                        class="dds-icon dds-icon_arrow_v2"></span></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="popupAssign">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup" style="width:500px;">
+            <div class="taxt-header popup-header">
+                <h3>Assign Solution</h3>
+                <button type="button" class="close" aria-label="Close" (click)="closePopUp()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form [formGroup]="assignForm">
+                <div class="popup-body assign-block">
+                    <div class="input-group">
+                        <mat-form-field appearance="fill">
+                            <label>Select Assignee</label>
+                            <mat-select class="form-control" placeholder="Select Assignee" formControlName="selectUser">
+                                <mat-option *ngFor="let item of L1L2Users" [value]="item"
+                                    (onSelectionChange)="selectionChange($event, item)">{{item.userName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="input-group" style="margin-bottom:0px;">
+                        <mat-form-field appearance="fill">
+                            <label>Expected Completion Date</label>
+                            <input matInput placeholder="dd-mm-yyyy" class="form-control reflect-model"
+                                formControlName="expectedDate" [matDatepicker]="expectedDate" [min]="today" >
+                            <mat-datepicker-toggle matSuffix [for]="expectedDate"></mat-datepicker-toggle>
+                            <mat-datepicker #expectedDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="popup-footer button-group">
+                    <button mat-button type="submit" (click)="submit()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

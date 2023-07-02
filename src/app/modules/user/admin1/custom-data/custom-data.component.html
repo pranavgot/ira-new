@@ -1,0 +1,131 @@
+<div class="heading">
+    <h1>Custom Data Workspace</h1>
+</div>
+<div class="consen ">
+    <div class=" pro row">
+        <div class="info row">
+            <div class="row col dis">
+                <div class="col mini">
+                    <h4>Project Name</h4>
+                    <p>Project01</p>
+                </div>
+                <div class="col mini">
+                    <h4>Process </h4>
+                    <p>Record to Report</p>
+                </div>
+            </div>
+            <div class="bton col">
+                <!-- <div class="cbtn" >
+                    <div><a routerLink="/user/admin1/schedule">Schedule</a></div>
+                    <div><a (click)="success($event)">Execute Now</a></div>
+                </div> -->
+                <!-- <div class="ubtn">
+                    <div><a href="">Upload</a></div>
+                </div> -->
+            </div>
+        </div>
+        <div class="col-md-8">
+            <mat-card class="middle">
+
+                <!-- <div class="minfile"> -->
+                <form class="col container scroll">
+                    <ng-container *ngFor="let tables of dummyDatas;let j=index">
+                        <table class="table table-striped" *ngFor="let table of tables;">
+                            <thead>
+                                <tr style="background-color: #041E42; color:white" *ngFor="let item of tables">
+                                    <th scope="col">File01</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of table['Data Fields'];let i=index;">
+                                    <td *ngIf="item.Description">
+                                        {{item['Field ']}}
+                                    </td>
+                                    <td *ngIf="item.Description">
+                                        {{item['Data type']}}
+                                    </td>
+                                    <td *ngIf="item.Description">
+                                        {{item['Description']}}
+                                    </td>
+                                    <td>
+                                        <input id="defination{{i}}" [value]="item.defination"
+                                            (click)="captureDataSetFieldss(item, i , j)" class="form-control">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-container>
+
+
+                </form>
+
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+            <mat-card class="middle">
+                <ng-container>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr style="background-color: #041E42; color:white">
+                                <th scope="col">Custom Data</th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let item of dummyCustomData" (click)="inputFileRowClickedd(item)">
+
+                                <td>
+                                    {{item['Field ']}}
+                                </td>
+
+                                <td>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+            </mat-card>
+        </div>
+        <div class="col-md-4" style="margin: auto; margin-right: 0;">
+            <button mat-button class="cD_btn" color="primary" style="width: 100px; height:auto;"
+                routerLink="/user/admin1/solution-board-dashboard">Save</button>&nbsp; &nbsp;
+            <button mat-button class="cD_btn" color="primary" style="width: auto; height:auto;"
+                routerLink="/user/admin1/solution-board-dashboard">Save & Execute</button>&nbsp; &nbsp;
+            <button mat-button class="cD_btn" color="primary" style="width: 100px; height:auto;"
+                routerLink="/user/admin1/solution-board-dashboard">Schedule</button>&nbsp; &nbsp;
+
+            <!-- <button mat-button
+                style="width: 100px; height:auto; color: #0076A8;border-radius:0;background-color: #f5f5f5; border: 1px solid #0076A8;">Reset</button> -->
+
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Project 01</h4>
+            </div>
+            <div style="text-align: center;margin-top:20px">
+                <h6 style="padding: 70px 20px 20px 20px;">Execution started you will be notified once the dashboard is
+                    generated</h6>
+            </div>
+            <div class="col-sm-4" style="float: right; margin: 5% 22% 5% 0">
+                <button mat-button
+                    style="width: 40%; height:35px; background-color: #0076A8; color: white;border-radius: 0; "
+                    routerLink="/user/admin1/dashboard">Ok</button>
+
+            </div>
+        </div>
+    </div>
+</div>

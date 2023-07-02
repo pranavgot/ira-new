@@ -1,0 +1,351 @@
+<div class="heading">
+    <h1>Solution Board</h1>
+    <h5><span style="color: #0076A8;">Dashboard / </span> Solution Board / Create New Solution</h5>
+</div>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col" style="margin-left: 5px;">
+            <mat-card>
+                <div class="cards">
+                    <div>
+                        <!-- <mat-tab-group (selectedTabChange)="onTabClick($event)"> selectedIndexChange -->
+                        <mat-tab-group [selectedIndex]="selectedIndexISP" (selectedTabChange)="tabChanged($event)">
+                            <mat-tab label="Select Industry"> Select Industry </mat-tab>
+                            <mat-tab label="Select Sector"> Select Sector </mat-tab>
+                            <mat-tab label="Add Process"> Add Process </mat-tab>
+                        </mat-tab-group>
+                        <!-- <nav mat-tab-nav-bar >
+                            <a mat-tab-link *ngFor="let link of links; let i = index" (selectedIndexChange)="tabChanged($event)"
+                               (click)="activeLink = link"
+                               [active]="activeLink == link" [disabled] = "!link.isActive">  {{link.name}} </a>
+                          </nav> -->
+                        <div>
+                            <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!--industry cards-->
+                <div class="row scroll" *ngIf="selectedIndexISP == 0" >
+                   
+                        <!-- <h4 style="text-align:left;">Select Industry</h4> -->
+                        <!-- <div class="col-sm-4">1
+                        <mat-card class="example-card">
+                            <div (click)="selectISP(1,'Industry: Consumer and Industrial Products')">
+                                <div class="part1">
+                                    <div class="dds-icon dds-icon_user__l__stroke"></div>
+                                    <h3 style="border-color:#4791FF">Consumer and Industrial Products</h3>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div> -->
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div (click)="selectISP(1,'Industry: Consumer and Industrial Products')">
+                                    <div
+                                        style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                        <span class="dds-icon dds-icon_user__l__stroke"></span>
+                                    </div>
+                                    <mat-card-subtitle
+                                        style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">
+                                        Consumer
+                                        and Industrial Products</mat-card-subtitle>
+                                </div>
+
+                            </mat-card>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_money__s__filled"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Financial
+                                    Services
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public
+                                    Sector
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_user__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Consumer
+                                    and
+                                    Industrial Products</mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_money__s__filled"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Financial
+                                    Services
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public
+                                    Sector
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_user__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Consumer
+                                    and
+                                    Industrial Products</mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_money__s__filled"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Financial
+                                    Services
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public
+                                    Sector
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public
+                                    Sector
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card class="example-card">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_users__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public
+                                    Sector
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </div>
+                    
+                </div>
+
+                <!--sector Cards-->
+                <div class="row" *ngIf="selectedIndexISP == 1">
+                    <!-- <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div (click)="selectISP(2,'Sector: Automotive')">
+                                <div class="part1">
+                                    <p style="color:#4791FF">1001</p>
+                                    <h3 style="border-color:#4791FF">Sector</h3>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div> -->
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div (click)="selectISP(2,'Sector: Automotive')">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_sun__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">
+                                    Automotive
+                                </mat-card-subtitle>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_user__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Consumer
+                                Products
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_folder__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Industrial
+                                Products and Services
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_user__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Retail Whole
+                                sale and Distribution
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_money__s__filled"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:11px;text-align: center;font-size: 12px;margin-top: -16px;">Chemicals and
+                                Speciality Materials
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_users__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public Sector
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_user__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Consumer and
+                                Industrial
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_money__s__filled"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Financial
+                                Services
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                <span class="dds-icon dds-icon_users__l__stroke"></span>
+                            </div>
+                            <mat-card-subtitle
+                                style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">Public Sector
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                </div>
+
+                <!--add Process-->
+
+                <div class="row" *ngIf="selectedIndexISP == 2">
+                    <div class="col-sm-4">
+                        <mat-card class="example-card">
+                            <div (click)="selectISP(3,'Add Process: Record to Report')"
+                                routerLink="/user/admin1/add-process">
+                                <div style="text-align: center;font-size: 40px;color: #005587;padding:6px 0px 0px 0px;">
+                                    <span class="dds-icon dds-icon_plus__l__stroke"></span>
+                                </div>
+                                <mat-card-subtitle
+                                    style="padding:12px;text-align: center;font-size: 12px;margin-top: -16px;">
+                                    Add Process
+                                </mat-card-subtitle>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                </div>
+
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card>
+                <div>
+                    <div class="main">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="background-color: #041E42; color:white">
+                                    <th scope="col">Create Solution Details</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr *ngFor="let detail of createSolutionDetails">
+                                    <td>{{detail.name}}</td>
+                                </tr> -->
+                                <tr>
+                                    <td> Industry: Consumer and Industrial Products</td>
+                                </tr>
+                                <tr>
+                                    <td>Sector: Automotive</td>
+                                </tr>
+                                <tr>
+                                    <td>Process: Record to Report</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="float: right; margin: 5% 0 5% 0">
+                    <!-- (click)="CloseModal() -->
+                    <button mat-button
+                        style="width: 40%; height:35px; color: #0076A8; border-color: #0076A8;">Reset</button>
+                    &nbsp; &nbsp;
+                    <button mat-button style="width: 40%; height:35px; background-color: #0076A8; color: white;"
+                        routerLink="/user/admin1/user-management">Next</button>
+                </div>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.btn button{
+    width: auto;
+    margin: 20px;
+    background: #0076A8;
+    color: #FFF;
+}
+
+sup {
+    color: red;
+}
+
+form input.is-invalid{border:1px solid #f00; transition: 0.3 ease-in linear;}
+form textarea.is-invalid{border:1px solid #f00; transition: 0.3 ease-in linear;}

@@ -1,0 +1,188 @@
+<div class="heading">
+    <h1>Projects Overview</h1>
+</div>
+<div class="consen ">
+    <div class=" pro">
+        <div class=" row">
+            <div class="row col dis">
+                <div class="col mini">
+                    <h4>Projects Created</h4>
+                    <p>1</p>
+                </div>
+                <div class="col mini">
+                    <h4 class="succ">Completed </h4>
+                    <p>2</p>
+                </div>
+                <div class="col mini">
+                    <h4 class="pend">Pending</h4>
+                    <p>1</p>
+                </div>
+                <div class="col mini">
+                    <h4 class="fail">Failed </h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bton col-md-4">
+                <!-- <div class="cbtn" >
+                    <div><a >Schedule</a></div>
+                    <div><a >Execute Now</a></div>
+                </div>
+                <div class="ubtn">
+                    <div><a href="">Upload</a></div>
+                </div> -->
+            </div>
+        </div>
+        <div>
+            <mat-card class="middle">
+
+                <div class="minfile">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr style="background-color: #041E42; color:white">
+                                <th scope="col">Project Name</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col">Project Status</th>
+                                <th scope="col">Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of projectdetails">
+                                <td>{{item.projectName}}</td>
+                                <td>{{item.creationDate |date:"dd/MM/yyyy hh:mm a"}}</td>
+                                <td>{{item.statusName}}
+                                    <!-- <div class="progress"
+                                        style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                                        <div class="progress-bar" role="progressbar"
+<span class="succ dds-icon dds-icon_eyeopen"></span> 
+                                    <                                            style="width: 33%;background-color: #86BC25;" aria-valuenow="33"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div> -->
+                                </td>
+                                <td *ngIf="item.statusName == 'Completed'">
+                                    <!-- span class="fail dds-icon dds-icon_exclemation-mark"></span>  -->
+                                     <span class="ico dds-icon dds-icon_eyeopen" (click)="projectCompleyed()" ></span>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td>Project 02</td>
+                                <td>26/01/2022</td>
+                                <td>
+                                    <div class="progress"
+                                        style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: 66%;background-color: #86BC25;" aria-valuenow="66"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td> -->
+                                    <!-- <span class="succ dds-icon dds-icon_eyeopen"></span> -->
+                                    <!-- <span class="fail dds-icon dds-icon_exclemation-mark"></span> -->
+                                    <!-- <span class="ico dds-icon dds-icon_arrow_right__l__stroke"></span>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Project 03</td>
+                                <td>26/01/2022</td>
+                                <td>
+                                    <div class="progress"
+                                        style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: 100%;background-color: #86BC25;" aria-valuenow="100"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="ico dds-icon dds-icon_eyeopen"></span> -->
+                                    <!-- <span class="fail dds-icon dds-icon_exclemation-mark"></span> -->
+                                    <!-- <span class="fail dds-icon dds-icon_arrow_right__l__stroke"></span> -->
+
+                                <!-- </td>
+
+                            </tr>
+                            <tr>
+                                <td>Project 04</td>
+                                <td>26/01/2022</td>
+                                <td>
+                                    <div class="progress"
+                                        style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: 100%;background-color: #DA291C;" aria-valuenow="33"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td> -->
+                                    <!-- <span class="succ dds-icon dds-icon_eyeopen"></span> -->
+                                    <!-- <span class="ico dds-icon dds-icon_exclemation-mark"></span> -->
+                                    <!-- <span class="fail dds-icon dds-icon_arrow_right__l__stroke"></span> -->
+
+                                <!-- </td>
+
+                            </tr> -->
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </mat-card>
+        </div>
+        <div class="info row">
+            <div class="row col ">
+                <div class="col ">
+                    <h4 class="succ">Data Preparation </h4>
+                    <div class="progress" style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: 33%;background-color: #86BC25;"
+                            aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="col ">
+                    <h4 class="succ">Data Transformation </h4>
+                    <div class="progress" style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: 66%;background-color: #86BC25;"
+                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="col ">
+                    <h4 class="pend">Dashboard Generated</h4>
+                    <div class="progress" style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background-color: #86BC25;"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="col ">
+                    <h4 class="fail">Dashboard Generation Failed </h4>
+                    <div class="progress" style="width: 70%;background-color: #eee ;border-radius: 0;height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background-color: #DA291C;"
+                            aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-4">
+               
+            </div>
+        </div>
+    </div>
+    <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <div class="taxt-header">
+                    <h4 style="background-color: #0076A8; color: white; padding: 10px;">Project</h4>
+                </div>
+                <div style="text-align: center;margin-top:20px">
+                    <!-- <h6 style="padding: 70px 20px 20px 20px;">Execution started you will be notified once the dashboard is
+                        generated</h6> -->
+                </div>
+                <div class="col-sm-4" style="float: right; margin: 5% 22% 5% 0">
+                    <!-- <button mat-button
+                        style="width: 40%; height:35px; background-color: #0076A8; color: white;border-radius: 0; "
+                        routerLink="/user/admin1/dashboard">Ok</button> -->
+                    <!-- &nbsp;
+                    &nbsp;
+                    <button mat-button style="width: 40%; height:35px;color: #0076A8; border-color: #0076A8;"
+                        (click)="CloseModal()">Cancel</button> -->
+                </div>
+            </div>
+        </div>
+</div>

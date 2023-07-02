@@ -1,0 +1,168 @@
+.mat-card {
+    // height: 90%;
+    border-radius: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    padding-bottom: 0;
+    //box-shadow: 0px -1px 6px 1px rgb(204, 202, 202);
+}
+
+.container {
+    margin-top: 5%;
+}
+
+.col {
+    padding: 0 5px;
+    &:first-child{padding-left: 0;}
+    &:last-child{padding-right: 0;}
+}
+
+.heading {
+    background-color: #FFFFFF;
+    padding: 8px 20px 8px 20px;
+    display: inline-block;
+    width: 100%;
+
+    h1 {
+        font-size: 18px;
+        line-height: 20px;
+        font-family: 'open_sans-bold';
+        margin: 0 0 3px 0;
+        color: #1C1C1C;
+        float: left;
+        width: 100%;
+    }
+
+    ul {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            margin: 0 8px 0 0;
+            color: #000000;
+            font-family: 'open_sans-regular';
+            font-size: 10px;
+            line-height: 14px;
+            list-style: none;
+
+            a {
+                color: #005587;
+                font-family: 'open_sans-regular';
+                font-size: 10px;
+                line-height: 14px;
+                float: left;
+                text-decoration: none;
+                padding: 0 7px 0 0;
+            }
+        }
+    }
+}
+
+h5 {
+    font-size: 15px;
+}
+
+.btnn {
+    border-radius: 0;
+    margin-bottom: 10px;
+    margin-left:0;
+    border: 1px solid #0076A8;
+    background-color: #0076A8;
+    color: white;
+    width: 100px;
+    height: 40px;
+}
+
+.cards {
+    display: flex;
+    box-shadow: inset 0px 1.2px 4px #00000029, 0px 1.2px 4px #0000001A;
+    background: #fff;
+}
+
+// .table th{font-size: 17px; padding-left: 20px;}
+
+.middle {
+    height: 550px
+}
+.consen{ padding: 20px; width:calc(100% - 40px); float: left; width:100%; margin: 0;}
+.no-gutters .col-md-3{width:190px}
+th:last-child{width:150px}
+.part1 {
+    width: calc(100% - 40px);
+    padding: 10px 0px 0px 0px; float: left;
+
+    h2 {
+        color: #0076A8;
+        float: left;
+        width: 100%;
+        padding: 0 0 0 14px;
+        margin: 0;
+        font-size: 20px;
+        line-height: 30px;
+        font-family: 'open_sans-medium';
+
+    }
+
+    h3 {
+        border-left: 5px solid #0076A8;
+        margin: 0 0px 1px 0;
+        padding: 2px 0px 0.3px 9px;
+        font-size: 13px;
+        font-family: 'open_sans-semiBold';
+        line-height: 19px;
+        float: left;
+        width: 100%;
+
+    }
+}
+
+.part2 {
+    width: 40px;
+    height: 65px;
+    text-align: center;
+    padding: 18px 0; float: left;
+
+    span {
+        font-size: 26px;
+        color: white !important;
+    }
+}
+form {
+    padding: 35px;
+}
+
+.row {
+    padding-bottom: 20px;
+    margin: 0;
+
+    input {
+        border-radius: 0;
+    }
+}
+
+.input-group-addon {
+    // padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 12%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    padding-top: 12px;
+}
+
+.taxt-audit-popup button {
+    border: 1px solid #ccc
+}
+
+.mat-button {
+    border-radius: 0;
+}

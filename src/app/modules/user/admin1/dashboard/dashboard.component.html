@@ -1,0 +1,338 @@
+<!-- <p>dashboard works!</p> -->
+
+<div class="heading">
+    <h1>Dashboard</h1>
+</div>
+<div class="consen">
+    <div class="row cards-group my-projects-cards">
+        <div class="col">
+            <mat-card class="color1">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Leads</h3>
+                        <p>{{cards?.LeadsCount}}</p>
+                    </div>
+                    <div class="part2">
+                        <span class="dds-icon dds-icon_calendar__s__stroke"></span>
+                         <!-- routerLink="/user/admin2/lead" -->
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="color2">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Users</h3>
+                        <p>{{cards?.UserProjectsCount}}</p>
+                    </div>
+                    <div class="part2 bg">
+                        <span class="dds-icon dds-icon_users__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="color3">
+                <div class="cards">
+                    <div class="part1">
+                        <h3 >Clients</h3>
+                        <p>{{cards?.ClientCount}}</p>
+                    </div>
+                    <div class="part2 bg">
+                        <span class="dds-icon dds-icon_users__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="color4">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Published Solutions</h3>
+                        <p>{{cards?.PublishedSolutionsCount}}</p>
+                    </div>
+                    <div class="part2 bg">
+                        <span class="dds-icon dds-icon_archive__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="color5">
+                <div class="cards">
+                    <div class="part1">
+                        <h3>Projects</h3>
+                        <p>{{cards?.TotalProjects}}</p>
+                    </div>
+                    <div class="part2 bg">
+                        <span class="dds-icon dds-icon_file__l__stroke"></span>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="tab">
+        <div class="col-sm-6">
+            <mat-card class="middle graph-box">
+                <!-- <h3>Process Vs Runs</h3> -->
+                <!-- <h6>Success</h6>
+                <div class="colors" ="background-color: #02BC77;"></div>
+                <h6>Failed</h6>
+                <div class="colors" ="background-color: #4791FF;"></div> -->
+                <div id="chart">
+                    <apx-chart [series]="chart1?.series" [chart]="chart1?.chart" [xaxis]="chart1?.xaxis"
+                        [dataLabels]="chart1?.dataLabels" [grid]="chart1?.grid" [stroke]="chart1?.stroke"
+                        [title]="chart1?.title"></apx-chart>
+                </div>
+
+            </mat-card>
+        </div>
+        <div class="col-sm-6">
+            <mat-card class="middle graph-box">
+                <div id="chart">
+                    <apx-chart [series]="chart4?.series" [title]="chart4?.title"
+                        [chart]="chart4?.chart" [dataLabels]="chart4?.dataLabels"
+                        [plotOptions]="chart4?.plotOptions" [yaxis]="chart4?.yaxis"
+                        [xaxis]="chart4?.xaxis" [legend]="chart4?.legend" [colors]="chart4?.colors"  [stroke]="chart4?.stroke"
+                        [fill]="chart4?.fill"
+                        [forecastDataPoints]="chart4?.forecastDataPoints"
+                        [grid]="chart4?.grid"></apx-chart>
+                </div>
+                <!-- <h3>Process Board</h3>
+                <h6>Success</h6>
+                <div class="colors" ="background-color: #02BC77;"></div>
+                <h6>Failed</h6>
+                <div class="colors" ="background-color: #4791FF;"></div> -->
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="tab">
+        <!-- <div class="col-sm-4">
+            <mat-card class="middle graph-box">
+                <div id="chart">
+                    <apx-chart [series]="chart3?.series" [chart]="chart3?.chart"
+                        [dataLabels]="chart3?.dataLabels" [plotOptions]="chart3?.plotOptions"
+                        [title]="chart3?.title" [colors]="chart3?.colors"></apx-chart>
+                </div>
+            </mat-card>
+        </div> -->
+        <div class="col-sm-6">
+            <mat-card class="middle graph-box">
+                <!-- <h3>Projects</h3> -->
+                <div id="chart">
+                    <apx-chart [series]="chartOptions1?.series" [chart]="chartOptions1?.chart" [fill]="chartOptions1?.fill"
+                        [grid]="chartOptions1?.grid" [dataLabels]="chartOptions1?.dataLabels"
+                        [plotOptions]="chartOptions1?.plotOptions" [xaxis]="chartOptions1?.xaxis"
+                        [yaxis]="chartOptions1?.yaxis" [title]="chartOptions1?.title"></apx-chart>
+                </div>
+                
+            </mat-card>
+        </div>
+        <div class="col-sm-6">
+            <mat-card class="middle graph-box">
+                <div id="chart">
+                    <!-- <h3>Process Vs Sob'ns</h3> -->
+                    <apx-chart [series]="chart5?.series" [chart]="chart5?.chart"
+                        [dataLabels]="chart5?.dataLabels" [xaxis]="chart5?.xaxis"
+                        [yaxis]="chart5?.yaxis" [stroke]="chart5?.stroke" [title]="chart5?.title"
+                        [colors]="chart5?.colors" [fill]="chart5?.fill"
+                        [forecastDataPoints]="chart5?.forecastDataPoints" [legend]="chart5?.legend">
+                    </apx-chart>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <!-- <div class="main" *ngIf="tab1">
+        <div class="header">
+            <h4>Processes</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr ="background-color: #005587; color:white">
+                            <th scope="col" ="padding-left: 20px;">Solution/Process</th>
+                            <th scope="col">Industry</th>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Created Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div> -->
+
+    <!-- <div class="main" *ngIf="tab2">
+        <div class="header">
+            <h4>Dashboard Generated</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr ="background-color: #user/admin2/service-request005587; color:white">
+                            <th scope="col" ="padding-left: 20px;">User Name</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Process Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td><span class="dds-icon dds-icon_show__l__stroke"></span></td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td><span class="dds-icon dds-icon_show__l__stroke"></span></td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td><span class="dds-icon dds-icon_show__l__stroke"></span></td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td><span class="dds-icon dds-icon_show__l__stroke"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+    <div class="main" *ngIf="tab3">
+        <div class="header">
+            <h4>Users</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr ="background-color: #005587; color:white">
+                            <th scope="col" ="padding-left: 20px;">User Name</th>
+                            <th scope="col">User Type</th>
+                            <th scope="col">User Role</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Contact No.</th>
+                            <th scope="col">Email-Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>9999999999</td>
+                            <td>abc@gmail.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div>
+
+    <div class="main" *ngIf="tab4">
+        <div class="header">
+            <h4>Approvals</h4>
+        </div>
+        <mat-card class="middle">
+                <table class="table table-striped">
+                    <thead>
+                        <tr ="background-color: #005587; color:white">
+                            <th scope="col" ="padding-left: 20px;">User Name</th>
+                            <th scope="col">User Type</th>
+                            <th scope="col">User Role</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>pending</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>approved</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>approved</td>
+                        </tr>
+                        <tr>
+                            <td ="padding-left: 20px;">Internal User</td>
+                            <td>Name 1</td>
+                            <td>Deloite</td>
+                            <td>Manager</td>
+                            <td>pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card>
+    </div> -->
+</div>

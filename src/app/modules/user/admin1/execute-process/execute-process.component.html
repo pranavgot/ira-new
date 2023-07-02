@@ -1,0 +1,207 @@
+<div class="heading">
+    <h1>Execute Process</h1>
+</div>
+<div class="consen ">
+    <div class=" pro">
+        <div class="info row">
+            <div class="row col dis">
+                <div class="col mini">
+                    <h4>Project Name</h4>
+                    <p>{{projectname}}</p>
+                </div>
+                <div class="col mini">
+                    <h4>Process </h4>
+                    <p>{{processname}}</p>
+                </div>
+            </div>
+            <input type="file" id="browse" style="display: none;" multiple />
+            <div class="bton col">
+                <div class="cbtn">
+                    <div><a routerLink="/user/admin1/schedule">Schedule</a></div>
+                    <div><a (click)="success($event)">Execute Now</a></div>
+                </div>
+                <!-- <div class="ubtn">
+                    <div><a href="">Upload</a></div>
+                </div> -->
+            </div>
+        </div>
+        <div>
+            <mat-card class="middle">
+                <h5 style="padding: 10px;">Upload File:</h5>
+
+                <div class="but">
+                    <div>
+                        <label for="inputfile" class="button">
+                            <input type="file" id="inputfile" (change)="saveiputFiles($event)" style="display: none;"
+                                multiple />
+                            <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                            <br>
+                            <h5>Upload Files</h5>
+                            <p style="font-size: 9px;color: #707070;">Note: Exclude .JS and .EXE files</p>
+                        </label>
+                    </div>
+                </div>
+                <!-- <div class="minfile">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr style="background-color: #041E42; color:white">
+                                <th scope="col">Uploaded Files</th>
+                                <th scope="col">File Name</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Filename1</td>
+                                <td>FBL1N</td>
+
+                            </tr>
+                            <tr>
+                                <td>Filename1</td>
+                                <td>FBL1N</td>
+
+                            </tr>
+                            <tr>
+                                <td>Filename1</td>
+                                <td>FBL1N</td>
+
+                            </tr>
+                            <tr>
+                                <td>Filename1</td>
+                                <td>FBL1N</td>
+
+                            </tr>
+                            <tr>
+                                <td>Filename1</td>
+                                <td>FBL1N</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+            </mat-card>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">Project 01</h4>
+            </div>
+            <div style="text-align: center;margin-top:20px">
+                <h6 style="padding: 70px 20px 20px 20px;">Execution started you will be notified once the dashboard is
+                    generated</h6>
+            </div>
+            <div class="col-sm-4" style="float: right; margin: 5% 22% 5% 0">
+                <button mat-button
+                    style="width: 40%; height:35px; background-color: #0076A8; color: white;border-radius: 0; "
+                    routerLink="/user/admin1/dashboard">Ok</button>
+                <!-- &nbsp;
+                &nbsp;
+                <button mat-button style="width: 40%; height:35px;color: #0076A8; border-color: #0076A8;"
+                    (click)="CloseModal()">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<div class="seper">
+    example-headers-align compliance_fullwidth
+    compliance-header
+    compliance-report
+    compliance-incom
+    compliance-incom
+    compliance-incom1
+    compliance-expansion
+    compliance-expansion-main
+    compliance-incom1
+    compliance-incom1
+    compliance-expansion-incom
+    <mat-accordion class="accord" multi>
+        <div>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <div class="expansion header ">
+                        <div class="row">
+                            <div class="col-md-4">consumer & Industrial Products</div>
+                            <div class="col">Automotive</div>
+                            <div class="col"> Expand <span></span></div>
+                        </div>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Financial Book Closing Analysis
+                                </div>
+                                <div class="col">
+                                    <p>The solution facilitates comprehensive analysis of accounting entries passed in
+                                        the book keeping system. Drill down available to identify transactions of
+                                        exceptional nature for testing. Key analysis includes :</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Financial Book Closing Analysis
+                                </div>
+                                <div class="col">
+                                    <p>The solution facilitates comprehensive analysis of accounting entries passed in
+                                        the book keeping system. Drill down available to identify transactions of
+                                        exceptional nature for testing. Key analysis includes :</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Financial Book Closing Analysis
+                                </div>
+                                <div class="col">
+                                    <p>The solution facilitates comprehensive analysis of accounting entries passed in
+                                        the book keeping system. Drill down available to identify transactions of
+                                        exceptional nature for testing. Key analysis includes :</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Financial Book Closing Analysis
+                                </div>
+                                <div class="col">
+                                    <p>The solution facilitates comprehensive analysis of accounting entries passed in
+                                        the book keeping system. Drill down available to identify transactions of
+                                        exceptional nature for testing. Key analysis includes :</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+</div>
+<div></div>
+<div class="file">
+    <div class="file-head">
+        <h4>Scripts / Templates to be downloaded</h4>
+    </div>
+    <div class="file-main">
+        <p>Templatefile.xlsx</p>
+        <p>Templatefile.xlsx</p>
+        <p>Templatefile.xlsx</p>
+        <p>Templatefile.xlsx</p>
+    </div>
+</div> -->

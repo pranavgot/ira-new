@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
+  <g id="MDI_data-matrix-scan" data-name="MDI / data-matrix-scan" opacity="0.4">
+    <g id="Boundary" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" opacity="0">
+      <rect width="31" height="31" stroke="none"/>
+      <rect x="0.5" y="0.5" width="30" height="30" fill="none"/>
+    </g>
+    <path id="Path_data-matrix-scan" data-name="Path / data-matrix-scan" d="M2.583,2.583H7.75V0H2.583A2.591,2.591,0,0,0,0,2.583V7.75H2.583V2.583M28.417,28.417H23.25V31h5.167A2.591,2.591,0,0,0,31,28.417V23.25H28.417v5.167M10.333,7.75V5.167h2.583V7.75H10.333m2.583,10.333V15.5H15.5v2.583H12.917m7.75-12.917H23.25V7.75H20.667V5.167M23.25,7.75h2.583v2.583H23.25V7.75m0,10.333h2.583v2.583H23.25V18.084M25.834,15.5H20.667v7.75h5.167v2.583H5.167V5.167H7.75V7.75h2.583v5.167H7.75V15.5h2.583v2.583h2.583v2.583H15.5V23.25h2.583V20.667H15.5V18.084h2.583V12.917H12.917V7.75H15.5V5.167h2.583v5.167h2.583v2.583h5.167V15.5m-15.5,7.75V20.667H7.75V23.25Z" fill="#fff"/>
+  </g>
+</svg>

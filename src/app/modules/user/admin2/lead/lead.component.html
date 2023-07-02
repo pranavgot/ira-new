@@ -1,0 +1,126 @@
+<div class="heading">
+    <h1>Leads</h1>
+    <!-- <h5><span style="color: #0076A8">Dashboard / </span>Leads</h5> -->
+    <!-- <ul>
+        <li><a [routerLink]="['/dashboard']">Dashboard </a>/</li>
+        <li>Leads</li>
+    </ul> -->
+</div>
+<div class="consen">
+    <mat-card class="table-group">
+        <div class="main">
+            <!-- <div class="icons">
+            <div class="dds-icon dds-icon_file_xls__l__filled">&nbsp;<span>Export</span></div>
+        </div> -->
+            <div class="toolbar-block margin-top-65">
+                <div class="search">
+                    <input id="form1" class="form-control" value="" placeholder="Search"
+                        (keyup)="applyFilter($event)" />
+                    <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons"></span></button>
+                </div>
+
+            </div>
+            <div class="table-layer">
+                <div class="table-container max-height-scroll">
+                    <table mat-table [dataSource]="leadSearch" class="table table-striped" matSort>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="orgName">
+                            <th mat-header-cell *matHeaderCellDef> Organization Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.orgName}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Lead Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="contactNo">
+                            <th mat-header-cell *matHeaderCellDef> Lead Contact Number </th>
+                            <td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="emailId">
+                            <th mat-header-cell *matHeaderCellDef> Lead Email ID </th>
+                            <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="createdDate">
+                            <th mat-header-cell *matHeaderCellDef> Date </th>
+                            <td mat-cell *matCellDef="let element" style="white-space:nowrap;"> {{element.createdDate | date:"dd/MM/yyyy hh:mm a"}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span class="dds-icon dds-icon_eyeopen" (click)="viewleads(element)"></span>
+                                <!-- <span class="dds-icon dds-icon_delete__l__stroke"></span> -->
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                No data found
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <ng-container *ngIf="leadSearch!.data!.length > 10">
+                <mat-paginator [length]="leadSearch?.data?.length" [pageSizeOptions]="[10,20,50]"
+                    aria-label="Select page">
+                </mat-paginator>
+            </ng-container>
+
+            <!-- <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Organization Name</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">User Contact Number</th>
+                    <th scope="col">User Email ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+           
+            <div *ngIf="leadSearch?.length == 0" class="spinner-border" role="status">
+              </div>
+            <tbody>
+                <tr *ngFor="let lead of leadSearch">
+                    <td>{{lead.orgName}}</td>
+                    <td>{{lead.name}}</td>
+                    <td>{{lead.contactNo}}</td>
+                    <td>{{lead.emailId}}</td>
+                    <td>{{lead.createdDate | date:"dd/MM/yyyy"  }}</td>
+                    <td>
+                        <span class="dds-icon dds-icon_eyeopen" (click)="viewleads(lead)"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="dds-icon dds-icon_delete__l__stroke"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+        </div>
+    </mat-card>
+
+    <div *ngIf="AddEventProceeding">
+        <div class="taxt_audit-report">
+            <div class="taxt-audit-popup">
+                <div class="taxt-header popup-header">
+                    <h3>Delete</h3>
+                </div>
+                <div class="popup-body">
+                    <p>Are you sure to delete?</p>
+                </div>
+                <div class="button-group">
+                    <button mat-button (click)="CloseModal()">Cancel</button>
+                    <button mat-button routerLink="/user/admin2/view-leads" class="primary">Delete <span
+                            class="dds-icon dds-icon_delete__l__stroke"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

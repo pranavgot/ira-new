@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+  <g id="MDI_cash-multiple" data-name="MDI / cash-multiple" opacity="0.4">
+    <g id="Boundary" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" opacity="0">
+      <rect width="34" height="34" stroke="none"/>
+      <rect x="0.5" y="0.5" width="33" height="33" fill="none"/>
+    </g>
+    <path id="Path_cash-multiple" data-name="Path / cash-multiple" d="M6.667,6h25.5V23H6.667V6m12.75,4.25a4.25,4.25,0,1,1-4.25,4.25,4.25,4.25,0,0,1,4.25-4.25M12.333,8.833A2.833,2.833,0,0,1,9.5,11.667v5.667a2.833,2.833,0,0,1,2.833,2.833H26.5a2.833,2.833,0,0,1,2.833-2.833V11.667A2.833,2.833,0,0,1,26.5,8.833H12.333M1,11.667H3.833V25.833H26.5v2.833H1Z" transform="translate(0.417 -0.333)" fill="#fff"/>
+  </g>
+</svg>

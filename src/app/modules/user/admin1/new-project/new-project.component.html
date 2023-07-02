@@ -1,0 +1,457 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>My Projects</li>
+            <li>Create New Project</li>
+        </ul>
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container">
+        <mat-card>
+            <h5 class="sub-title">Project Type : {{projectForm.get('standalone')?.value}}</h5>
+            <form [formGroup]="projectForm" class="project-form" (ngSubmit)="projectSubmit()">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select Process<sup>*</sup></label>
+                        <mat-form-field appearance="fill">
+                            <mat-select placeholder="Select Type"
+                                [panelClass]="(selectedTypeFromMyProject.viewType =='Tile Icons')? 'selectTileProcess': 'selectProcess' "
+                                formControlName="chooseProcess"
+                                [ngClass]="{ 'is-invalid': submited && projectForm.controls['chooseProcess'].errors }">
+                                <ng-container *ngIf="selectedTypeFromMyProject.viewType == 'List'">
+                                    <mat-option *ngFor="let item of processes" [value]="item">{{item.processName}}
+                                    </mat-option>
+
+                                </ng-container>
+                                <ng-container *ngIf="selectedTypeFromMyProject.viewType =='Tile Icons'">
+                                    <mat-option *ngFor="let item of processes" [value]="item">
+                                        <div class="col clients-image-tile-list">
+                                           <mat-card class="cards">
+                                                <ng-container>
+                                                    <div class="image-container-block">
+                                                        <div class="image-title">
+                                                            <h3>{{item.processName}}</h3>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </mat-card>
+
+                                        </div>
+                                    </mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                        <!--                         
+                        <div class="col clients-image-list" *ngIf="selectedTypeFromMyProject.viewType =='Tile Icons'" >
+                            <mat-card class="cards" *ngFor="let item of processes" style="width: 24.66%;" >
+                                <ng-container>
+                                    <div class="image-container-block">
+                                        <div class="image-title">
+                                            <h3>{{item.processName}}</h3>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </mat-card>
+                        </div> -->
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Enter Project Name<sup>*</sup></label>
+                        <input type="text" class="form-control reflect-model" formControlName="projectname"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                            maxlength="50"
+                            [ngClass]="{ 'is-invalid': submited && projectForm.controls['projectname'].errors }" />
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>Execution Type<sup>*</sup></label>
+                                <div class="input-group">
+                                    <div class="flex-list">
+                                        <input type="radio" class="radio" formControlName="executiontype"
+                                            (click)="executeProject()" name="executiontype" value="execute">
+                                        <label>Execute Now</label>
+                                        <!-- [ngClass]="{ 'is-invalid': submited && projectForm.controls['executiontype'].errors }" -->
+
+                                        <input type="radio" *ngIf="!projectstandalone" class="radio"
+                                            [checked]="scheduleForms" name="executiontype"
+                                            [ngClass]="{ 'is-invalid': submited && projectForm.controls['executiontype'].errors }"
+                                            (click)="scheduleProject()" value="schedule"
+                                            formControlName="executiontype">
+                                        <label *ngIf="!projectstandalone">Schedule</label>
+                                    </div>
+                                    <!-- <div class="flex-list">
+                                    <input type="radio" class="radio" 
+                                        (click)="executeProject()" name="executeProcess" value="execute"><label>Execute
+                                        Now</label>
+                                    <input type="radio" class="radio" [checked]="scheduleForms" name="executeProcess"
+                                        (click)="scheduleProject()" value="schedule"><label>Schedule</label> 
+                                </div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-4 button-block" *ngIf="!projectcreated">
+                                <label>&nbsp;</label>
+                                <button mat-button class="submit primary" type="submit">Create</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <hr style="opacity: 0.2;">
+            <div *ngIf="projectcreated">
+                <!-- <button (click)="getProjectDetailsById()">nilam</button> -->
+                <form [formGroup]="executionForm">
+                    <div class="row my-project-row">
+                        <div [ngClass]="(projectstandalone)? 'col-md-6': 'col-md-4' ">
+                            <h5 class="sub-title">Download Files</h5>
+                            <div class="box-container">
+                                <div class="scroll new-project-download-list">
+                                    <div class="file-main" *ngFor="let item of anayticfile">
+                                        <label><span class="dds-icon dds-icon_file_xls__l__filled"></span>
+                                            {{item.fileName}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="button-container">
+                                    <button mat-button class="submit primary"
+                                        (click)="downloadTemplates()">Download<span
+                                            class="dds-icon dds-icon_download__l__stroke"></span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" *ngIf="!projectstandalone">
+                            <h5 class="sub-title">Select File Type</h5>
+                            <div class="box-container">
+                                <div class="scroll new-project-download-list" formArrayName="filetype">
+                                    <div class="file-main" *ngFor="let item of anayticfile;let i=index"
+                                        [formGroupName]="i">
+                                        <label><span class="dds-icon dds-icon_file_xls__l__filled"></span>
+                                            <span class="file-title">{{item.fileName}}</span>
+
+                                            <mat-select class="form-control" placeholder="Select Filetype"
+                                                formControlName="executionType">
+                                                <mat-option value="S">Standalone</mat-option>
+                                                <mat-option value="I">Incremental</mat-option>
+                                            </mat-select>
+                                            <!-- <select name="type" formControlName="executionType">
+                                            <option value="S">Standalone</option>
+                                            <option value="I">Incremental</option>
+                                        </select> -->
+                                        </label>
+                                    </div>
+                                    <div class="button-container">
+                                        <button mat-button class="submit primary" *ngIf="!scheduleForms"
+                                            (click)="savefiletype()">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" *ngIf="!projectstandalone && scheduleForms">
+                            <h5 class="sub-title">Schedule Type</h5>
+                            <!-- <form [formGroup]="scheduleForm"> -->
+                            <div class="col tabs-container">
+                                <div class="row container">
+                                    <div class="col subheading" [class.active]="subtab1" (click)="changesubtab(1)">
+                                        <p class="options">Daily</p>
+                                    </div>
+                                    <div class="col subheading" [class.active]="subtab2" (click)="changesubtab(2)">
+                                        <p class="options">Weekly</p>
+                                    </div>
+                                    <div class="col subheading" [class.active]="subtab3" (click)="changesubtab(3)">
+                                        <p class="options"> Monthly</p>
+                                    </div>
+                                    <div class="strip" [ngClass]="subtab1?'tab1':subtab2?'tab2':subtab3?'tab3':''">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px !important;">
+                                    <div class="col-sm-6">
+                                        <div class="input-group date">
+                                            <label>Start Date</label>
+                                            <input type="date" class="form-control reflect-model"
+                                                formControlName="startdate" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group date">
+                                            <label>End Date</label>
+                                            <input type="date" class="form-control reflect-model"
+                                                formControlName="enddate" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" *ngIf="subtab2">
+                                        <div class="input-group">
+                                            <label>Week</label>
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control reflect-model" placeholder="Select"
+                                                    formControlName="day" multiple>
+                                                    <mat-option value="{{item.value}}"
+                                                        *ngFor="let item of day">{{item.value}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" *ngIf="subtab3">
+                                        <div class="input-group date">
+                                            <label>Date</label>
+                                            <mat-form-field appearance="fill">
+                                                <mat-select class="form-control reflect-model" placeholder="Select"
+                                                    formControlName="date" multiple>
+                                                    <mat-option value="{{item.value}}"
+                                                        *ngFor="let item of date">{{item.value}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group time">
+                                            <label>Time</label>
+                                            <input type="time" class="form-control reflect-model"
+                                                formControlName="time" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- </form> -->
+                        </div>
+
+                        <!-- {{projectstandalone}}{{scheduleForms}}{{manualupload}} -->
+                        <div [ngClass]="(projectstandalone)? 'col-md-6': 'col-md-4' ">
+                            <ng-container *ngIf="!projectstandalone && !scheduleForms">
+                                <h5 class="sub-title">Upload Type<sup>*</sup></h5>
+                                <div class="flex-list" style="margin-bottom: 20px;">
+                                    <input type="radio" class="radio" formControlName="uploadtype"
+                                        (click)="manualType()" value="manual">
+                                    <label>Manual</label>
+                                    <!-- [ngClass]="{ 'is-invalid': submited && projectForm.controls['executiontype'].errors }" -->
+
+                                    <input type="radio" class="radio" (click)="pathType()" value="path"
+                                        formControlName="uploadtype">
+                                    <label>Path</label>
+                                </div>
+
+
+                                <!-- <input type="radio" class="radio"
+                                (click)="manualType()" value="manual" [checked]="manual">
+                                <label>Manual</label>
+
+                            <input type="radio" class="radio"  
+                                (click)="pathType()" value="pathType">
+                                <label>Path</label>  -->
+                                <!-- </div> -->
+                            </ng-container>
+
+                            <ng-container *ngIf="projectstandalone || !scheduleForms && manualupload">
+                                <h5 class="sub-title" *ngIf="uploadData?.length == 0">Upload Files</h5>
+                                <h5 class="sub-title" *ngIf="uploadData?.length > 0">Uploaded Files</h5>
+                                <div class="box-container upload-inner-container" *ngIf="uploadData?.length == 0" style=" height:245px;">
+                                    <!-- <ng-container *ngFor="let item of uploadData">
+                                {{item}}<br>
+                            </ng-container> -->
+                                    <ng-container>
+                                        <label for="inputfile" class="button">
+                                            <input type="file" id="inputfile" (change)="saveiputFiles($event)"
+                                                style="display: none;" multiple />
+                                            <span class="dds-icon dds-icon_upload__l__stroke icon"></span>
+                                            <h5>Drag and drop files, or <span>Browse</span></h5>
+                                            <p>Supported XLS, PDF & CSV files.</p>
+                                        </label>
+                                    </ng-container>
+
+                                    <!-- <ng-container *ngIf="uploadData?.length > 0">
+                                <ng-container *ngFor="let item of uploadData">
+                                    {{item}}<br>
+                                </ng-container>
+                                <label for="inputfile1" class="button">
+                                    <input type="file" id="inputfile1" (change)="saveiputFiles($event)"
+                                        style="display: none;" multiple />
+                                    Upload More Files<span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                </label>
+                                <div class="button-container">
+                                    <button mat-button class="submit primary" (click)="saveiputFiles()">Upload Files<span
+                                            class="dds-icon dds-icon_upload__l__stroke"></span>
+                                        
+                                    </button>
+                                </div>
+                            </ng-container> -->
+                                </div>
+                                <div class="box-container" *ngIf="uploadData?.length > 0">
+                                    <div class="scroll new-project-download-list">
+                                        <div class="file-main" *ngFor="let item of uploadData">
+                                            <label><span class="dds-icon dds-icon_file_xls__l__filled"></span>
+                                                {{item}}</label>
+                                            <!-- <button mat-button><span class="dds-icon dds-icon_eyeopen"></span></button> -->
+                                        </div>
+                                    </div>
+                                    <div class="button-container">
+                                        <label for="inputfile1" class="button">
+                                            <input type="file" id="inputfile1" (change)="saveiputFiles($event)"
+                                                style="display: none;" multiple />
+                                            Upload<span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                        </label>
+                                        <!-- <button for="inputfile1" mat-button class="submit primary">
+                                    Upload More Files<span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                </button> -->
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                            <ng-container *ngIf="!projectstandalone && !manualupload">
+                                <div class="path-block">
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <label>Select Path<sup>*</sup></label>
+                                            <input type="text" class="form-control reflect-model" formControlName="path"
+                                                [ngClass]="{ 'is-invalid': submited && executionForm.controls['path'].errors }" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <label>User Email<sup>*</sup></label>
+                                            <input type="text" class="form-control reflect-model"
+                                                formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submited && executionForm.controls['email'].errors }" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <label>Password<sup>*</sup></label>
+                                            <input type="text" class="form-control reflect-model"
+                                                formControlName="password"
+                                                [ngClass]="{ 'is-invalid': submited && executionForm.controls['password'].errors }" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <label>Domain<sup>*</sup></label>
+                                            <input type="text" class="form-control reflect-model"
+                                                formControlName="domain"
+                                                [ngClass]="{ 'is-invalid': submited && executionForm.controls['domain'].errors }" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+
+
+                        </div>
+
+
+                        <!-- *ngIf="scheduleForms" -->
+
+
+
+
+
+                        <!-- <div class="row" *ngIf="uploadtype">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <label>Select Path<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model" formControlName="path"
+                                            [ngClass]="{ 'is-invalid': submited && executionForm.controls['path'].errors }" />                
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <label>User Email<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model" formControlName="email"
+                                            [ngClass]="{ 'is-invalid': submited && executionForm.controls['email'].errors }" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <label>Password<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model" formControlName="password"
+                                            [ngClass]="{ 'is-invalid': submited && executionForm.controls['password'].errors }" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <label>Domain<sup>*</sup></label>
+                                        <input type="text" class="form-control reflect-model" formControlName="domain"
+                                            [ngClass]="{ 'is-invalid': submited && executionForm.controls['domain'].errors }" />
+                                    </div>
+                                </div>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="button-group" *ngIf="projectcreated">
+        <button mat-button class="cancel" type="reset" routerLink="/user/admin1/my-project">Cancel <span
+                class="dds-icon dds-icon_close__l__stroke"></span></button>
+        <button mat-button class="submit" type="submit" (click)="executeNow()">Submit <span
+                class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+    </div>
+</div>
+
+<div *ngIf="AddEventProceeding1">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header popup-header">
+                <h3>Project 01</h3>
+                <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="popup-body">
+                <p>Execution started you will be notified once the dashboard is
+                    generated</p>
+            </div>
+            <div class="popup-footer">
+                <button mat-button class="primary btnn" routerLink="/user/admin1/my-project"
+                    style="margin:auto;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="progressBarPopup">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header popup-header">
+                <h3>Uploading File(s)</h3>
+                <button class="close" (click)="progressBarPopup = false">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="popup-body">
+                <div class="upload">
+                    <ng-container *ngFor="let pb of progressBar">
+                        <div class="file-name-block"><img src="../../../assets/images/Group 4899.svg"> {{pb?.file}}
+                        </div>
+                        <div class="upload-file-info">
+                            <label *ngIf="pb?.isError == false">{{pb?.percentage}}% <ng-container *ngIf="pb?.icon">
+                                    Success
+                                    !</ng-container></label>
+                            <ng-container *ngIf="pb?.isError">{{pb.errMsg}}</ng-container>
+                            <div *ngIf="pb?.isError" class="ico dds-icon dds-icon_alert__l__stroke"
+                                style="color: red !important; margin-left: 84%;"></div>
+                            <div *ngIf="pb?.isError == false && pb?.icon" class="completedprogress"
+                                style="margin-left: 74%;"></div>
+                        </div>
+                        <div class="progress">
+                            <ng-container *ngIf="pb?.percentage != undefined">
+                                <div class="failedprogress-bar" *ngIf="pb.isError" role="progressbar"
+                                    [style.width]="pb?.percentage + '%'" aria-valuenow="25" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                                <div class="progress-bar" *ngIf="pb?.isError == false" role="progressbar"
+                                    [style.width]="pb?.percentage + '%'" aria-valuenow="25" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

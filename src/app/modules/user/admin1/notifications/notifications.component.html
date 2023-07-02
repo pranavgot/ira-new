@@ -1,0 +1,27 @@
+<div class="heading">
+    <h1>Notifications</h1>
+</div>
+<div class="consen">
+    <div class="inner-container">
+        <div *ngIf="notify == null"  class="empty-notifications">
+            <p style="text-align:center;">No Data Found !</p>                   
+        </div>
+        <div class="main">
+            <div class="announcement-block">
+                <ul>
+                     <li  *ngFor="let item of notify">
+                        <div class="ans-left">
+                             <div class="date-box">
+                                {{item.createdDate | date:"dd/MM/yyyy hh:mm a"}}
+                             </div>   
+                        </div>
+                        <div class="ans-right">
+                            <h3>{{item.title}}</h3>
+                            <p>{{item.message}}</p>    
+                        </div>
+                     </li>   
+                </ul>
+            </div>
+                <!-- <div class="dds-icon" [ngClass]="item.icon" [class.some-class]="item.icon === true" style="float: right;" (click)="close(item.id)"></div> --> 
+    </div>
+</div>

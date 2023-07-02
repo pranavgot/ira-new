@@ -1,0 +1,89 @@
+<div class="heading">
+    <h1>Download & Upload Script</h1>
+</div>
+<div class="consen ">
+    <div class=" pro">
+        <div class="info row">
+            <div class="row col dis">
+                <div class="col mini">
+                    <h4>Project Name</h4>
+                    <p>{{projectname}}</p>
+                </div>
+                <div class="col mini">
+                    <h4>Process </h4>
+                    <p>{{processname}}</p>
+                </div>
+            </div>
+            <div class="bton col">
+                <div class="cbtn" *ngIf="down">
+                    <div (click)="downloadTemplates()"><a >Download</a></div>
+                    <div><a>Upload Custom Data</a></div>
+                </div>
+                <!-- <div class="ubtn" *ngIf="!down">
+                    <div><a routerLink="/user/admin1/execute-process">Upload</a></div>
+                    <label class="button">
+                        <input type="file" style="display: none;" />
+                        <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                        <br>
+                        <h5>Upload Image</h5>
+                        <div><a>Upload</a></div>
+                        <img height="90%" *ngIf="imageUrl" [src]="imageUrl" class="image" />
+                    </label>
+                </div> -->
+            </div>
+        </div>
+        <div class="seper">
+          
+            <mat-accordion class="accord" multi>
+                <div>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <div class="expansion header ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>
+                                            Analytics Name
+                                        </h4>
+                                    </div>
+                                    <div class="col">
+                                        <h4>
+                                            Analytics Objective
+                                        </h4>
+                                    </div>
+                                    <!-- <div class="col"> Expand <span></span></div> -->
+                                </div>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <div class="row" *ngFor="let item of anaytics">
+                                        <div class="col-md-4">{{item.analyticsName}}
+
+                                            <!-- Financial Book Closing Analysis -->
+                                        </div>
+                                        <div class="col">
+                                            <p>{{item.analyticsObjective}}</p>
+                                        </div>
+                                        <!-- <div class="col"></div> -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-expansion-panel>
+                </div>
+            </mat-accordion>
+        </div>
+        <!-- <img [src]="demo" alt=""> -->
+        <div></div>
+        <div class="file">
+            <div class="file-head">
+                <h4>Scripts / Templates to be downloaded</h4>
+            </div>
+            <div class="file-main" *ngFor="let item of anayticfile">
+                <p>{{item.templateName}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

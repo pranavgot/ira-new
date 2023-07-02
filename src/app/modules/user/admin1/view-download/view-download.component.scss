@@ -1,0 +1,231 @@
+.heading {
+    background-color: #FFFFFF;
+    color: #0076A8;
+    font-weight: bold;
+    height: 80px;
+    padding: 20px;
+}
+
+.heading h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.heading h5 {
+    margin: -10px 0 50px 0;
+    font-size: 15px;
+
+}
+.pro{
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px 10px;
+}
+.seper{
+    padding: 0;
+    box-shadow: 0 2px 1px 0px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+}
+.info{
+    padding: 0;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    padding: 10px;
+}
+.row{
+    padding: 0;
+}
+ul li::marker{
+    display: none;
+    font-size: 0;
+}
+li:nth-child(even){
+    background-color: #eee;
+}
+.bton{
+    display: flex;
+    /* margin-right: 0px !important; */
+    margin: auto;
+    /* float: right; */
+    // position: relative;
+    // left: 20%;
+    // padding-left: 40%;
+}
+.bton .cbtn{
+    display: flex;
+    margin-left: auto;
+}
+.bton .ubtn{
+    display: flex;
+    margin-left: auto;
+}
+.bton a{
+    background-color: #0076A8;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: auto 5px;
+    cursor: pointer;
+}
+.dis{
+    padding: 0px;
+    margin: auto;
+}
+.mini{
+    box-shadow: 0 2px 1px 0px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    margin: 20px;
+    padding: 0;
+}
+.mini h4{
+    font-size: 20px;
+    margin: 0;
+    background-color: #041E42;
+    color: #fff;
+    padding: 10px 15px;
+}
+.mini p{
+    padding: 10px 15px;
+    margin: 0;
+}
+.seper .mat-expansion-panel-header{
+    padding: 0;
+}
+.seper mat-expansion-panel.mat-expansion-panel.ng-tns-c197-0._mat-animation-noopable.ng-star-inserted{
+    border-radius: 0px;
+}
+h4{
+    font-size: 20px;
+    margin: 0;
+}
+.accord h4{
+    font-size: 17px;
+}
+.seper::ng-deep .mat-expansion-panel-body{
+    padding: 0;
+}
+
+.accord{
+    margin-top: 20px;
+}
+.accord::ng-deep .mat-content{
+    display: block !important;
+}
+.expansion.header {
+    background-color: #041E42;
+    color: #fff;
+    padding: 10px 15px;
+}
+// .content {
+//     padding: 10px 20px;
+// }
+.file {
+    margin-top: 20px;
+    border: 2px #eee solid;
+}
+.file-head {
+    padding: 10px 15px;
+    background-color: #041E42;
+    color: #fff;
+}
+.file-head  h4{
+    font-size: 17px;
+    margin: 0px;
+}
+.file-main p {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    font-size: 16px;
+}
+.file-main {
+    padding: 10px;
+    display: flex;
+}
+
+
+.compliance-header .compliance-report {
+    font-size: 13px;
+    font-weight: normal;
+    color: #fff;
+    text-align: left;
+    padding: 0px 0px 0px 0px;
+    border-bottom: 1px solid #D0D0CE;
+    background-color: #041E42;
+
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+
+.compliance-header {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+}
+
+.compliance-incom {
+    width: 30%;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.compliance-incom1 {
+    width: 30%;
+    // color: black;
+    padding: 10px;
+    font-size: 16px;
+    text-align: justify;
+    // text-align: center;
+}
+
+.compliance-expansion-main {
+    display: flex;
+    // width: 90%;
+    text-align: left;
+    background: #F9F9F9;
+    padding: 20px 0px;
+}
+.accord::ng-deep.mat-expansion-indicator {
+    position: absolute;
+    right: 40px;
+    top: 9px;
+    color: #fff;
+}
+
+.bttn button {
+    // border: 1px solid #0076A8;
+    display: inline;
+    height: 45px;
+    width: 15%;
+    border-radius: 0;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0px 0px 6px 1px #cccaca;
+
+    // margin-left: 10px;
+    // margin-right: 10px;
+}
+
+.bttn button.active {
+    background-color: #0076A8;
+    color: #fff;
+    box-shadow: 0px 0px 6px 1px #cccaca;
+}
+.next {
+    position: absolute;
+    top: 20%;
+    left: 95%;
+    font-size: 22px;
+    color: #0076A8 !important;
+    border: 1px #707070 solid;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 1;
+    padding: 0px 0px;
+    height: 24px; line-height: 21px;
+}

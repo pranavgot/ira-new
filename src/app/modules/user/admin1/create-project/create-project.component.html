@@ -1,0 +1,123 @@
+<div class="heading">
+    <h1>Create Project</h1>
+</div>
+<div class="consen">
+    <!-- <div class="tabs">
+        <div class="tab act">
+            <span class="dds-icon dds-icon_file__l__stroke"></span>
+            <p>File</p>
+        </div>
+        <div class="tab inact">
+            <span class="dds-icon dds-icon_list__s__stroke"></span>
+            <p>SQL</p>
+        </div>
+        <div class="tab inact">
+            <span class="dds-icon dds-icon_add_line__l__stroke"></span>
+            <p>No SQL</p>
+        </div>
+        <div class="tab inact">
+            <span class="dds-icon dds-icon_file__l__stroke"></span>
+            <p>API</p>
+        </div>
+
+    </div> -->
+    <div class="row sec">
+        <div class="col-md-6">
+            <mat-card>
+                <div>
+                    <div class="dlob">
+                        <div class="header">
+                            <h3>Select Process</h3>
+                        </div>
+                        <div class="">
+                            <!-- <p class="proc">Select Process</p> -->
+                            <div class="row container sec1">
+                                <div class="col-md-4 sub" *ngFor="let item of processes">
+                                    <div class="card" (click)="addProject(item)">
+                                        <!-- <span *ngIf="flag" class="dds-icon dds-icon_many_files__l__stroke"></span> -->
+                                        <!-- <img *ngIf="item.imageUrl" style=" width:auto;" [src]="item.img" alt=""> -->
+                                        <!-- <span *ngIf="!item.imageUrl"
+                                            class="dds-icon dds-icon_many_files__l__stroke"></span> -->
+                                        <p>
+                                            {{item.processName}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card>
+                <div>
+                    <div class="dlob">
+                        <!-- <form>
+                            <div style="background-color: #0076A8; color:white">
+                            <h3>Create Project Details</h3>
+                            </div>
+                        </form> -->
+                        <form [formGroup]="projectForm" (ngSubmit)="projectSubmit()">
+
+
+                            <div class="header">
+                                <h3>Create Project Details</h3>
+                            </div>
+                            <div class="col-sm-8" style="display: flex; padding-top: 20px;margin-left: 20px;">
+                                <label>Process<sup>*</sup></label>
+                                <input type="text" class="form-control reflect-model" value="{{processName}}"
+                                    formControlName="processname" readonly />
+                            </div>
+                            <br>
+                            <div class="col-sm-8" style="display: flex;margin-left: 20px;">
+                                <label>Enter Project Name<sup>*</sup></label>
+                                <input type="text" class="form-control reflect-model" formControlName="projectname"
+                                    [ngClass]="{ 'is-invalid': submited && projectForm.controls['projectname'].errors }"
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z10-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="50" />
+                            </div>
+                            <div class="col-sm-12" style="display: flex;text-align: center;margin-left: 130px;">
+                                <label>Incremental</label>
+                                <mat-slide-toggle formControlName="standalone">
+                                </mat-slide-toggle> 
+                                <label>Standalone</label>
+                            </div>
+                            <div class="col-sm-12 button">
+                                <button mat-button type="reset" class="reset">Reset</button>
+                                <!-- (click)="success($event)" -->
+                                <button mat-button class="submit" type="submit">Create Project</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header">
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;height: 34px;margin-bottom: 20px;">
+                </h4>
+            </div>
+            <div style="text-align: center;">
+                <!-- <i class="far fa-check-circle"></i> -->
+                <h3>Project Created Successfully !</h3>
+                <div class="dds-icon dds-icon_check  next" style="border-radius: 100%;"></div>
+            </div>
+            <div class="col-sm-4" style="float: right; margin: 5% 22% 5% 0">
+                <button mat-button
+                    style="width: 40%; height:35px; background-color: #0076A8; color: white;border-radius: 0; margin-top: 42px;"
+                    >Ok</button>
+                <!-- &nbsp;routerLink="/user/admin1/view-download1"
+                &nbsp;
+                <button mat-button style="width: 40%; height:35px;color: #0076A8; border-color: #0076A8;"
+                    (click)="CloseModal()">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</div>

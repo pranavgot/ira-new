@@ -1,0 +1,315 @@
+<div class="heading">
+    <div class="page-title-wrapper">
+        <ul>
+            <li>User Management</li>
+            <li>Internal Users</li>
+        </ul>
+    </div>
+</div>
+<div class="consen mainContainer">
+    <div class="inner-container" style="min-height:76vh;">
+        <mat-card>
+            <form [formGroup]="orgdetailsForm">
+                <div class="header">
+                    <h3>Organization Details</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label>Organization Name</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="organizationName"
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['organizationName'].errors }"
+                                                              maxlength="50" />
+            
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label>Contact Person Name</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="spocName"
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['spocName'].errors }"
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                                        maxlength="50" />
+            
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label>Contact Person Designation</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="spocDesignation"
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['spocDesignation'].errors }"
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                                        maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Contact Person Number</label>
+                                <div class="input-group prefix">
+                                    <span class="input-group-addon">+91</span>
+                                    <input type="text" class="form-control reflect-model" formControlName="spocphoneNo"
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['spocphoneNo'].errors }"
+                                        maxlength="10" minlength="10"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label>Email Id</label>
+                                    <input type="text" class="form-control reflect-model" formControlName="spocEmailId" maxlength="35" 
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['spocEmailId'].errors }"/>
+            
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div *ngIf="demoimg">
+                                    <label for="imgfile" >
+                                        <img style="height:200px;min-width:100px; width:auto;" [src]="demo" alt="">
+                                        <!-- <input type="file" id="imgfile" accept="image/png, image/gif, image/jpeg"
+                                        [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['file'].errors }"
+                                        style="display: none;" formControlName="file" /> -->
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                     </div>   
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <label>Organization Address</label>
+                                    <textarea rows="4" cols="50" type="text" class="form-control reflect-model"
+                                    [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['address'].errors }"
+                                        formControlName="address" maxlength="150" style="height:220px;"></textarea>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <!-- <div class="col-sm-4">
+                        <label>Organization Email Id</label>
+                        <input type="text" class="form-control reflect-model" formControlName="organizationEmailId" maxlength="35" 
+                        [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['organizationEmailId'].errors }"/>
+                        <div
+                            *ngIf="orgdetailsForm.controls['organizationEmailId'].invalid && (orgdetailsForm.controls['organizationEmailId'].touched || submited)">
+                            <span class="error" *ngIf="orgdetailsForm.controls['organizationEmailId'].errors?.required">
+                                Email Id is required.
+                            </span>
+                            <span class="error"
+                                *ngIf="orgdetailsForm.controls['organizationEmailId'].errors?.organizationEmailId || orgdetailsForm.controls['organizationEmailId'].errors?.pattern">
+                                Invalid Email.
+                            </span>
+                        </div>
+                    </div> -->
+                    
+                    
+                    
+                    
+                    
+                    
+                        <!-- <div *ngIf="!demoimg">
+                            <div>
+                                <label>Upload Logo(JPG or PNG Max size 100 Kb)<sup>*</sup></label>
+                                <label for="imgfile" class="button" [ngClass]="{ 'is-invalid': submited && orgdetailsForm.controls['file'].errors }">
+                                    <input type="file" id="imgfile" accept="image/png, image/gif, image/jpeg"
+                                        (change)="imgFileUpload($event)" style="display: none;" formControlName="file" />
+    
+                                    <span class="dds-icon dds-icon_upload__l__stroke"></span>
+                                    <br>
+                                    <h5>Upload Image</h5>
+                                    <p style="font-size: 9px;color: #707070;">Note: Exclude .JS and .EXE files</p>
+                                    <img height="90%" *ngIf="imageUrl" [src]="imageUrl" class="image" /> 
+                                </label>
+                                <p *ngIf="imgFile?.name?.length > 30"> {{imgFile?.name?.substr(0,30)}}...</p>
+                                <p *ngIf="imgFile?.name?.length < 30">{{imgFile?.name}}</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </form>
+            <div class="main" style="margin-top:20px;">
+                <div class="toolbar-block">
+                    <div class="search"> 
+                        <input id="form1" class="form-control" placeholder="Search" (keyup)="applyFilter($event)"/>
+                        <button mat-button><span class="dds-icon dds-icon_search__l__stroke icons" ></span></button>
+                     </div>
+                     <button mat-button (click)="edit($event)" class="primary">Add User <span class="dds-icon dds-icon_plus__l__stroke"></span></button>  
+                </div> 
+                <div class="table-container">
+                    <table mat-table [dataSource]="dataSource" class="table table-striped" style="padding-top: 20px" matSort>
+                        <button mat-button class="btn" style="float: left" (click)="edit($event)">Add
+                            User</button>
+                          <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef> User Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                          </ng-container>
+              
+                          <ng-container matColumnDef="roleName">
+                              <th mat-header-cell *matHeaderCellDef> Role  </th>
+                              <td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
+                          </ng-container>
+              
+                          <ng-container matColumnDef="emailId">
+                              <th mat-header-cell *matHeaderCellDef> User Email Id </th>
+                              <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="contactNo">
+                              <th mat-header-cell *matHeaderCellDef> User Contact Number </th>
+                              <td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="status">
+                              <th mat-header-cell *matHeaderCellDef> Status </th>
+                              <td mat-cell *matCellDef="let element"> {{element.status == '1' ?'Active' : 'Inactive' }}
+                              </td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                              <th mat-header-cell *matHeaderCellDef> Actions </th>
+                              <td mat-cell *matCellDef="let element; let i = index">
+                                <span class="dds-icon dds-icon_edit__l__stroke" (click)="viewuserdetails(element)"></span>&nbsp; &nbsp;
+                                <span class="dds-icon dds-icon_delete__l__stroke" (click)="deleteuser(i)"></span>
+                              </td>
+                            </ng-container>
+                                      
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          <tr class="mat-row" *matNoDataRow>
+                              <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                No data found
+                              </td>
+                            </tr>  
+                        
+                    </table>
+                </div>
+            <!-- <ng-container  *ngIf="dataSource?.data.length > 10"> -->
+
+                <mat-paginator #paginator [length]="dataSource?.data?.length" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+                </mat-paginator>
+            <!-- </ng-container> -->
+            </div>
+
+            
+            <!-- <div style=" text-align: right; float: right;">
+                <button mat-button class="btn" style="background-color: #fff;color:#0076A8;border:1px solid #0076A8"
+                    routerLink="/user/admin2/user-management">Cancel</button>&nbsp;
+                <button mat-button type="submit" class="btn" (click)="onSubmit()">Submit</button>
+            </div> -->
+        </mat-card>
+    </div>
+    
+</div>
+
+
+<div *ngIf="AddEventProceeding">
+    <div class="taxt_audit-report">
+        <div class="taxt-audit-popup">
+            <div class="taxt-header popup-header">
+                <h3>Add User</h3>
+            </div>
+            <form [formGroup]="addusersdetailsForm" (ngSubmit)="adduser()">
+                <div class="popup-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>User Name<sup>*</sup></label>
+                        <input type="name" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submit && addusersdetailsForm.controls['name'].errors }"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');"
+                            maxlength="50"  />
+                        <!-- <div
+                            *ngIf="addusersdetailsForm.controls['name'].invalid && (addusersdetailsForm.controls['name'].touched || submit)">
+                            <div class="error" *ngIf="addusersdetailsForm.controls['name'].errors?.required">
+                                User Name is required
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Designation<sup>*</sup></label>
+                        <input type="designation" class="form-control" formControlName="designation"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '').replace(/(\..*)\./g, '$1');"
+                            maxlength="50" [ngClass]="{ 'is-invalid': submit && addusersdetailsForm.controls['designation'].errors }"/>
+                        <!-- <div
+                            *ngIf="addusersdetailsForm.controls['designation'].invalid && (addusersdetailsForm.controls['designation'].touched || submit)">
+                            <div class="error" *ngIf="addusersdetailsForm.controls['designation'].errors?.required">
+                                Designation is required
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Contact Number<sup>*</sup></label>
+                        <div class="input-group prefix">
+                            <span class="input-group-addon">+91</span>
+                            <input type="contactnumber" class="form-control" formControlName="contactnumber"
+                                maxlength="10" minlength="10" 
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" [ngClass]="{ 'is-invalid': submit && addusersdetailsForm.controls['contactnumber'].errors }" />
+                        </div>
+                        <!-- <div
+                            *ngIf="addusersdetailsForm.controls['contactnumber'].invalid && (addusersdetailsForm.controls['contactnumber'].touched || submit)">
+                            <div class="error" *ngIf="addusersdetailsForm.controls['contactnumber'].errors?.required">
+                                Contact Number is required
+                            </div>
+                            <div class="error" *ngIf="addusersdetailsForm.controls['contactnumber'].errors?.minlength">
+                                Contact Number must have 10 Digits.
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Email Id<sup>*</sup></label>
+                        <input type="email" class="form-control" formControlName="email" maxlength="35" [ngClass]="{ 'is-invalid': submit && addusersdetailsForm.controls['email'].errors }" />
+                        <!-- <div
+                            *ngIf="addusersdetailsForm.controls['email'].invalid && (addusersdetailsForm.controls['email'].touched || submit)">
+                            <span class="error" *ngIf="addusersdetailsForm.controls['email'].errors?.required">
+                                Email Id is required.
+                            </span>
+                            <span class="error"
+                                *ngIf="addusersdetailsForm.controls['email'].errors?.email || addusersdetailsForm.controls['email'].errors?.pattern">
+                                Invalid Email.
+                            </span>
+                        </div> -->
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>User Role</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select class="form-control" placeholder="Select Role" formControlName="roleId" [ngClass]="{ 'is-invalid': submit && addusersdetailsForm.controls['roleId'].errors }">
+                                <mat-option *ngFor="let role of userroles" [value]="role">{{role.roleName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- <div
+                            *ngIf="addusersdetailsForm.controls['roleId'].invalid && (addusersdetailsForm.controls['roleId'].touched || submit)">
+                            <span class="error" *ngIf="addusersdetailsForm.controls['roleId'].errors?.required">
+                                Role is required.
+                            </span>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <label>User Status</label>
+                            <div class="toggle-btn-block">
+                                <label>Inactive</label>
+                                <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                                <label>Active</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                </div>
+                <div class="button-group popup-footer">
+                    <button mat-button  
+                        onpointerenter="this.setAttribute()"
+                        onpointerleave="this.setAttribute()"
+                        (click)="CloseModal()">Cancel <span class="dds-icon dds-icon_close__l__stroke"></span></button>
+                    <button mat-button class="primary"  onpointerenter="this.setAttribute()"
+                    onpointerleave="this.setAttribute()"
+                    type="submit" (click)="adduser()">Save <span class="dds-icon dds-icon_arrow_right__l__stroke"></span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

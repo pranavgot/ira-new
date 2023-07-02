@@ -1,0 +1,324 @@
+<div class="heading">
+    <h1>Solution Board</h1>
+    <ul>
+        <li><a [routerLink]="['/dashboard']">Dashboard </a>/</li>
+        <li><a [routerLink]="['solution-board-dashboard']">Solution Board</a>/</li>
+        <li>Add process</li>
+    </ul>
+</div>
+<div class="consen">
+    <div class="btnn">
+        <button mat-button [class.active]="tab1">Flat File</button> &nbsp;
+        <button mat-button [class.active]="tab2">SQL</button>&nbsp;
+        <button mat-button [class.active]="tab3">API</button>&nbsp;
+        <button mat-button [class.active]="tab4">No SQL</button>
+        <!-- (click)="changetab(1)"
+(click)="changetab(2)"
+(click)="changetab(3)"
+(click)="changetab(4)" -->
+    </div>
+    <mat-card class="main">
+        <div class="row no-gutters" style="padding-top:20px;">
+            <!-- <div class="col-md-2" style="margin: auto;">
+                <h6 style="text-align:center">Dataset(s) Preparation</h6>
+            </div>
+            <div class="col rect">
+                <mat-card class="cards">
+                    <div class="verti">
+                        <h6>Step <span class="num">1</span> </h6>
+                        <p>Upload Input Files</p>
+                    </div>
+                    <span class="dds-icon dds-icon_chevron_right__l__stroke next"></span>
+                </mat-card>
+            </div>
+            <div class="col rect">
+                <mat-card class="cards">
+                    <div class="verti">
+                        <h6>Step <span class="num">2</span> </h6>
+                        <p>Create Dataset</p>
+                    </div>
+                    <span class="dds-icon dds-icon_chevron_right__l__stroke next"></span>
+                </mat-card>
+            </div>
+            <div class="col rect">
+                <mat-card class="cards">
+                    <div class="verti">
+                        <h6>Step <span class="num">3</span> </h6>
+                        <p>Define Dataset by mapping columns from the input files.</p>
+                    </div>
+                    <span class="dds-icon dds-icon_chevron_right__l__stroke next"></span>
+                </mat-card>
+            </div>
+            <div class="col rect">
+                <mat-card class="cards">
+                    <div class="verti">
+                        <h6>Step <span class="num">4</span> </h6>
+                        <p>Save Dataset and Continue for to create Dashboard template</p>
+                    </div>
+                </mat-card>
+            </div> -->
+        </div>
+        <!-- bottom border-->
+        <!-- <div style="border-bottom: 3px solid #D6D6D6;"></div> -->
+        <div class="bottom">
+            <div class="left ">
+                <form [formGroup]="formUploadFiles" class="tip">
+
+                    <div style="display: flex;">
+                        <h6>Note: Exclude .JS and .EXE files</h6>
+                        <label for="inputfile" class="btn">Upload File(s)</label>
+                        <input type="file" id="inputfile" (change)="onFileChange($event)" style="display: none;"
+                            formControlName="file" multiple />
+                    </div>
+                </form>
+                <button class="first" *ngIf="whiteSpace.left">Uploaded input files will shown here click upload file button.</button>
+                <div class="col indust" style="margin-top:15px" *ngIf="!whiteSpace.left">
+                    <ng-container *ngFor="let tables of myFiles">
+                        <div class="indust ">
+                            <table class="table table-striped" *ngFor="let table of tables; let i=index;let l=last">
+                                <thead>
+                                    <tr style="background-color: #041E42; color:white" *ngFor="let item of tables">
+                                        <th scope="col">{{item.fileName}}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of table['Data Fields']"
+                                        (dragstart)="dragstart_handler($event)" draggable="true"
+                                        [attr.data-drag-data]="item.showFileFieldName"
+                                        (click)="inputFileRowClicked(item)">
+                                        <td *ngIf="item.Description">
+                                            {{item['Field ']}}
+                                        </td>
+                                        <td *ngIf="item.Description">
+                                            {{item['Data type']}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-container>
+                    <p>{{invoiceForm1.value | json}}</p>
+                </div>
+
+                <!-- </form> -->
+                <div class="button">
+                  
+                </div>
+            </div>
+            <!-- <div style="border-right: 3px solid #D6D6D6;"></div> -->
+            <div class="right">
+                <div class="" style="display: flex;">
+                    <!-- <input type="text" placeholder="Formulas"> -->
+                    <form [formGroup]="formFormula">
+
+                        <div class="dropdown">
+
+                            <select (change)="changeFormula($event)" class="form-control"
+                                style="width:400px;border-radius: 0;" formControlName="formula">
+                                <option value="" disabled selected hidden>Select A Function</option>
+                                <option *ngFor="let formula of formulasList" [value]="formula.name">
+                                    <a alt="formula.description">{{ formula.name }}</a>
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </form>
+
+                    <!-- <button mat-button class="btn" (click)="enableDataSetPopup = true">Add DataSet</button> -->
+                    <button mat-button class="btn"
+                        (click)="dataSetNameControl.reset(); enableDataSetPopup = true;dataSetName = '';">Add
+                        DataSet</button>
+
+                </div>
+                <button class="second " *ngIf="whiteSpace.right">Create dataset by clicking on above Add Dataset
+                    button</button>
+
+                <!-- <form *ngIf="!whiteSpace.right" class="col container scroll" style="margin-top:15px" [formGroup]="invoiceForm1"
+                    (ngSubmit)="onSubmitDataSet1()">
+                    <div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="background-color: #041E42; color:white">
+                                    <th class="col-sm-3">Dataset 12 </th>
+                                    <th class="col-sm-8"></th>
+                                    <th class="col-sm-1">
+                                        <button type="button" (click)="addNewDRow1()"
+                                            class="btn btn-primary" style="margin: auto;margin-right:0%" >+</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody formArrayName="DRows1">
+                                <tr *ngFor="let itemrows of getDropControls1(); let i=index;let l=last"
+                                    [formGroupName]="i">
+                                    <td>
+                                        <input id="field{{i}}" formControlName="Field "
+                                            (click)="captureDataSetFields(itemrows,i,'Field ')" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input id="defination{{i}}" formControlName="defination"
+                                            (click)="captureDataSetFields(itemrows,i,'defination')" class="droptarget"
+                                            class="form-control">
+                                    </td>
+                                    <td>
+                                        <div class="icn">
+                                            <span class="dds-icon dds-icon_delete__l__stroke"
+                                                (click)="deleteDropRow1(i)"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>{{invoiceForm1.value | json}}</p>
+                    </div>
+                </form> -->
+
+
+                <form *ngIf="!whiteSpace.right" class="col indust container scroll" style="margin-top:15px"
+                    [formGroup]="invoiceForm1">
+
+                    <div formArrayName="DatasetDetailsList">
+                        <ng-container *ngFor="let comp of invoiceForm1.get('DatasetDetailsList').controls; let i=index"
+                            [formGroupName]="i">
+                            <div class="indust ">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr style="background-color: #041E42; color:white">
+                                            <th class="col-md-3" scope="col">{{comp.value.datasetName}}</th>
+
+                                            <th class="col-md-7"></th>
+                                            <th class="col-md-1"><button type="button"
+                                                    (click)="addNewDataSetRow(comp.controls.datasetFieldDTOList)"
+                                                    class="btn btn-primary"
+                                                    style="margin: auto;margin-right:0%">+</button></th>
+                                            <th class="col-md-1" (click)="deleteDataSet(i)"><span
+                                                    class="dds-icon dds-icon_delete__l__stroke"></span></th>
+                                        </tr>
+                                    </thead> 
+                                    <tbody formArrayName="datasetFieldDTOList">
+                                        <tr *ngFor="let project of comp.get('datasetFieldDTOList').controls; let j=index"
+                                            [formGroupName]="j">
+                                            <td>
+                                                <input id="Field{{i}}{{j}}"
+                                                    (click)="captureDataSetField(project,'Field ',i,j)"
+                                                    formControlName="Field " class="form-control">
+                                            </td>
+                                            <td>
+                                                <input id="Defination{{i}}{{j}}"
+                                                    (click)="captureDataSetField(project,'Defination',i,j)"
+                                                    formControlName="Defination" class="form-control">
+                                            </td>
+                                            <td>
+                                                <!-- <input id="Datatype{{i}}{{j}}" (click)="captureDataSetField(project,'Defination',i,j)" formControlName="Defination" class="form-control"> -->
+                                                <select class="form-control"
+                                                    (change)="changeDatatype($event,'Datatype',i,j)"
+                                                    style="width:88px;border-radius: 0;">
+                                                    <option value="" disabled selected hidden>Select <span
+                                                            class="dds-icon dds-icon_arrow-down"></span></option>
+                                                    <option *ngFor="let item of dataTypeList" [value]="item.value">
+                                                        <a alt="item.value">{{ item.value }}</a>
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <div class="icn">
+                                                    <span class="dds-icon dds-icon_delete__l__stroke"
+                                                        (click)="deleteDataSetRow(comp.controls.datasetFieldDTOList, j)"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                </form>
+
+
+                <div class="button">
+
+                    <!-- <span class="dds-icon dds-icon_upload__l__stroke"></span> -->
+
+                    <br>
+
+                    <!-- <h5>Upload Image</h5> -->
+
+                    <!-- <p style="font-size: 9px;color: #707070;"></p> -->
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-4" style="margin: auto; margin-right: 0;">
+            <button mat-button class="cD_btn" color="primary" style="width: auto; height:auto;"
+                routerLink="/user/admin1/solution-board-dashboard"
+                (click)="saveDataSet(invoiceForm1.controls.DatasetDetailsList.value)">Save Dataset(s)</button>&nbsp;
+            &nbsp;
+            <button mat-button class="cD_btn" color="primary" style="width: auto; height:auto;"
+                routerLink="/user/admin1/powerbi-interface">Save & Continue</button>&nbsp; &nbsp;
+            <!-- <button mat-button class="cD_btn" color="primary" style="width: 100px; height:auto;"
+                routerLink="/user/admin1/solution-board-dashboard">Schedule</button>&nbsp; &nbsp; -->
+
+            <!-- <button mat-button
+                style="width: 100px; height:auto; color: #0076A8;border-radius:0;background-color: #f5f5f5; border: 1px solid #0076A8;">Reset</button> -->
+
+        </div>
+
+    </mat-card>
+
+</div>
+<!--create DataSet popup-->
+
+<div *ngIf="enableDataSetPopup">
+
+    <div class="taxt_audit-report">
+
+        <div class="taxt-audit-popup">
+
+            <div class="taxt-header">
+
+                <h4 style="background-color: #0076A8; color: white; padding: 10px;">DataSet</h4>
+
+            </div>
+
+            <form>
+
+                <div class="row popup">
+
+                    <div class=" field">
+
+                        <label>Enter DataSet Name</label>
+
+                        <input type="text" [formControl]="dataSetNameControl"
+                            style="height: 35px;background-color: #eee;width:100%;border: 1px solid #ccc;padding-left:5px">
+
+                    </div>
+
+                </div>
+
+                <!-- <div class="col-sm-12" style="margin-top: 30px;"> -->
+
+                <div class="col-sm-3" style="float: right; margin: 5% 0 5% 0">
+
+                    <button mat-button style="background-color: #0076A8; color: white;"
+                        (click)="addNewDataSet();">Add</button>
+
+                    &nbsp;
+
+                    &nbsp;
+
+                    <button mat-button style="color: #0076A8;" (click)="enableDataSetPopup = false;">Cancel</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,72 @@
+<div class="heading">
+    <h1>Service Request</h1>
+    <!-- <h5><span style="color: #0076A8">Dashboard / </span>Service Request</h5> -->
+</div>
+<div class="consen">
+    <mat-card class="table-group">
+        <div class="toolbar-block margin-top-65">
+            <div class="search">
+                <input id="form1" class="form-control" value="" placeholder="Search" (keyup)="applyFilter($event)" />
+                <span class="dds-icon dds-icon_search__l__stroke icons" ></span>
+            </div>
+            <!-- <p style="float: left;">Total Request: <span>10</span></p> -->
+            <button mat-button class="primary"
+                routerLink="/user/external_user/add-service">New Service Request <span
+                class="dds-icon dds-icon_plus__l__stroke"></span></button>
+        </div>
+        <div class="main">
+            <table class="table table-striped" mat-table [dataSource]="serviceSearch"  matSort>
+                <ng-container matColumnDef="i">
+                    <th mat-header-cell *matHeaderCellDef> S. No </th>
+                    <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="serviceRequestId">
+                    <th mat-header-cell *matHeaderCellDef> Request ID </th>
+`                   <td mat-cell *matCellDef="let element"> {{element.serviceRequestId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="requestType">
+                    <th mat-header-cell *matHeaderCellDef> Request Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.requestType}} </td>
+                </ng-container>
+
+                      <ng-container matColumnDef="requestDate">
+
+                        <th mat-header-cell *matHeaderCellDef>Request Date</th>
+
+                        <td mat-cell *matCellDef="let element"> {{element.requestDate | date:"dd/MM/yyyy, hh:mm a"}} </td>
+
+                      </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="dds-icon dds-icon_eyeopen" (click)="viewRequest(element.serviceRequestId)"  data-target="#myModal" data-toggle="modal"></span>
+                            &nbsp;&nbsp;&nbsp;
+                    </td>
+                </ng-container>
+                
+                <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                No data found
+                            </td>
+                        </tr>
+            </table>
+                <ng-container *ngIf="serviceSearch?.data.length > 10">
+                    <mat-paginator [length]="serviceSearch?.data.length" [pageSizeOptions]="[10,20,50]" aria-label="Select page">
+                    </mat-paginator>
+                </ng-container>
+        </div>
+    </mat-card>
+
+
+
+
+
+
+</div>
